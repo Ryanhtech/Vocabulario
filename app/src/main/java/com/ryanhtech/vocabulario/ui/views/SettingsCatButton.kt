@@ -18,10 +18,6 @@ package com.ryanhtech.vocabulario.ui.views
 
 import android.content.Context
 import android.util.AttributeSet
-<<<<<<< Updated upstream
-import android.view.ViewGroup
-=======
->>>>>>> Stashed changes
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
@@ -36,11 +32,7 @@ class SettingsCatButton constructor(context: Context, attributeSet: AttributeSet
     }
 
     private fun initButton(attributeSet: AttributeSet, defStyle: Int) {
-<<<<<<< Updated upstream
-        inflate(context, R.layout.v_settings_cat_button, this.rootView as ViewGroup)
-=======
         inflate(context, R.layout.v_settings_cat_button, null)
->>>>>>> Stashed changes
 
         val attrs = context.obtainStyledAttributes(attributeSet,
             R.styleable.SettingsCatButton)
@@ -69,11 +61,8 @@ class SettingsCatButton constructor(context: Context, attributeSet: AttributeSet
             attrs.recycle()
         }
     }
-<<<<<<< Updated upstream
-=======
 
     private fun legacyInitButton(attributeSet: AttributeSet, defStyle: Int) {
 
     }
->>>>>>> Stashed changes
 }

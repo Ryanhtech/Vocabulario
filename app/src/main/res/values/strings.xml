@@ -274,13 +274,8 @@
     <string name="reset_collection_descr">All your words and wors groups will be deleted. This is useful if you change your school or your teacher, or when you start a new year at school.</string>
     <string name="receive_collection_events_permission">Receive Collection events from Vocabulario</string>
     <string name="receive_collection_events_description">Allows an app to receive events regarding your Collection in Vocabulario. For example, an app might be able to take action when you add a new Word Group, when you delete a word or an entire Word Group, and many more.</string>
-<<<<<<< Updated upstream
-    <string name="collection_permission_group_title">Collection-related permissions</string>
-=======
     <string name="collection_permission_group_title">Vocabulario permissions</string>
->>>>>>> Stashed changes
     <string name="collection_permission_group_description">Allows apps to access Collection-related permissions.</string>
-    <!-- Strings used for fragments for navigation -->
 
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

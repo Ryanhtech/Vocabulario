@@ -40,15 +40,9 @@
 
             <ImageView
                 android:id="@+id/imageView15"
-<<<<<<< Updated upstream
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="0"
-=======
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
->>>>>>> Stashed changes
                 android:importantForAccessibility="no"
                 android:paddingStart="0dp"
                 android:paddingEnd="8dp"
@@ -92,11 +86,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView42">
 
-<<<<<<< Updated upstream
-            <!--<LinearLayout
-=======
             <FrameLayout
->>>>>>> Stashed changes
                 android:id="@+id/mainSettingsCollectionTile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -109,30 +99,19 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
-<<<<<<< Updated upstream
-                tools:ignore="TextContrastCheck">
-=======
                 tools:ignore="TextContrastCheck,UselessParent">
->>>>>>> Stashed changes
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-<<<<<<< Updated upstream
-                    android:orientation="horizontal">
-=======
                     android:orientation="horizontal"
                     tools:ignore="UselessParent">
->>>>>>> Stashed changes
 
                     <ImageView
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_weight="0"
-<<<<<<< Updated upstream
-=======
                         android:importantForAccessibility="no"
->>>>>>> Stashed changes
                         app:srcCompat="@drawable/ic_baseline_inbox_24"
                         app:tint="@color/reset_elements" />
 
@@ -161,7 +140,6 @@
                             android:text="@string/reset_collection_descr"
                             android:textColor="@color/reset_elements"
                             android:textSize="12sp" />
-<<<<<<< Updated upstream
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -303,8 +281,6 @@
                                 app:srcCompat="@drawable/ic_baseline_arrow_forward_24"
                                 app:tint="@color/primary_colour" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
-=======
->>>>>>> Stashed changes
                     </LinearLayout>
 
                     <ImageView
@@ -312,24 +288,12 @@
                         android:layout_height="20dp"
                         android:layout_marginTop="4dp"
                         android:layout_weight="0"
-<<<<<<< Updated upstream
-=======
                         android:importantForAccessibility="no"
->>>>>>> Stashed changes
                         android:src="@drawable/ic_baseline_arrow_forward_24"
                         app:tint="@color/reset_elements" />
 
                 </LinearLayout>
-
-<<<<<<< Updated upstream
-            </LinearLayout> -->
-
-        <com.ryanhtech.vocabulario.ui.views.SettingsCatButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-=======
             </FrameLayout>
->>>>>>> Stashed changes
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -116,15 +116,10 @@ class CollectionManager(collectionDir: String) {
                 val broadcastIntent = Intent(
                     context.getString(R.string.action_collection_add_word_group))
 
-<<<<<<< Updated upstream
-                // We have our Intent. Now try to send the broadcast using it.
-                context.sendBroadcast(broadcastIntent)
-=======
                 // We have our Intent. Now try to send the broadcast using it. The receiver will
                 // require the RECEIVE_COLLECTION_EVENTS permission to be able to receive it.
                 context.sendBroadcast(
                     broadcastIntent/*, com.ryanhtech.vocabulario.Manifest.permission.RECEIVE_COLLECTION_EVENTS*/)
->>>>>>> Stashed changes
             }
             catch (e: Exception) {
                 // We have an exception here, so log it and return False.

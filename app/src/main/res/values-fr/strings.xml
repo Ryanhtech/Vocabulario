@@ -251,11 +251,8 @@
     <string name="reset_vocabulario_descr">Vous pouvez effacer votre Collection, réinitialiser vos réglages, ou alors réinitialiser toute l\'application pour recommencer à zéro.</string>
     <string name="reset_collection">Effacer la Collection</string>
     <string name="reset_collection_descr">Tous vos mots et cours seront effacés. Cette option est pratique si vous allez changer de professeur et/ou de collège ou lorsque vous commencez une nouvelle année.</string>
-<<<<<<< Updated upstream
-=======
     <string name="collection_permission_group_title">Autorisations Vocabulario</string>
     <string name="collection_permission_group_description">Autorise les applications à utiliser des autorisations en rapport avec la Collection.</string>
     <string name="receive_collection_events_description">Autorise cette application à recevoir des messages du système concernant votre Collection. Par exemple, une application peut interagir avec vous lorsque vous créez un nouveau cours, lorsque vous modifiez un mot, et bien plus.</string>
     <string name="receive_collection_events_permission">Recevoir des évènements de la collection de Vocabulario</string>
->>>>>>> Stashed changes
 </resources>

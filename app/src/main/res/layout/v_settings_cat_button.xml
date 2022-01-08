@@ -18,26 +18,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/settingsCatButtonRoot"
-<<<<<<< Updated upstream
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/tile_background"
-    android:baselineAligned="false"
-=======
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/tile_background"
->>>>>>> Stashed changes
     android:clickable="true"
     android:focusable="true"
     android:orientation="vertical"
     android:padding="20dp"
-<<<<<<< Updated upstream
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
-=======
->>>>>>> Stashed changes
     tools:ignore="TextContrastCheck"
     tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
@@ -51,11 +38,7 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_weight="0"
-<<<<<<< Updated upstream
-            app:srcCompat="@drawable/ic_baseline_inbox_24"
-=======
             android:src="@drawable/ic_baseline_inbox_24"
->>>>>>> Stashed changes
             app:tint="@color/primary_colour" />
 
         <LinearLayout
@@ -83,7 +66,6 @@
                 android:paddingTop="4dp"
                 android:text="@string/collection_settings_descr"
                 android:textColor="@color/basic_text" />
-<<<<<<< Updated upstream
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -225,18 +207,12 @@
                     app:srcCompat="@drawable/ic_baseline_arrow_forward_24"
                     app:tint="@color/primary_colour" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-=======
->>>>>>> Stashed changes
         </LinearLayout>
 
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginTop="4dp"
-<<<<<<< Updated upstream
-            android:layout_weight="0"
-=======
->>>>>>> Stashed changes
             android:src="@drawable/ic_baseline_arrow_forward_24"
             app:tint="@color/primary_colour" />
 
