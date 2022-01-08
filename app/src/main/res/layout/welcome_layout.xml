@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright 2021-2022 Ryanhtech Labs
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/welcomeConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/view_round">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/nextButtonWelcome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/shape_gradient_bluepurple_round"
+            android:fontFamily="@font/catamaran_semibold"
+            android:shadowRadius="100"
+            android:text="@string/next"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:backgroundTint="@null"
+            app:icon="@drawable/ic_baseline_arrow_forward_ios_24"
+            app:iconGravity="textEnd"
+            app:iconPadding="5dp"
+            app:iconSize="17dp"
+            app:iconTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/appTtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/catamaran_extrabold"
+            android:text="@string/welcome"
+            android:textColor="@color/title_text"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appIcon" />
+
+        <TextView
+            android:id="@+id/appDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/catamaran_semibold"
+            android:text="@string/app_description"
+            android:textAlignment="center"
+            android:textColor="@color/basic_text"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appTtitle"
+            tools:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/appIcon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_icon_inapp" />
+
+        <Button
+            android:id="@+id/assistanceInformationButtonWelcome"
+            style="?attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/catamaran_semibold"
+            android:text="@string/assistance_info"
+            android:textAllCaps="false"
+            android:textColor="@color/basic_text"
+            app:icon="@drawable/ic_baseline_arrow_forward_ios_24"
+            app:iconGravity="textEnd"
+            app:iconPadding="5dp"
+            app:iconSize="17dp"
+            app:iconTint="@color/basic_text"
+            app:layout_constraintBottom_toTopOf="@+id/nextButtonWelcome"
+            app:layout_constraintEnd_toEndOf="@+id/nextButtonWelcome"
+            app:layout_constraintStart_toStartOf="@+id/nextButtonWelcome" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8" ?><!--
+  ~ Copyright 2021-2022 Ryanhtech Labs
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+    <string name="app_name" translatable="false">Vocabulario</string>
+    <string name="next">Continue</string>
+    <string name="check_entries_dialog_text">Suggestions will auto-complete the French word you type to the corresponding translation in Spanish, without you doing anything. If you want to activate it, you will need to download a translation package that we will use to translate words.</string>
+    <string name="download_failed">Download failed</string>
+    <string name="download_failed_description">The download of the translation package failed. Please check if you are connected to a Wi-Fi access point, and that you have access to the Internet, and retry.</string>
+    <string name="retry">Retry</string>
+    <string name="preparing_app">Setting up…</string>
+    <string name="next_setup">Next</string>
+    <string name="back">Back</string>
+    <string name="app_description">Learn your Spanish words quickly and easily</string>
+    <string name="level">Choose your level</string>
+    <string name="level_n_very_easy">Super easy</string>
+    <string name="level_n_easy">Easy</string>
+    <string name="level_n_medium">Average (Recommended)</string>
+    <string name="level_n_hard">Hard</string>
+    <string name="level_n_super_hard">Super hard</string>
+    <string name="level_choice_description">The highest level you choose, the more questions there will be in each quiz. If you choose an easy level, there will be less questions, but you will train more. That\'s why we recommend you to choose a level adapted to yourself, the way you work, and the way you remember things.</string>
+    <string name="level_key_preferences" translatable="false">level</string>
+    <string name="good_morning" translatable="false">¡Buenos días,</string>
+    <string name="good_night" translatable="false">¡Buenas noches,</string>
+    <string name="good_afternoon" translatable="false">¡Buenas tardes,</string>
+    <string name="main_text_presentation">What are we going to do today?</string>
+    <string name="fatal_error_title">Vocabulario encourted an error and crashed the last time you used it. You can retry, or reset Vocabulario\'s data if it doesn\'t work. If it still doesn\'t work, erase the data from your phone\'s Settings.</string>
+    <string name="error_report_reas">An error report has been sent to us, and we will use it to repair the problem in an update, if the problem comes from our app. This report does not contain personal information, nor information used to identify you.</string>
+    <string name="continue_to_app">Continue to Vocabulario</string>
+    <string name="reset_data">Reset Vocabulario\'s data</string>
+    <string name="open_settings">Open Vocabulario\'s settings page</string>
+    <string name="delete_data_confirm_dialog">Are you sure you want to delete the data?</string>
+    <string name="delete_data_confirm_dialog_descr">This will delete all Vocabulario\'s data, including all the words you added to your Collection, your settings, your user profile, and many more.</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete_data">Delete data</string>
+    <string name="policies_title">End-User License Agreement</string>
+    <string name="settings">Settings</string>
+    <string name="settings_description">Personalize Vocabulario the way you want</string>
+    <string name="general">General</string>
+    <string name="activate_suggestions_settings">Enable Suggestions</string>
+    <string name="level_settings">Level settings</string>
+    <string name="rev_settings">Revisions</string>
+    <string name="enable_revs">Let me know when a review of the vocabulary is recommended</string>
+    <string name="voc_rev_reminder_service_description">Vocabulary revision reminder service</string>
+    <string name="reminder_level_influence_descr">The level you chose might influence this option.</string>
+    <string name="change_level">Change level</string>
+    <string name="level_descr">The level helps you learn your vocabulary depending on how you learn things. You can change below.</string>
+    <string name="chosen_level">Current level: Average</string>
+    <string name="app_settings">App Settings</string>
+    <string name="ver_info">Version information</string>
+    <string name="legal_info">Legal information</string>
+    <string name="reset_data_settings">Reset app</string>
+    <string name="reset_app_confirm_header">Reset app?</string>
+    <string name="reset_app_confirm_descr">This action will reset all data on the app, including your Collection, your settings, and your user profile. You can\'t undo this operation!</string>
+    <string name="copyright" translatable="false">Copyright © 2021 Ryanhtech Labs</string>
+    <string name="v_name">Version</string>
+    <string name="v_code">Build number</string>
+    <string name="debug_build">Debug build - Do not use in production!</string>
+    <string name="stable_version">Stable version</string>
+    <string name="regenerate">Throw the dice</string>
+    <string name="instructions_egg">Click on the button to throw the dice!</string>
+    <string name="add_collection">Add new words to your Collection</string>
+    <string name="quiz">Quiz</string>
+    <string name="home">Home</string>
+    <string name="collection">Collection</string>
+    <string name="profile">Profile</string>
+    <string name="words_collection_n">Words in your Collection</string>
+    <string name="average_n">Vocabulary average</string>
+    <string name="quiz_v">Finished quizzes</string>
+    <string name="words_a_v">Words mastered</string>
+    <string name="words_diff_v">Difficult words</string>
+    <string name="reminders_r_v">Reminders received</string>
+    <string name="check_collection">Go to your Collection</string>
+    <string name="take_quiz">Make a quiz</string>
+    <string name="see_profile">See profile</string>
+    <string name="quiz_spanish" translatable="false">¿Quieres hacer un quiz?</string>
+    <string name="quiz_presentation">Do you want to make a quiz?</string>
+    <string name="start">Start</string>
+    <string name="manage_planification">Manage planification</string>
+    <string name="edit_profile">Edit profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="eula_description">This software comes with an EULA, or End-User License Agreement. This EULA helps you understaind how to use this software legally. Vocabulario is licensed under the Apache License, version 2.0, an open-source license. If you do not accept it, uninstall this software.</string>
+    <string name="view_license">View license</string>
+    <string name="apache_license_url" translatable="false">https://www.apache.org/licenses/LICENSE-2.0</string>
+    <string name="please_wait">Please wait…</string>
+    <string name="setup_place_title">Where will this device be used?</string>
+    <string name="place_home">At home</string>
+    <string name="place_school">At school</string>
+    <string name="place_home_desc">If you choose this option, you will be able to create an user profile, and get reminders to check out your vocabulary.</string>
+    <string name="place_school_desc">If you choose this option, this application will be protected by an admin password known by the computer administrator and/or other school employees. Students won\'t be able to apply changes to settings without the admin password. No user profile will be created.</string>
+    <string name="admin_config">App administration configuration</string>
+    <string name="admin_config_descr">"Please set these settings carefully. You won't be able to change them without a full application reinstall .    "</string>
+    <string name="admin_pwd">Admin password</string>
+    <string name="admin_pwd_desc">This password will be required while performing actions you select below to protect the application.</string>
+    <string name="admin_pwd_when">When do you want a confirmation?</string>
+    <string name="admin_pwd_when_desc">Select when you want to confirm the access to different settings using the checkboxes below.</string>
+    <string name="protect_reset_admin">When the app is about to reset</string>
+    <string name="protect_settings_admin">When accessing to settings</string>
+    <string name="protect_words_admin">When the user adds words in the Collection</string>
+    <string name="id_information_admin">Identity</string>
+    <string name="place_name">School name</string>
+    <string name="admin_permission_required">Go and find an adult</string>
+    <string name="admin_permission_owner">"This device is managed by "</string>
+    <string name="id_quest">Who are you?</string>
+    <string name="enter_name">Name</string>
+    <string name="level_default">Super easy</string>
+    <string name="features">Features</string>
+    <string name="features_desc">Select the features you want to use in Vocabulario, and click on Next.</string>
+    <string name="suggestions">Suggestions</string>
+    <string name="spn_letters_feature">Spanish Letters</string>
+    <string name="spn_letters_feature_desc">This option will display special spanish letters above the keyboard that you can use when you add new spanish words to your Collection. It is recommended to select it if you don\'t have them on your phone\'s keyboard.</string>
+    <string name="no_internet">No Internet access</string>
+    <string name="no_internet_install_desc">Without an Internet connection, we can\'t set up Suggestions.</string>
+    <string name="reset_app_cnsqc">This action cannot be undone.</string>
+    <string name="reset_app_c_collection_e">I understaind that all my Collection will be cleared, which means that all the words in it will be cleared too.</string>
+    <string name="reset_app_c_profile_e">I understaind that my user profile will be lost.</string>
+    <string name="reset_app_c_reset_a">I understaind that all data assiociated with this app will be lost.</string>
+    <string name="check_all_checkboxes">Please tick all the checkboxes!</string>
+    <string name="app_reset_in">App will reset in…</string>
+    <string name="_10">10</string>
+    <string name="school_config">Set up Vocabulario for your school</string>
+    <string name="school_setup_intro_admin">By being the administrator, you will be able to:\n\n- Add words to the Collection without restriction,\n- Control the access to app settings,\n- Reset the app,\n- Prevent the users from performing undesired operation with this app.\n\nAn admin password will be prompted every time an user will try to do something in the list above.</string>
+    <string name="org_name">What\'s your school\'s name?</string>
+    <string name="enter_real_name">Please enter a valid name.</string>
+    <string name="admin_tools_config">Admin tools configuration</string>
+    <string name="enter_new_password">Enter an administrator password. If you forget it, you will have to uninstall/reinstall the entire app!</string>
+    <string name="confirm_pwd">Confirm the password you just typed in.</string>
+    <string name="password_incorrect">Wrong password!</string>
+    <string name="emergency_mode">Something went wrong</string>
+    <string name="hi">Hi! 👋</string>
+    <string name="configure_app_before_settings">Please configure the app before accessing to Settings</string>
+    <string name="configure_app_before_settings_description">You can\'t make changes to settings if we don\'t know who you are!</string>
+    <string name="wrong_password_tries_remaining_1">Wrong password -</string>
+    <string name="wrong_password_tries_remaining_2">attempt(s) remaining</string>
+    <string name="choose_admin_pwd">Choose an administrator password</string>
+    <string name="pwd_descr">This password will help you to manage some settings that are protected when you set up this app for your school.</string>
+    <string name="confirm_pwd_hint">Confirm password</string>
+    <string name="admin_pwd_keep_hint">Please write this password down.</string>
+    <string name="pwd_n_match">The passwords doesn\'t match</string>
+    <string name="admin_security_code">Admin security code</string>
+    <string name="admin_security_code_descr">This code will allow you to backup your password if you lose it.</string>
+    <string name="password_short">Your password must be at least 4 characters long.</string>
+    <string name="forgot_pwd">Forgot password</string>
+    <string name="forgot_pwd_descr">If you forgot your password, you can reset it using the Security Code that we gave you when you set up the app. If you continue, the app will switch to Emergency Block mode, in which you will not be able to use the app on this device. You can\'t leave Admin Block mode without providing the Security Code.</string>
+    <string name="continue_block">Continue and block</string>
+    <string name="app_blocked">Vocabulario is locked</string>
+    <string name="app_blocked_forgot_pwd">The Forgot password feature has been activated.\n\nTo reset your password, click on Unlock, and follow the instructions to confirm that you are the administrator.</string>
+    <string name="unlock">Unlock</string>
+    <string name="it_wasnt_me">It wasn\'t me</string>
+    <string name="block_wasntme_expl">If it wasn\'t you that locked the app, it might be a student that was using your device that locked it.\n\nYour device should have vibrated for 30 seconds when it has been locked, to alert people around about this.</string>
+    <string name="enter_security_code">Please enter the 6-digit security code to continue.</string>
+    <string name="wrong_code">Wrong code. Please try again.</string>
+    <string name="dialog_block_confirm">Block now?</string>
+    <string name="dialog_block_confrm_d">This device will vibrate for 30 seconds to alert people around.</string>
+    <string name="admin_notification_channel_title">Administration messages</string>
+    <string name="admin_notification_channel_description">Admin-related messages.</string>
+    <string name="admin_unlocked_notif_title">Admin access unlocked</string>
+    <string name="admin_unlocked_notif">Tap to lock...</string>
+    <string name="vibrator_service_description">Alerts people that the app has been locked by vibrating the device for 30s</string>
+    <string name="vibrator_notif">Vocabulario has been blocked</string>
+    <string name="vibrator_notif_text">The device now vibrates for 30 seconds.</string>
+    <string name="add_word_group">Add Word group</string>
+    <string name="wgroup_title">Group title</string>
+    <string name="add_wordgroup_fab_descr">Add Word group</string>
+    <string name="empty_security_code" translatable="false">- - - - - -</string>
+    <string name="today">Today</string>
+    <string name="click_to_change">Click to change…</string>
+    <string name="wgroup_title_length_init" translatable="false">0/40</string>
+    <string name="words">Words</string>
+    <string name="add_word">Add word</string>
+    <string name="add_word_button_descr">Click to add…</string>
+    <string name="no_word">No word for now</string>
+    <string name="title_activity_windows_easter_egg">WindowsEasterEggActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="no_word_group">No Word group for now</string>
+    <string name="add_group_descr">You can add one now below ↘</string>
+    <string name="verifying_app_integrity">Verifying app integrity…</string>
+    <string name="title_activity_crash_handler_user_choice">CrashHandlerUserChoiceActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="previous">Previous</string>
+
+    <string name="emergency_mode_text_descr">An error report has been sent to us, and we will use it to fix our app in updates to come. If this is the first time you see this screen, click on Close. Else, click on Repair to see what you can do.</string>
+    <string name="close">Close</string>
+    <string name="repair">Repair</string>
+    <string name="repair_app_title">What\'s next?</string>
+    <string name="open_settings_descr">Get advanced options, such as storage options and permissions options.</string>
+    <string name="reset_app_repair_descr">Select this option if any of the other options work. Your Collection, user profile, quiz scores, and all other app data will be lost.</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="word">Word</string>
+    <string name="translation">Translation</string>
+    <string name="suggestions_disabled">Suggestions are disabled</string>
+    <string name="suggestions_disabled_descr">Enable Suggestions now to go faster when you type translations</string>
+    <string name="suggestions_waiting">Pending…</string>
+    <string name="pause">Pause</string>
+    <string name="cant_verify_suggestions_activation">An error occurred while verifying if Suggestions are activated.</string>
+    <string name="translation_in_progress">Translating...</string>
+    <string name="powered_by_">Powered by</string>
+    <string name="word_too_long">Your word is too long to be translated</string>
+    <string name="suggestions_suspended">Suggestions are suspended</string>
+    <string name="resume">Resume</string>
+    <string name="google_translate">Google Translate</string>
+    <string name="words_element">Word(s)</string>
+    <string name="edit_word">Edit word</string>
+    <string name="delete_word">Delete word</string>
+    <string name="google_services_missing">Google Play services are unavailable</string>
+    <string name="learn_more">Learn more</string>
+    <string name="google_services_missing_descr">The connection to Google Play Services failed.\nIt may be because Google Play Services are not installed on your device, or their use is forbidden by Google or by the applicable laws.</string>
+    <string name="wifi_required">Wi-Fi connection required</string>
+    <string name="ignore">Ignore</string>
+    <string name="eula">Vocabulario License</string>
+    <string name="no_word_returned">No word added</string>
+    <string name="no_word_returned_descr">An error occurred, and the word that you created is empty. Please try again. If the problem continues, try rebooting your phone or reset this app.</string>
+    <string name="collection_settings">Collection settings</string>
+    <string name="collection_settings_descr">Adjust Suggestions settings, Collection behaviour, change advanced Collection, word and word group settings, or reset your Collection to start over.</string>
+    <string name="adjust_settings">Adjust settings</string>
+    <string name="quiz_settings">Quiz settings</string>
+    <string name="quiz_settings_descr">Change quiz reminders, add a break for the holidays, manage known words or reset the level of each word.</string>
+    <string name="profile_settings">Profile settings</string>
+    <string name="profile_settings_descr">Change your name, view or delete your activity, or switch your profile to an organization profile.</string>
+    <string name="add_word_group_slash">Add word group/</string>
+    <string name="device_admin_label">Vocabulario device admin</string>
+    <string name="device_admin_descr">Prevents Vocabulario uninstallation.</string>
+    <string name="enable_device_admin">Enable device admin</string>
+    <string name="enable_device_admin_descr">Enable Vocabulario\'s device admin to prevent uninstallation.\n\nTo uninstall Vocabulario in the future, go to Vocabulario > Settings > System settings > Uninstall Vocabulario, and follow the instructions. This admin will not do anything else than protecting Vocabulario from uninstallation.\n\nIf you use a mobile device management app in your organization, it could be useful to also block Vocabulario uninstallation from such apps.</string>
+    <string name="disable_admin_warning">This device admin belongs to your school\'s computer administrator. Continue?</string>
+    <string name="blocked_function_disable_admin">Unavailable action</string>
+    <string name="unauthorized_admin_disabled">Admin disabled without permission</string>
+    <string name="unauthoriezd_admin_disabled_descr">Please restart your device.</string>
+    <string name="admin_alerts_notification_channel_title">Administration alerts</string>
+    <string name="device_id">"Device ID: "</string>
+    <string name="click_notif_to_resolve">Click this notification to fix this problem.</string>
+    <string name="settings_managed_by_organization">These settings are managed by your organization, and they need permissions to be modified. Managers can change the settings at any time.</string>
+    <string name="about_supervision">About admin supervision</string>
+    <string name="about_supervision_main_descr">This device belongs to your school. Your school admin manages Vocabulario, and can change some settings. This is what he can do:</string>
+    <string name="change_settings_admin">Change Vocabulario settings, control how Vocabulario works, set rules on which features are available, reset the Collection or the entire app, or uninstall it.</string>
+    <string name="add_word_groups_admin">Add word groups, delete them, modify them, or disable and enable Suggestions.</string>
+    <string name="watch_activity_admin">Verify who used Vocabulario recently, when, and where. The admin can also view what the student did during his session. Trying to uninstall or reset Vocabulario without his permission will send a warning to him, and it will be logged in the device.</string>
+    <string name="view_usage_data_admin">View each quiz result, get the averages, and more.</string>
+    <string name="family_link_managed_mode_unavailable">For your security, you can\'t enable this setting because your parents are managing this device with Google Family Link.</string>
+    <string name="suggestions_main_feature_descr">Suggestions will help you when you add a new word to your Collection by translating the spanish word you type in English for you, automatically.</string>
+    <string name="suggestions_storage">This feature will use about 80 Mo on your device, and 60 Mo of mobile data. Be sure to have enough mobile data left to download this.</string>
+    <string name="suggestions_usage_warning_beta">While Suggestions can be useful, it can also make some mistakes. We use the Google Translate API to make Suggestions work, so please verify every time you save a word that it is the same word written in your book. We might remove Suggestions in new versions, so remember that it is only a tool.</string>
+    <string name="enable_suggestions">Enable Suggestions</string>
+    <string name="made_by_ryanhtech_labs" translatable="false">Made by Ryanhtech Labs</string>
+    <string name="dbg_quiz_question" translatable="false">¿Cómo se dice \"Un cahier\"?</string>
+    <string name="welcome" translatable="false">¡Bienvenida!</string>
+    <string name="assistance_info">Assistance info</string>
+    <string name="vocabulario_for_android_v">Vocabulario for Android version</string>
+    <string name="launcher_text" translatable="false">Vocabulario Dev</string>
+    <string name="license_error_oops">Oops, there is a problem with your license</string>
+    <string name="license_error_descr">It seems like you didn\'t accept the terms and conditions of the Vocabulario license, the Apache License 2.0. Please accept these terms to use this software. If you don\'t accept them, we recommend that you uninstall this app from your device.</string>
+    <string name="read_license_online">Read license online</string>
+    <string name="back_setup_new">Previous step</string>
+    <string name="next_setup_new">Next step</string>
+    <string name="setup_finished_title">Everything is ready</string>
+    <string name="setup_finished_descr">To enjoy the power of Vocabulario, click Next. Now the most powerful app to learn your spanish vocabulary is between your hands. Yes, there.</string>
+    <string name="reset_vocabulario">Reset Vocabulario</string>
+    <string name="reset_vocabulario_descr">You can clear your Collection, reset your settings, or reset the whole application to start over again.</string>
+    <string name="reset_collection">Clear your Collection</string>
+    <string name="reset_collection_descr">All your words and wors groups will be deleted. This is useful if you change your school or your teacher, or when you start a new year at school.</string>
+    <string name="receive_collection_events_permission">Receive Collection events from Vocabulario</string>
+    <string name="receive_collection_events_description">Allows an app to receive events regarding your Collection in Vocabulario. For example, an app might be able to take action when you add a new Word Group, when you delete a word or an entire Word Group, and many more.</string>
+<<<<<<< Updated upstream
+    <string name="collection_permission_group_title">Collection-related permissions</string>
+=======
+    <string name="collection_permission_group_title">Vocabulario permissions</string>
+>>>>>>> Stashed changes
+    <string name="collection_permission_group_description">Allows apps to access Collection-related permissions.</string>
+    <!-- Strings used for fragments for navigation -->
+
+    <!-- TODO: Remove or change this placeholder text -->
+</resources>

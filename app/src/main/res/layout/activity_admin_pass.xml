@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2021-2022 Ryanhtech Labs
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/adminPassConstraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/popUpActivityTheme">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_default"
+        tools:context=".admin.AdminPassActivity">
+
+        <ImageView
+            android:id="@+id/adminPassIcon"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="30dp"
+            android:importantForAccessibility="no"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_lock_24"
+            app:tint="@color/primary_colour" />
+
+        <TextView
+            android:id="@+id/adminPassTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/catamaran_extrabold"
+            android:text="@string/admin_permission_required"
+            android:textAlignment="center"
+            android:textColor="@color/primary_colour"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/adminPassIcon" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutConfirm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="30dp"
+            android:textColorHint="@color/basic_text"
+            app:errorEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/adminPassTitle"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/basic_text">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/adminPassPwdSetupConfirm"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/background_default"
+                android:fontFamily="@font/catamaran_semibold"
+                android:hint="@string/admin_pwd"
+                android:inputType="textPassword"
+                android:textColor="@color/title_text"
+                android:textColorHint="@color/really_not_important_text"
+                android:textSize="14sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ProgressBar
+            android:id="@+id/adminPassProgress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/primary_colour"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+
+        <LinearLayout
+            android:id="@+id/adminPassManagedByLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_vertical"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/info_layout_shape"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            app:layout_constraintEnd_toEndOf="@+id/adminPassConnect"
+            app:layout_constraintStart_toStartOf="@+id/adminPassForgotPwd"
+            app:layout_constraintTop_toBottomOf="@+id/adminPassForgotPwd">
+
+            <ImageView
+                android:id="@+id/adminPassBusinessIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_baseline_business_24"
+                app:tint="@color/basic_text" />
+
+            <TextView
+                android:id="@+id/orgManagedBy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/catamaran_semibold"
+                android:paddingStart="10dp"
+                android:paddingEnd="0dp"
+                android:textAlignment="viewStart"
+                android:textColor="@color/basic_text"
+                android:textSize="10sp"
+                tools:ignore="SmallSp"
+                tools:text="This device is managed by New York High School B70" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/adminPassConnect"
+            style="?attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="10dp"
+            android:text="@string/next"
+            android:textAllCaps="false"
+            android:visibility="gone"
+            app:iconSize="30dp"
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayoutConfirm"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutConfirm" />
+
+        <Button
+            android:id="@+id/adminPassForgotPwd"
+            style="?attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="@string/forgot_pwd"
+            android:textAllCaps="false"
+            android:textColor="@color/basic_text"
+            android:textSize="12sp"
+            app:iconSize="30dp"
+            app:layout_constraintEnd_toStartOf="@+id/adminPassConnect"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayoutConfirm"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutConfirm" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
