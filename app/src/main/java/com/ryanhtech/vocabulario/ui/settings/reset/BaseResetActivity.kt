@@ -16,6 +16,8 @@
 
 package com.ryanhtech.vocabulario.ui.settings.reset
 
+import android.os.Bundle
+import android.view.WindowManager
 import com.ryanhtech.vocabulario.ui.activity.VocabularioActivity
 
 /**
@@ -34,7 +36,7 @@ import com.ryanhtech.vocabulario.ui.activity.VocabularioActivity
  * @sample ResetOptionsActivity
  * @since initial version
  */
-class BaseResetActivity : VocabularioActivity() {
+open class BaseResetActivity : VocabularioActivity() {
     // Set this to bypass the Emergency Block mode. In this way, if
     // an administrator has forgotten his password, he'll be able to
     // reset the app anyways.
@@ -43,4 +45,14 @@ class BaseResetActivity : VocabularioActivity() {
     // Set this to require the admin password in order to use the
     // Activity.
     override val isProtectedActivity: Boolean = true
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // Now, tell to Android that we are a secure Activity
+        val secureFlag = WindowManager.LayoutParams.FLAG_SECURE
+        window.apply {
+            setFlags(secureFlag, secureFlag)
+        }
+    }
 }

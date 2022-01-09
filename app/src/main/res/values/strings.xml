@@ -276,6 +276,10 @@
     <string name="receive_collection_events_description">Allows an app to receive events regarding your Collection in Vocabulario. For example, an app might be able to take action when you add a new Word Group, when you delete a word or an entire Word Group, and many more.</string>
     <string name="collection_permission_group_title">Vocabulario permissions</string>
     <string name="collection_permission_group_description">Allows apps to access Collection-related permissions.</string>
+    <string name="reset_operation_consent_title">An attempt has been made to perform a reset operation on Vocabulario</string>
+    <string name="reset_operation_consent_description">Software on your device wants your permission to perform a reset operation on Vocabulario (e.g. full app reset or Collection reset). If you click Yes, this software will be able to perform such operation on Vocabulario. Do you want to give this permission?</string>
+    <string name="yes">Yes</string>
+    <string name="reset_option_uninstall">Uninstall Vocabulario</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

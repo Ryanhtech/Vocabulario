@@ -255,4 +255,7 @@
     <string name="collection_permission_group_description">Autorise les applications à utiliser des autorisations en rapport avec la Collection.</string>
     <string name="receive_collection_events_description">Autorise cette application à recevoir des messages du système concernant votre Collection. Par exemple, une application peut interagir avec vous lorsque vous créez un nouveau cours, lorsque vous modifiez un mot, et bien plus.</string>
     <string name="receive_collection_events_permission">Recevoir des évènements de la collection de Vocabulario</string>
+    <string name="reset_operation_consent_title">Demande de l\'autorisation pour effectuer une opération de réinitialisation sur Vocabulario</string>
+    <string name="reset_operation_consent_description">Un logiciel sur votre appareil veut votre autorisation pour effectuer une opération de réinitialisation sur Vocabulario (comme une réinitialisation complète ou une réinitialisation de la Collection). Si vous cliquez sur OK, le logiciel en question pourra effectuer de telles opérations sur Vocabulario. Voulez-vous donner cette autorisation ?</string>
+    <string name="yes">Oui</string>
 </resources>

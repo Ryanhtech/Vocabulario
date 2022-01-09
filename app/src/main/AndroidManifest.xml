@@ -1,20 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright 2021-2022 Ryanhtech Labs
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~     http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.ryanhtech.vocabulario">
@@ -25,22 +9,25 @@
         <package android:name="com.google.android.apps.kids.familylinkhelper" />
     </queries>
 
-    <permission android:name="com.ryanhtech.vocabulario.permission.RECEIVE_COLLECTION_EVENTS"
-        android:label="@string/receive_collection_events_permission"
+    <permission
+        android:name="com.ryanhtech.vocabulario.permission.RECEIVE_COLLECTION_EVENTS"
         android:description="@string/receive_collection_events_description"
-        android:permissionGroup="com.ryanhtech.vocabulario.permission.group.COLLECTION"
         android:icon="@drawable/ic_baseline_inbox_24"
+        android:label="@string/receive_collection_events_permission"
+        android:permissionGroup="com.ryanhtech.vocabulario.permission.group.COLLECTION"
         android:protectionLevel="normal" />
 
-    <permission-group android:name="com.ryanhtech.vocabulario.permission.group.COLLECTION"
-        android:label="@string/collection_permission_group_title"
-        android:description="@string/collection_permission_group_description" />
+    <permission-group
+        android:name="com.ryanhtech.vocabulario.permission.group.COLLECTION"
+        android:description="@string/collection_permission_group_description"
+        android:label="@string/collection_permission_group_title" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="com.ryanhtech.vocabulario.permission.RECEIVE_COLLECTION_EVENTS" />
+    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
 
     <application
         android:name=".system.vocabulario.Vocabulario"
@@ -57,8 +44,13 @@
         tools:ignore="LockedOrientationActivity"
         tools:targetApi="q">
         <activity
+            android:name=".ui.settings.reset.ResetConfirmationActivity"
+            android:exported="false"
+            android:theme="@style/vocabularioBlocked"/>
+        <activity
             android:name=".ui.settings.reset.ResetOptionsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/vocabularioBlocked" />
         <activity
             android:name=".setup.assistanceinfo.AssistanceInfoSetupActivity"
             android:exported="false" />
@@ -133,6 +125,7 @@
             android:theme="@style/CollectionUITheme">
             <intent-filter>
                 <action android:name="@string/action_collection_add_word_group" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

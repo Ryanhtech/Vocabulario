@@ -17,11 +17,12 @@
 package com.ryanhtech.vocabulario.ui.settings.reset
 
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.ryanhtech.vocabulario.R
 
-class ResetOptionsActivity : BaseResetActivity() {
+class ResetConfirmationActivity : BaseResetActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_reset_options)
+        setContentView(R.layout.activity_reset_confirmation)
     }
 }

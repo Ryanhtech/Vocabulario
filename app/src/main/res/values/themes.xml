@@ -63,6 +63,7 @@
     <style name="vocabularioBlocked" parent="Theme.Vocabulario.Light">
         <item name="android:statusBarColor">@color/block_bkg</item>
         <item name="android:navigationBarColor">@color/block_bkg</item>
+        <item name="android:windowBackground">@color/reset_back</item>
     </style>
 
     <style name="Theme.Vocabulario.Light.Fullscreen" parent="Theme.Vocabulario.Light">
