@@ -280,6 +280,7 @@
     <string name="reset_operation_consent_description">Software on your device wants your permission to perform a reset operation on Vocabulario (e.g. full app reset or Collection reset). If you click Yes, this software will be able to perform such operation on Vocabulario. Do you want to give this permission?</string>
     <string name="yes">Yes</string>
     <string name="reset_option_uninstall">Uninstall Vocabulario</string>
+    <string name="reset_option_uninstall_descr_action">This will completely remove Vocabulario and all of its data of your device. You can\'t cancel this.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

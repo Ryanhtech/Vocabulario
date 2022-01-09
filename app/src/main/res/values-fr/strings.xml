@@ -258,4 +258,6 @@
     <string name="reset_operation_consent_title">Demande de l\'autorisation pour effectuer une opération de réinitialisation sur Vocabulario</string>
     <string name="reset_operation_consent_description">Un logiciel sur votre appareil veut votre autorisation pour effectuer une opération de réinitialisation sur Vocabulario (comme une réinitialisation complète ou une réinitialisation de la Collection). Si vous cliquez sur OK, le logiciel en question pourra effectuer de telles opérations sur Vocabulario. Voulez-vous donner cette autorisation ?</string>
     <string name="yes">Oui</string>
+    <string name="reset_option_uninstall">Désinstaller Vocabulario</string>
+    <string name="reset_option_uninstall_descr_action">Ceci supprimera Vocabulario et toutes ses données de votre appareil. Cette action est irréversible.</string>
 </resources>
