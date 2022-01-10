@@ -16,12 +16,27 @@
 
 package com.ryanhtech.vocabulario.ui.settings.reset
 
+import android.content.Intent
 import android.os.Bundle
 import com.ryanhtech.vocabulario.R
+import com.ryanhtech.vocabulario.internal.reset.VocabularioResetType
+import kotlinx.android.synthetic.main.activity_reset_options.*
 
 class ResetOptionsActivity : BaseResetActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reset_options)
+
+        // Debug -- no documentation yet
+
+        resetOperationResetCollection.setOnClickListener {
+            internalRunResetOperationSystemCall(VocabularioResetType.TYPE_RESET_UNINSTALL)
+        }
+    }
+
+    private fun internalRunResetOperationSystemCall(ope: String) {
+        val confirmIntent = Intent(this, ResetConfirmationActivity::class.java)
+        confirmIntent.putExtra(ResetConfirmationActivity.EXTRA_REQUESTED_OPERATION, ope)
+        startActivity(confirmIntent)
     }
 }

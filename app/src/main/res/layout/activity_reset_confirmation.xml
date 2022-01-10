@@ -36,7 +36,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/nextButtonWelcome2"
+            android:id="@+id/resetConfirmationRunOperationButton2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="?attr/borderlessButtonStyle"
@@ -63,7 +63,7 @@
             android:layout_weight="0" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/nextButtonWelcome"
+            android:id="@+id/resetConfirmationRunOperationButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/shape_red_button"

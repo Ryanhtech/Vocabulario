@@ -54,7 +54,7 @@
     <color name="top_tile_separator">#DDDDDD</color>
     <color name="background_default_transparent">#F2FFFFFF</color>
     <color name="pop_up_activity_status_bar">#111111</color>
-    <color name="reset_back">#121212</color>
+    <color name="reset_back">#020202</color>
     <color name="reset_elements">#FFFFFF</color>
     <color name="reset_option_background">#222222</color>
     <color name="light_blue_400">#FF29B6F6</color>

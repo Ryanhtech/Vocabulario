@@ -17,12 +17,100 @@
 package com.ryanhtech.vocabulario.ui.settings.reset
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.util.Log
 import com.ryanhtech.vocabulario.R
+import com.ryanhtech.vocabulario.internal.reset.VocabularioResetOperation
+import kotlinx.android.synthetic.main.activity_reset_confirmation.*
 
+/**
+ * This class provides the Activity that allows the user to confirm a
+ * reset operation.
+ */
 class ResetConfirmationActivity : BaseResetActivity() {
+    private lateinit var resetOperationInstance: VocabularioResetOperation
+
+    private lateinit var requestedOperation: String
+
+    private var ignoreAuthenticationOnResume = false
+
+    private val userPermissionListenerCallbackThread = Thread {
+        resetOperationUserPermissionListenerCallbackThread()
+    }
+
+    companion object {
+        const val EXTRA_REQUESTED_OPERATION = "requestedOperation"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Set the content view so the user sees our views on the
+        // screen
         setContentView(R.layout.activity_reset_confirmation)
+
+        // Set the requestedOperation to the operation that the user
+        // requested.
+        val reqOpeFromIntent = intent.getStringExtra(EXTRA_REQUESTED_OPERATION)
+        if (reqOpeFromIntent == null) {
+            // The Activity hasn't started correctly.
+            Log.e("ResetConfirmation", "Error starting activity: No requested " +
+                "operation found in EXTRA_REQUESTED_OPERATION")
+            throw IllegalStateException("No requested operation found")
+        }
+
+        requestedOperation = reqOpeFromIntent
+
+        // Initialize the reset operation instance.
+        initResetOperation()
+
+        // Initialize the button, so that when the user clicks it, the operation
+        // is launched.
+        resetConfirmationRunOperationButton.setOnClickListener {
+            // Run the requested operation. This can be an uninstallation,
+            // a reset, or something else.
+            resetOperationInstance.runOperation(this)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        if (ignoreAuthenticationOnResume) return
+        resetOperationInstance.authenticate(Thread {}, Thread { this.finish() })
+        ignoreAuthenticationOnResume = true
+
+        startResetOperationUserPermissionListenerCallbackThread()
+    }
+
+    private fun initResetOperation() {
+        // Instantiate a new class with what we want
+        val resetOpeClassInst = VocabularioResetOperation(
+            requestedOperation, this)  // Bug: don't use this.applicationContext!
+        resetOperationInstance = resetOpeClassInst
+    }
+
+    private fun startResetOperationUserPermissionListenerCallbackThread() {
+        //userPermissionListenerCallbackThread.start()
+    }
+
+    private fun resetOperationUserPermissionListenerCallbackThread() {
+        // Wait until we have a positive response for the user and run
+        // the appropriate action
+        while (true) {
+            val usrAuthenticationStatus = resetOperationInstance.authenticationStatus
+
+            if (usrAuthenticationStatus == VocabularioResetOperation.AUTHENTICATION_TYPE_GRANTED) {
+                // The user granted the permission. Don't do anything, because
+                // the confirmation dialog will go by itself.
+                Log.d("UserPermission", "The user granted the permission.")
+                break
+            }
+            if (usrAuthenticationStatus == VocabularioResetOperation.AUTHENTICATION_TYPE_DENIED) {
+                // Exit the Activity immediately
+                finish()
+                break
+            }
+            Thread.sleep(200)
+        }
     }
 }

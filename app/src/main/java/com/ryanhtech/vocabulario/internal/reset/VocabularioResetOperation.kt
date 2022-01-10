@@ -68,8 +68,8 @@ class VocabularioResetOperation(resetType: String, context: Context) {
             "You can't change this variable! (Access denied)")
         // Don't allow setting to another value than the permitted ones
         if (setAttempt != AUTHENTICATION_TYPE_DENIED
-            || setAttempt != AUTHENTICATION_TYPE_GRANTED
-            || setAttempt != AUTHENTICATION_TYPE_PENDING) {
+            && setAttempt != AUTHENTICATION_TYPE_GRANTED
+            && setAttempt != AUTHENTICATION_TYPE_PENDING) {
             throw IllegalStateException("You can set authenticationStatus only to Vocabulario" +
                 "ResetOperation.AUTHENTICATION_* attributes")
         }
@@ -115,12 +115,12 @@ class VocabularioResetOperation(resetType: String, context: Context) {
         // Now check if the reset type actually exists (the caller might want to confuse
         // us ;))
         if (resetType != VocabularioResetType.TYPE_RESET_COLLECTION
-            || resetType != VocabularioResetType.TYPE_RESET_FULL
-            || resetType != VocabularioResetType.TYPE_RESET_LOCAL
-            || resetType != VocabularioResetType.TYPE_RESET_UNINSTALL) {
+            && resetType != VocabularioResetType.TYPE_RESET_FULL
+            && resetType != VocabularioResetType.TYPE_RESET_LOCAL
+            && resetType != VocabularioResetType.TYPE_RESET_UNINSTALL) {
             // Raise the exception
             lockdownInstanceAndThrowException(
-                IllegalStateException("The provided reset type doesn't exists."))
+                IllegalStateException("The provided reset type doesn't exists. Type: \"$resetType\""))
         }
 
         // Then we have our reset type. Copy it into mResetType, and the context as
@@ -131,9 +131,14 @@ class VocabularioResetOperation(resetType: String, context: Context) {
 
     /**
      * Authenticates the user. The user must give a clear consent to the operation.
-     * When given, the variable authenticationStatus is set to true so you can
+     * When given, the variable authenticationStatus is set to true so you can perform
+     * operations. If the user already saw this dialog, you can't show it again, unless
+     * you create a new instance.
      */
-    fun authenticate() {
+    fun authenticate(posClickCallback: Thread,
+                     negClickCallback: Thread) {
+        if (authenticationStatus != AUTHENTICATION_TYPE_PENDING) return
+
         AlertDialog.Builder(mContext).apply {
             setCancelable(false)
             setTitle(R.string.reset_operation_consent_title)
@@ -142,12 +147,15 @@ class VocabularioResetOperation(resetType: String, context: Context) {
                 // The user doesn't consent to any operation, so cancel everything.
                 authorizeIsAuthenticatedModification = true
                 authenticationStatus = AUTHENTICATION_TYPE_DENIED
+                negClickCallback.start()
             }
             setPositiveButton(R.string.yes) { _, _ ->
                 // The user gave the permission.
                 authorizeIsAuthenticatedModification = true
                 authenticationStatus = AUTHENTICATION_TYPE_GRANTED
+                posClickCallback.start()
             }
+            show()
         }
     }
 
