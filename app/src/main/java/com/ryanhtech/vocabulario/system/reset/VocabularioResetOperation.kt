@@ -22,6 +22,8 @@ import android.content.Intent
 import android.net.Uri
 import com.ryanhtech.vocabulario.BuildConfig
 import com.ryanhtech.vocabulario.R
+import com.ryanhtech.vocabulario.system.annotations.DangerousOperation
+import com.ryanhtech.vocabulario.system.annotations.RequiresVocabularioUserInteraction
 
 /**
  * This class makes the reset operations. To run such operation, you
@@ -158,6 +160,8 @@ class VocabularioResetOperation(resetType: String, context: Context) {
      * @author Ryanhtech Labs
      * @since initial version
      */
+    @RequiresVocabularioUserInteraction
+    @DangerousOperation
     fun runOperation(context: Context) {
         // Pass the required arguments to startRequestedOperationInternal to
         // prepare and run the operation
@@ -191,6 +195,8 @@ class VocabularioResetOperation(resetType: String, context: Context) {
         }
     }
 
+    @DangerousOperation
+    @RequiresVocabularioUserInteraction
     private fun runUninstallOperation() {
         // Create the Intent to uninstall the app
         val deleteIntent = Intent(Intent.ACTION_DELETE)
