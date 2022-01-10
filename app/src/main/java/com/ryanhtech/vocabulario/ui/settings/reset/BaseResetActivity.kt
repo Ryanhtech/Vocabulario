@@ -16,8 +16,6 @@
 
 package com.ryanhtech.vocabulario.ui.settings.reset
 
-import android.os.Bundle
-import android.view.WindowManager
 import com.ryanhtech.vocabulario.ui.activity.VocabularioActivity
 
 /**
@@ -46,13 +44,6 @@ open class BaseResetActivity : VocabularioActivity() {
     // Activity.
     override val isProtectedActivity: Boolean = true
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // Now, tell to Android that we are a secure Activity
-        val secureFlag = WindowManager.LayoutParams.FLAG_SECURE
-        window.apply {
-            setFlags(secureFlag, secureFlag)
-        }
-    }
+    // Prevent screenshots and overlays
+    override val isSecuredActivity: Boolean = true
 }

@@ -24,7 +24,6 @@ import android.os.Handler
 import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.WindowManager
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
@@ -44,6 +43,9 @@ class AdminPassActivity : VocabularioPopupActivity() {
 
     private var goneToForgotPwd = false
 
+    // Prevent screenshots
+    override val isSecuredActivity = true
+
     companion object {
         const val EXTRA_IS_DISABLING_ADMIN = "isDisablingAdminExtra"
     }
@@ -56,10 +58,6 @@ class AdminPassActivity : VocabularioPopupActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_pass)
-
-        // Prevent screenshots
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
 
         try {
             orgManagedBy.text = "${getString(R.string.admin_permission_owner)}${

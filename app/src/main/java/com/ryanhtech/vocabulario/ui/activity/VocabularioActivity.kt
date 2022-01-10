@@ -18,6 +18,7 @@ package com.ryanhtech.vocabulario.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.ryanhtech.vocabulario.R
@@ -31,6 +32,12 @@ open class VocabularioActivity : AppCompatActivity() {
     open val isProtectedActivity: Boolean = false
     open val applyEndOfSupport: Boolean = true
     open val applyLicenseApprovalProtection = true
+
+    /**
+     * If set to true, this tells to the Android system that the
+     * Activity must be secured (prevents screenshots and overlays).
+     */
+    open val isSecuredActivity: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val registerResult = registerForActivityResult(
@@ -57,6 +64,10 @@ open class VocabularioActivity : AppCompatActivity() {
                     AdminPassActivity::class.java
                 )
             )
+        }
+
+        if (isSecuredActivity) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
         }
 
         overridePendingTransition(R.anim.std_transition_in_frm_open,
