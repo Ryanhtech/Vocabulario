@@ -26,7 +26,7 @@ import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 import androidx.recyclerview.widget.RecyclerView
 import com.ryanhtech.vocabulario.R
-import com.ryanhtech.vocabulario.system.vocabulario.Vocabulario
+import com.ryanhtech.vocabulario.internal.vocabulario.Vocabulario
 import com.ryanhtech.vocabulario.tools.collection.CollectionWord
 import kotlinx.android.synthetic.main.create_word_group_word_recyclerview_element.view.*
 

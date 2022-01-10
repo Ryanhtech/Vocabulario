@@ -29,7 +29,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import com.ryanhtech.vocabulario.R
-import com.ryanhtech.vocabulario.system.vocabulario.Vocabulario
+import com.ryanhtech.vocabulario.internal.vocabulario.Vocabulario
 import com.ryanhtech.vocabulario.tools.collection.CollectionManager
 import com.ryanhtech.vocabulario.tools.collection.CollectionProperties
 import com.ryanhtech.vocabulario.tools.collection.CollectionWord

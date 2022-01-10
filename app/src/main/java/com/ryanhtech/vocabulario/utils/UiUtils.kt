@@ -23,7 +23,7 @@ import androidx.dynamicanimation.animation.DynamicAnimation
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 import com.ryanhtech.vocabulario.R
-import com.ryanhtech.vocabulario.system.vocabulario.Vocabulario
+import com.ryanhtech.vocabulario.internal.vocabulario.Vocabulario
 import com.ryanhtech.vocabulario.tools.collection.db.CollectionData
 import java.util.*
 
@@ -123,7 +123,7 @@ class UiUtils {
 
         fun getStatusBarHeight(context: Context): Int {
             /**
-             * Gets the Android system status bar height.
+             * Gets the Android internal status bar height.
              *
              * @return Status bar height
              */

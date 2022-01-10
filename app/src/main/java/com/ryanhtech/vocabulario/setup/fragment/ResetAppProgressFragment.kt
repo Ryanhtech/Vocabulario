@@ -22,7 +22,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import com.ryanhtech.vocabulario.R
-import com.ryanhtech.vocabulario.setup.AppSetupFragment
+import com.ryanhtech.vocabulario.setup.base.AppSetupFragment
 import com.ryanhtech.vocabulario.utils.DataManager
 import kotlinx.android.synthetic.main.fragment_reset_app_progress.view.*
 

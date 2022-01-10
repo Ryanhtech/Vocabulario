@@ -27,9 +27,9 @@ import androidx.core.view.isVisible
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.ryanhtech.vocabulario.R
-import com.ryanhtech.vocabulario.setup.AppSetupFragment
-import com.ryanhtech.vocabulario.setup.UserSetupActivity
-import com.ryanhtech.vocabulario.setup.UserSetupList
+import com.ryanhtech.vocabulario.setup.base.AppSetupFragment
+import com.ryanhtech.vocabulario.setup.base.UserSetupActivity
+import com.ryanhtech.vocabulario.setup.config.UserSetupList
 import com.ryanhtech.vocabulario.utils.Utils
 import kotlinx.android.synthetic.main.fragment_features_setup.view.*
 

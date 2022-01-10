@@ -21,8 +21,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ryanhtech.vocabulario.R
-import com.ryanhtech.vocabulario.setup.AppSetupFragment
-import com.ryanhtech.vocabulario.setup.UserSetupList
+import com.ryanhtech.vocabulario.setup.base.AppSetupFragment
+import com.ryanhtech.vocabulario.setup.config.UserSetupList
 
 class OrganizationSetupIntroFragment : AppSetupFragment() {
 

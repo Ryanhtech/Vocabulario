@@ -30,7 +30,7 @@
     <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
 
     <application
-        android:name=".system.vocabulario.Vocabulario"
+        android:name=".internal.vocabulario.Vocabulario"
         android:allowBackup="true"
         android:fullBackupContent="@xml/backup_description"
         android:hasFragileUserData="true"
@@ -55,13 +55,13 @@
             android:name=".setup.assistanceinfo.AssistanceInfoSetupActivity"
             android:exported="false" />
         <activity
-            android:name=".system.legal.licensemgr.LicenseErrorActivity"
+            android:name=".internal.legal.licensemgr.LicenseErrorActivity"
             android:exported="false" />
         <activity
             android:name=".tools.quiz.ui.UserQuizActivity"
             android:exported="false" />
         <activity
-            android:name=".admin.AdminSupervisionInfoActivity"
+            android:name=".admin.ui.AdminSupervisionInfoActivity"
             android:exported="false"
             android:theme="@style/settingsTheme" />
         <activity
@@ -95,24 +95,24 @@
             android:exported="false"
             android:theme="@style/settingsTheme" />
         <activity
-            android:name=".system.legal.VocabularioLicenseDisplayActivity"
+            android:name=".internal.legal.VocabularioLicenseDisplayActivity"
             android:exported="false"
             android:label="@string/eula"
             android:theme="@style/Theme.AppCompat.DayNight" />
         <activity
-            android:name=".system.legal.VocabularioLicensingActivity"
+            android:name=".internal.legal.VocabularioLicensingActivity"
             android:exported="true" />
         <activity
             android:name=".tools.collection.ui.CreateWordActivity"
             android:exported="false"
             android:theme="@style/CollectionUITheme" />
         <activity
-            android:name=".system.crashhandler.CrashHandlerUserChoiceActivity"
+            android:name=".internal.crashhandler.CrashHandlerUserChoiceActivity"
             android:exported="true"
             android:label="@string/title_activity_crash_handler_user_choice"
             android:theme="@style/Theme.Vocabulario.Light.NoActionBar" />
         <activity
-            android:name=".system.crashhandler.CrashHandlerActivity"
+            android:name=".internal.crashhandler.CrashHandlerActivity"
             android:exported="true" />
         <activity
             android:name=".ui.easteregg.WindowsEasterEggActivity"
@@ -131,34 +131,34 @@
         </activity>
 
         <service
-            android:name=".system.services.AlertVibratorService"
+            android:name=".internal.services.AlertVibratorService"
             android:description="@string/vibrator_service_description"
             android:enabled="true"
             android:exported="false"
             android:permission="android.permission.VIBRATE" />
 
         <activity
-            android:name=".admin.ChangeAdminPasswordActivity"
+            android:name=".admin.ui.ChangeAdminPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".system.block.UnlockAppSecurityCodeActivity"
+            android:name=".internal.block.UnlockAppSecurityCodeActivity"
             android:theme="@style/vocabularioBlocked"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".system.block.EmergencyBlockActivity"
+            android:name=".internal.block.EmergencyBlockActivity"
             android:theme="@style/vocabularioBlocked" />
-        <activity android:name=".system.block.ForgotPasswordBlockPromptActivity" />
+        <activity android:name=".internal.block.ForgotPasswordBlockPromptActivity" />
         <activity
-            android:name=".admin.AdminPassActivity"
+            android:name=".admin.ui.AdminPassActivity"
             android:exported="true"
             android:theme="@style/popUpActivityTheme"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".setup.UserSetupActivity"
+            android:name=".setup.base.UserSetupActivity"
             android:clearTaskOnLaunch="true"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".system.SplashScreenActivity"
+            android:name=".ui.startup.SplashScreenActivity"
             android:exported="true"
             android:theme="@style/Theme.Vocabulario.Light">
             <intent-filter>
@@ -186,7 +186,7 @@
             android:screenOrientation="portrait" />
 
         <receiver
-            android:name=".system.BootStartupReceiver"
+            android:name=".internal.receiver.BootStartupReceiver"
             android:enabled="true"
             android:exported="false"
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
@@ -198,7 +198,7 @@
         </receiver>
 
         <service
-            android:name=".system.services.VocRevReminderService"
+            android:name=".internal.services.VocRevReminderService"
             android:description="@string/voc_rev_reminder_service_description"
             android:enabled="false"
             android:exported="false"

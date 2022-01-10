@@ -24,7 +24,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.ryanhtech.vocabulario.R
-import com.ryanhtech.vocabulario.system.vocabulario.Vocabulario
+import com.ryanhtech.vocabulario.internal.vocabulario.Vocabulario
 import com.ryanhtech.vocabulario.ui.settings.SettingsActivity
 import com.ryanhtech.vocabulario.utils.DataManager
 import kotlinx.android.synthetic.main.fragment_profile.view.*

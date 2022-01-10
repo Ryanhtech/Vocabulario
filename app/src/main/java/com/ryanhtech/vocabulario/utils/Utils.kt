@@ -31,8 +31,8 @@ import android.os.VibrationEffect
 import android.os.Vibrator
 import android.provider.Settings
 import android.widget.DatePicker
-import com.ryanhtech.vocabulario.system.BootStartupReceiver
-import com.ryanhtech.vocabulario.system.SplashScreenActivity
+import com.ryanhtech.vocabulario.internal.receiver.BootStartupReceiver
+import com.ryanhtech.vocabulario.ui.startup.SplashScreenActivity
 import java.util.*
 
 class Utils {

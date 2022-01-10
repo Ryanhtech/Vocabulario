@@ -25,9 +25,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.admin.deviceadmin.VocabularioDeviceAdminReceiver
-import com.ryanhtech.vocabulario.setup.AppSetupFragment
-import com.ryanhtech.vocabulario.setup.UserSetupActivity
-import com.ryanhtech.vocabulario.setup.UserSetupList
+import com.ryanhtech.vocabulario.setup.base.AppSetupFragment
+import com.ryanhtech.vocabulario.setup.base.UserSetupActivity
+import com.ryanhtech.vocabulario.setup.config.UserSetupList
 
 class EnableDeviceAdminSetupFragment : AppSetupFragment() {
     private lateinit var globalView: View

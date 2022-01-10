@@ -21,10 +21,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ryanhtech.vocabulario.R
-import com.ryanhtech.vocabulario.setup.AppSetupFragment
-import com.ryanhtech.vocabulario.setup.UserSetupList
-import com.ryanhtech.vocabulario.setup.UserSetupStatus
-import com.ryanhtech.vocabulario.system.ryanhtech.familylink.FamilyLinkScan
+import com.ryanhtech.vocabulario.setup.base.AppSetupFragment
+import com.ryanhtech.vocabulario.setup.config.UserSetupList
+import com.ryanhtech.vocabulario.setup.config.UserSetupStatus
+import com.ryanhtech.vocabulario.internal.ryanhtech.familylink.FamilyLinkScan
 import kotlinx.android.synthetic.main.fragment_place_setup.view.*
 
 class PlaceSetupFragment : AppSetupFragment() {

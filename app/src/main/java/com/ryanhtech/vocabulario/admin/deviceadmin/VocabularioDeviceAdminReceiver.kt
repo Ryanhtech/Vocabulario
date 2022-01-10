@@ -24,9 +24,9 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import com.ryanhtech.vocabulario.R
-import com.ryanhtech.vocabulario.admin.AdminPermissions
-import com.ryanhtech.vocabulario.system.notifications.NotificationManager
-import com.ryanhtech.vocabulario.system.notifications.Notifications
+import com.ryanhtech.vocabulario.admin.internal.AdminPermissions
+import com.ryanhtech.vocabulario.internal.notifications.NotificationManager
+import com.ryanhtech.vocabulario.internal.notifications.Notifications
 import com.ryanhtech.vocabulario.utils.DataManager
 import kotlinx.coroutines.runBlocking
 

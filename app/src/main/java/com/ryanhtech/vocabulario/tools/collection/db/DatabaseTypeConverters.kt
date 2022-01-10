@@ -17,7 +17,7 @@
 package com.ryanhtech.vocabulario.tools.collection.db
 
 import androidx.room.TypeConverter
-import com.ryanhtech.vocabulario.system.vocabulario.Vocabulario
+import com.ryanhtech.vocabulario.internal.vocabulario.Vocabulario
 import com.ryanhtech.vocabulario.tools.collection.wordpointers.WordPointer
 import java.util.*
 

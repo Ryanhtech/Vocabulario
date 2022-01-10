@@ -37,7 +37,7 @@ import androidx.dynamicanimation.animation.SpringForce
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.ryanhtech.vocabulario.R
-import com.ryanhtech.vocabulario.setup.UserSetupActivity
+import com.ryanhtech.vocabulario.setup.base.UserSetupActivity
 import com.ryanhtech.vocabulario.ui.activity.VocabularioActivity
 import com.ryanhtech.vocabulario.ui.main.collection.CollectionFragment
 import com.ryanhtech.vocabulario.utils.DataManager

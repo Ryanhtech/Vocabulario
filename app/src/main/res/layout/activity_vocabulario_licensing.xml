@@ -20,6 +20,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".system.legal.VocabularioLicensingActivity">
+    tools:context=".internal.legal.VocabularioLicensingActivity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

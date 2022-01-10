@@ -22,8 +22,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import com.ryanhtech.vocabulario.R
-import com.ryanhtech.vocabulario.setup.AppSetupFragment
-import com.ryanhtech.vocabulario.setup.UserSetupList
+import com.ryanhtech.vocabulario.setup.base.AppSetupFragment
+import com.ryanhtech.vocabulario.setup.config.UserSetupList
 import com.ryanhtech.vocabulario.utils.DataManager
 import kotlinx.android.synthetic.main.fragment_select_level_setup.*
 import kotlinx.android.synthetic.main.fragment_select_level_setup.view.*

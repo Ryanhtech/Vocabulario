@@ -20,7 +20,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".system.crashhandler.CrashHandlerActivity">
+    tools:context=".internal.crashhandler.CrashHandlerActivity">
 
     <TextView
         android:id="@+id/textView35"

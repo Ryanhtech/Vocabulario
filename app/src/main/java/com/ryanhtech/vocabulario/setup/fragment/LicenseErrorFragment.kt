@@ -21,7 +21,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ryanhtech.vocabulario.R
-import com.ryanhtech.vocabulario.setup.AppSetupFragment
+import com.ryanhtech.vocabulario.setup.base.AppSetupFragment
 
 class LicenseErrorFragment : AppSetupFragment() {
     private lateinit var globalView: View

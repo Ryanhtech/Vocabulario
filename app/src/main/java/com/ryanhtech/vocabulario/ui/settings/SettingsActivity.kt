@@ -25,7 +25,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import com.ryanhtech.vocabulario.R
-import com.ryanhtech.vocabulario.admin.AdminPermissions
+import com.ryanhtech.vocabulario.admin.internal.AdminPermissions
 import com.ryanhtech.vocabulario.ui.activity.VocabularioActivity
 import com.ryanhtech.vocabulario.ui.settings.subsettings.SubSettingsFragmentList
 import com.ryanhtech.vocabulario.utils.DataManager

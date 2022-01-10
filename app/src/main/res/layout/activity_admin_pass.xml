@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/background_default"
-        tools:context=".admin.AdminPassActivity">
+        tools:context=".admin.ui.AdminPassActivity">
 
         <ImageView
             android:id="@+id/adminPassIcon"

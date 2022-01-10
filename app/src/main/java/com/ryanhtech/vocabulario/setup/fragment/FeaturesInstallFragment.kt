@@ -29,11 +29,11 @@ import com.google.mlkit.nl.translate.TranslateLanguage
 import com.google.mlkit.nl.translate.Translation
 import com.google.mlkit.nl.translate.TranslatorOptions
 import com.ryanhtech.vocabulario.R
-import com.ryanhtech.vocabulario.admin.AdminPasswordManager
-import com.ryanhtech.vocabulario.setup.AppSetupFragment
-import com.ryanhtech.vocabulario.setup.UserSetupActivity
-import com.ryanhtech.vocabulario.setup.UserSetupList
-import com.ryanhtech.vocabulario.setup.UserSetupStatus
+import com.ryanhtech.vocabulario.admin.internal.AdminPasswordManager
+import com.ryanhtech.vocabulario.setup.base.AppSetupFragment
+import com.ryanhtech.vocabulario.setup.base.UserSetupActivity
+import com.ryanhtech.vocabulario.setup.config.UserSetupList
+import com.ryanhtech.vocabulario.setup.config.UserSetupStatus
 import com.ryanhtech.vocabulario.tools.collection.CollectionManager
 import com.ryanhtech.vocabulario.tools.collection.wordpointers.CollectionWordContentManager
 import com.ryanhtech.vocabulario.tools.suggestions.Suggestions

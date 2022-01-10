@@ -17,7 +17,7 @@
 package com.ryanhtech.vocabulario.tools.collection.wordpointers
 
 import android.content.Context
-import com.ryanhtech.vocabulario.system.vocabulario.Vocabulario
+import com.ryanhtech.vocabulario.internal.vocabulario.Vocabulario
 import com.ryanhtech.vocabulario.tools.collection.CollectionWord
 import java.io.File
 

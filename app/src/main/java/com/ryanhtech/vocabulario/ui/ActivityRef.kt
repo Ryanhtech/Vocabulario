@@ -17,7 +17,7 @@
 package com.ryanhtech.vocabulario.ui
 
 import android.content.res.Resources
-import com.ryanhtech.vocabulario.setup.UserSetupActivity
+import com.ryanhtech.vocabulario.setup.base.UserSetupActivity
 import com.ryanhtech.vocabulario.ui.settings.SettingsActivity
 
 class ActivityRef {

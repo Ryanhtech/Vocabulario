@@ -36,7 +36,7 @@ import com.google.mlkit.nl.translate.Translation
 import com.google.mlkit.nl.translate.Translator
 import com.google.mlkit.nl.translate.TranslatorOptions
 import com.ryanhtech.vocabulario.R
-import com.ryanhtech.vocabulario.system.vocabulario.Vocabulario
+import com.ryanhtech.vocabulario.internal.vocabulario.Vocabulario
 import com.ryanhtech.vocabulario.tools.collection.CollectionWord
 import com.ryanhtech.vocabulario.tools.collection.ui.exceptions.InvalidEditTokenException
 import com.ryanhtech.vocabulario.ui.activity.VocabularioActivity

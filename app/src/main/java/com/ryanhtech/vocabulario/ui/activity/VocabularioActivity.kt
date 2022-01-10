@@ -22,9 +22,9 @@ import android.view.WindowManager
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.ryanhtech.vocabulario.R
-import com.ryanhtech.vocabulario.admin.AdminPassActivity
-import com.ryanhtech.vocabulario.admin.AdminPasswordManager
-import com.ryanhtech.vocabulario.admin.AdminPermissions
+import com.ryanhtech.vocabulario.admin.ui.AdminPassActivity
+import com.ryanhtech.vocabulario.admin.internal.AdminPasswordManager
+import com.ryanhtech.vocabulario.admin.internal.AdminPermissions
 import com.ryanhtech.vocabulario.utils.DataManager
 
 open class VocabularioActivity : AppCompatActivity() {
@@ -34,7 +34,7 @@ open class VocabularioActivity : AppCompatActivity() {
     open val applyLicenseApprovalProtection = true
 
     /**
-     * If set to true, this tells to the Android system that the
+     * If set to true, this tells to the Android internal that the
      * Activity must be secured (prevents screenshots and overlays).
      */
     open val isSecuredActivity: Boolean = false

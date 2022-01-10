@@ -23,7 +23,7 @@
     android:layout_height="match_parent"
     android:background="@color/background_default"
     android:theme="@style/popUpActivityTheme"
-    tools:context=".admin.AdminPassActivity">
+    tools:context=".admin.ui.AdminPassActivity">
 
     <LinearLayout
         android:layout_width="0dp"

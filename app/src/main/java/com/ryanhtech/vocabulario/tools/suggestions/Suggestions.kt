@@ -23,7 +23,7 @@ import com.google.mlkit.common.MlKitException
 import com.google.mlkit.common.model.DownloadConditions
 import com.google.mlkit.nl.translate.Translator
 import com.ryanhtech.vocabulario.R
-import com.ryanhtech.vocabulario.tools.BaseTool
+import com.ryanhtech.vocabulario.tools.base.BaseTool
 
 class Suggestions: BaseTool() {
     companion object {
