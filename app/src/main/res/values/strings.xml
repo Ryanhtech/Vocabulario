@@ -281,6 +281,8 @@
     <string name="yes">Yes</string>
     <string name="reset_option_uninstall">Uninstall Vocabulario</string>
     <string name="reset_option_uninstall_descr_action">This will completely remove Vocabulario and all of its data of your device. You can\'t cancel this.</string>
+    <string name="manage_vocabulario_reset_permission">Ask to reset Vocabulario</string>
+    <string name="manage_vocabulario_reset_permission_descr">Allows an app to ask you to perform reset operations on Vocabulario.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

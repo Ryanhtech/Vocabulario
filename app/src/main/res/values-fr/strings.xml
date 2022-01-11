@@ -260,4 +260,6 @@
     <string name="yes">Oui</string>
     <string name="reset_option_uninstall">Désinstaller Vocabulario</string>
     <string name="reset_option_uninstall_descr_action">Ceci supprimera Vocabulario et toutes ses données de votre appareil. Cette action est irréversible.</string>
+    <string name="manage_vocabulario_reset_permission">Demander à réinitialiser Vocabulario</string>
+    <string name="manage_vocabulario_reset_permission_descr">Autorise une appli à vous demander l\'autorisation pour effectuer des opérations de réinitialisation dans Vocabulario.</string>
 </resources>

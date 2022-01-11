@@ -62,8 +62,8 @@ class RyanhtechAppSupportCore(context: Context) {
         // If we are not supported, we can take immediate action
         // to inform the user
 
-        Toast.makeText(mContext, "isAppSupported: $isAppSupported", Toast.LENGTH_SHORT)
-            .show()
+        /*Toast.makeText(mContext, "isAppSupported: $isAppSupported", Toast.LENGTH_SHORT)
+            .show()*/
     }
 
     suspend fun checkIsAppSupported() {
@@ -84,6 +84,10 @@ class RyanhtechAppSupportCore(context: Context) {
                         isAppSupportedGlobal =
                             document.getBoolean(FirebaseWebDbKeys.IS_APP_SUPPORTED_VALUE)
                                 ?: false  // If we haven't our value it means that the server is dead
+
+                        Toast.makeText(mContext, "isAppSupported: $isAppSupportedGlobal",
+                            Toast.LENGTH_SHORT)
+                            .show()
 
                         // Return
                         return@addOnSuccessListener

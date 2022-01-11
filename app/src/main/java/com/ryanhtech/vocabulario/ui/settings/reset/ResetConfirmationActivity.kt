@@ -33,10 +33,6 @@ class ResetConfirmationActivity : BaseResetActivity() {
 
     private var ignoreAuthenticationOnResume = false
 
-    private val userPermissionListenerCallbackThread = Thread {
-        resetOperationUserPermissionListenerCallbackThread()
-    }
-
     companion object {
         const val EXTRA_REQUESTED_OPERATION = "requestedOperation"
     }
@@ -78,8 +74,6 @@ class ResetConfirmationActivity : BaseResetActivity() {
         if (ignoreAuthenticationOnResume) return
         resetOperationInstance.authenticate(Thread {}, Thread { this.finish() })
         ignoreAuthenticationOnResume = true
-
-        startResetOperationUserPermissionListenerCallbackThread()
     }
 
     private fun initResetOperation() {
@@ -87,30 +81,5 @@ class ResetConfirmationActivity : BaseResetActivity() {
         val resetOpeClassInst = VocabularioResetOperation(
             requestedOperation, this)  // Bug: don't use this.applicationContext!
         resetOperationInstance = resetOpeClassInst
-    }
-
-    private fun startResetOperationUserPermissionListenerCallbackThread() {
-        //userPermissionListenerCallbackThread.start()
-    }
-
-    private fun resetOperationUserPermissionListenerCallbackThread() {
-        // Wait until we have a positive response for the user and run
-        // the appropriate action
-        while (true) {
-            val usrAuthenticationStatus = resetOperationInstance.authenticationStatus
-
-            if (usrAuthenticationStatus == VocabularioResetOperation.AUTHENTICATION_TYPE_GRANTED) {
-                // The user granted the permission. Don't do anything, because
-                // the confirmation dialog will go by itself.
-                Log.d("UserPermission", "The user granted the permission.")
-                break
-            }
-            if (usrAuthenticationStatus == VocabularioResetOperation.AUTHENTICATION_TYPE_DENIED) {
-                // Exit the Activity immediately
-                finish()
-                break
-            }
-            Thread.sleep(200)
-        }
     }
 }

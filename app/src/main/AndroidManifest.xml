@@ -14,11 +14,19 @@
         android:description="@string/receive_collection_events_description"
         android:icon="@drawable/ic_baseline_inbox_24"
         android:label="@string/receive_collection_events_permission"
-        android:permissionGroup="com.ryanhtech.vocabulario.permission.group.COLLECTION"
+        android:permissionGroup="com.ryanhtech.vocabulario.permission.group.PERMISSIONS"
+        android:protectionLevel="normal" />
+
+    <permission
+        android:name="com.ryanhtech.vocabulario.permission.MANAGE_VOCABULARIO_RESET"
+        android:description="@string/manage_vocabulario_reset_permission_descr"
+        android:icon="@drawable/ic_baseline_delete_24"
+        android:label="@string/manage_vocabulario_reset_permission"
+        android:permissionGroup="com.ryanhtech.vocabulario.permission.group.PERMISSIONS"
         android:protectionLevel="normal" />
 
     <permission-group
-        android:name="com.ryanhtech.vocabulario.permission.group.COLLECTION"
+        android:name="com.ryanhtech.vocabulario.permission.group.PERMISSIONS"
         android:description="@string/collection_permission_group_description"
         android:label="@string/collection_permission_group_title" />
 
@@ -27,6 +35,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="com.ryanhtech.vocabulario.permission.RECEIVE_COLLECTION_EVENTS" />
+    <uses-permission android:name="com.ryanhtech.vocabulario.permission.MANAGE_VOCABULARIO_RESET" />
     <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
 
     <application
@@ -226,5 +235,4 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
-
 </manifest>

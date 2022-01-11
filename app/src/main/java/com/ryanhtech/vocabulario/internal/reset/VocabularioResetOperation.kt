@@ -19,7 +19,10 @@ package com.ryanhtech.vocabulario.internal.reset
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
+import androidx.annotation.RequiresPermission
 import com.ryanhtech.vocabulario.BuildConfig
 import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.internal.annotations.DangerousOperation
@@ -35,6 +38,7 @@ import com.ryanhtech.vocabulario.internal.annotations.RequiresVocabularioUserInt
  * @author Ryanhtech Labs
  * @see VocabularioResetType
  */
+
 class VocabularioResetOperation(resetType: String, context: Context) {
     companion object {
         const val AUTHENTICATION_TYPE_PENDING = 0
@@ -135,9 +139,21 @@ class VocabularioResetOperation(resetType: String, context: Context) {
      * operations. If the user already saw this dialog, you can't show it again, unless
      * you create a new instance.
      */
+    @RequiresPermission("com.ryanhtech.vocabulario.permission.MANAGE_VOCABULARIO_RESET")
     fun authenticate(posClickCallback: Thread,
                      negClickCallback: Thread) {
         if (authenticationStatus != AUTHENTICATION_TYPE_PENDING) return
+
+        // Check if the caller has the MANAGE_VOCABULARIO_RESET permission. It
+        // can't do anything without it.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (mContext.applicationContext.checkSelfPermission(
+                    "com.ryanhtech.vocabulario.permission.MANAGE_VOCABULARIO_RESET")
+                    == PackageManager.PERMISSION_DENIED) {
+                throw IllegalStateException(
+                    "Caller doesn't have permission MANAGE_VOCABULARIO_RESET")
+            }
+        }
 
         AlertDialog.Builder(mContext).apply {
             setCancelable(false)
@@ -186,7 +202,10 @@ class VocabularioResetOperation(resetType: String, context: Context) {
         if (context != mContext) {
             // If the given context doesn't match with the required context,
             // someone is maybe trying to steal our permissions.
-            throw IllegalAccessException("The caller doesn't have permission to run this")
+            throw IllegalAccessException("The caller doesn't have permission to run this -- make" +
+                " sure you are using the same Context that you used to create this Vocabulario" +
+                "ResetOperation instance. Do not use the applicationContext attribute, as it " +
+                "allows anything in the caller app to execute dangerous actions.")
         }
 
         if (authenticationStatus != AUTHENTICATION_TYPE_GRANTED
