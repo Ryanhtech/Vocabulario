@@ -56,7 +56,7 @@
     <color name="pop_up_activity_status_bar">#111111</color>
     <color name="reset_back">#020202</color>
     <color name="reset_elements">#FFFFFF</color>
-    <color name="reset_option_background">#222222</color>
+    <color name="reset_option_background">#111111</color>
     <color name="light_blue_400">#FF29B6F6</color>
     <color name="gray_400">#FFBDBDBD</color>
     <color name="gray_600">#FF757575</color>
