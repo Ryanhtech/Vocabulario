@@ -30,8 +30,8 @@ import com.ryanhtech.vocabulario.ui.activity.VocabularioActivity
  * moves it up with a SpringAnimation at the same time. It's
  * better to use it on Activity startup, and you may use
  * `overridePendingTransition(0, 0)` in your `onCreate()`
- * method to delete the activity startup animation and let
- * the user see it.
+ * method to delete the activity startup transition and let
+ * the user see the list animation.
  *
  * To begin, put the `Views` you need in a `List<View>`
  * instance (Kotlin). Then, create a new instance of this
@@ -41,7 +41,7 @@ import com.ryanhtech.vocabulario.ui.activity.VocabularioActivity
  * views you specified in the list.
  *
  * OPTIONAL - You can also add a delay in the `startVlaAnimation()`
- * as the delay parameter. The default delay is 400ms. For example,
+ * as the delay parameter. The default delay is 100ms. For example,
  * you could use `startVlaAnimation(300)` instead of
  * `startVlaAnimation()`.
  */
@@ -115,7 +115,7 @@ class VocabularioListAnimation(views: List<View>, activity: VocabularioActivity)
             // Get an animation instance
             val lZoomInAnimationInstance = AnimationUtils.loadAnimation(mActivity, R.anim.vla_zoom_in)
 
-            // Bring the View down a bit so we see something
+            // Bring the View down a bit so we see something moving
             mActivity.runOnUiThread {
                 val lViewYAxis = view.translationY
                 view.translationY = (lViewYAxis - 400) * -1

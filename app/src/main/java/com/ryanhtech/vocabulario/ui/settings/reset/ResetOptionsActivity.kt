@@ -22,6 +22,7 @@ import android.view.View
 import android.widget.FrameLayout
 import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.internal.reset.VocabularioResetType
+import com.ryanhtech.vocabulario.internal.reset.VocabularioUserResetOperationInformation
 import com.ryanhtech.vocabulario.ui.animations.VocabularioListAnimation
 
 /**
@@ -53,16 +54,16 @@ class ResetOptionsActivity : BaseResetActivity() {
 
         // Now, set the onClickListeners to perform on-click actions.
         resetOperationResetCollection.setOnClickListener {
-            internalRunResetOperationSystemCall(VocabularioResetType.TYPE_RESET_COLLECTION)
+            processClickListener(VocabularioResetType.TYPE_RESET_COLLECTION)
         }
         resetOperationResetAppLocal.setOnClickListener {
-            internalRunResetOperationSystemCall(VocabularioResetType.TYPE_RESET_LOCAL)
+            processClickListener(VocabularioResetType.TYPE_RESET_LOCAL)
         }
         resetOperationResetAppSystem.setOnClickListener {
-            internalRunResetOperationSystemCall(VocabularioResetType.TYPE_RESET_SYSTEM)
+            processClickListener(VocabularioResetType.TYPE_RESET_SYSTEM)
         }
         resetOperationUninstallApplication.setOnClickListener {
-            internalRunResetOperationSystemCall(VocabularioResetType.TYPE_RESET_UNINSTALL)
+            processClickListener(VocabularioResetType.TYPE_RESET_UNINSTALL)
         }
 
         // Here, start the VocabularioListAnimation on our items (debug)
@@ -72,16 +73,25 @@ class ResetOptionsActivity : BaseResetActivity() {
         // Create a new Vocabulario ListAnimation instance
         val vla = VocabularioListAnimation(viewsToAnimate, this)
 
-        // Start the animation and delete the Activity transition
+        // Start the animation and change the Activity transition
         vla.startVlaAnimation()
-        overridePendingTransition(0, 0)
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+    }
+
+    private fun processClickListener(resetType: String) {
+        // Create a new operation info instance
+        val resetOperationInfoInstance = VocabularioUserResetOperationInformation
+            .getInstanceFromResetOperationType(resetType)
+
+        // There you have the info instance. Pass it into the system call method
+        internalRunResetOperationSystemCall(resetOperationInfoInstance)
     }
 
     /**
      * This runs an internal Vocabulario system call to perform the selected
      * reset operation. (private method)
      */
-    private fun internalRunResetOperationSystemCall(ope: String) {
+    private fun internalRunResetOperationSystemCall(ope: VocabularioUserResetOperationInformation) {
         // Create an Intent to the reset confirmation activity, add the requested operation
         // to the Intent, and start the Intent
         val confirmIntent = Intent(this, ResetConfirmationActivity::class.java)

@@ -18,9 +18,14 @@ package com.ryanhtech.vocabulario.ui.settings.reset
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.LinearLayout
+import android.widget.TextView
 import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.internal.reset.VocabularioResetOperation
 import com.ryanhtech.vocabulario.internal.reset.VocabularioResetType
+import com.ryanhtech.vocabulario.internal.reset.VocabularioUserResetOperationInformation
+import com.ryanhtech.vocabulario.ui.animations.VocabularioListAnimation
 import kotlinx.android.synthetic.main.activity_reset_confirmation.*
 
 /**
@@ -31,6 +36,8 @@ class ResetConfirmationActivity : BaseResetActivity() {
     private lateinit var resetOperationInstance: VocabularioResetOperation
 
     private lateinit var requestedOperation: String
+
+    private lateinit var onScreenViewsAnimation: VocabularioListAnimation
 
     private var ignoreAuthenticationOnResume = false
 
@@ -47,15 +54,32 @@ class ResetConfirmationActivity : BaseResetActivity() {
 
         // Set the requestedOperation to the operation that the user
         // requested.
-        val reqOpeFromIntent = intent.getStringExtra(EXTRA_REQUESTED_OPERATION)
-        if (reqOpeFromIntent == null) {
+        val reqOpeFromIntent = intent.getSerializableExtra(EXTRA_REQUESTED_OPERATION)
+            as VocabularioUserResetOperationInformation
+        if (reqOpeFromIntent.operationTypeLocal == "") {
             // The Activity hasn't started correctly.
             Log.e("ResetConfirmation", "Error starting activity: No requested " +
                 "operation found in EXTRA_REQUESTED_OPERATION")
             throw IllegalStateException("No requested operation found")
         }
 
-        requestedOperation = reqOpeFromIntent
+        requestedOperation = reqOpeFromIntent.operationTypeLocal
+
+        // Initialize the UI: set the text views to the correct content.
+        val resetConfirmationTitle = findViewById<TextView>(R.id.resetConformationTitle)
+        val resetConfirmationDescr = findViewById<TextView>(R.id.resetConfirmationDescription)
+        val actionButtonsToolbar = findViewById<LinearLayout>(R.id.resetConfirmationActionButtonToolbar)
+
+        resetConfirmationTitle.text = getString(reqOpeFromIntent.operationNameUiLocal)
+        resetConfirmationDescr.text = getString(reqOpeFromIntent.operationDescriptionUiLocal)
+
+        // Initialize the views animation
+        val lViewsToAnimate = listOf<View>(resetConfirmationTitle, resetConfirmationDescr,
+            actionButtonsToolbar)
+        onScreenViewsAnimation = VocabularioListAnimation(lViewsToAnimate, this)
+
+        // Don't forget to hide the widgets
+        onScreenViewsAnimation.hideViews()
 
         // Initialize the reset operation instance.
         initResetOperation()
@@ -67,6 +91,15 @@ class ResetConfirmationActivity : BaseResetActivity() {
             // a reset, or something else.
             resetOperationInstance.runOperation(this)
         }
+
+        // Check if the user requested an uninstall operation. If so, start the
+        // animation directly because no prompt will be shown.
+        if (requestedOperation == VocabularioResetType.TYPE_RESET_UNINSTALL) {
+            startWidgetsAnimation()
+        }
+
+        // Set the fade in animation
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
     }
 
     override fun onResume() {
@@ -81,7 +114,13 @@ class ResetConfirmationActivity : BaseResetActivity() {
             return
         }
 
-        resetOperationInstance.authenticate(Thread {}, Thread { this.finish() })
+        resetOperationInstance.authenticate(Thread { this.startWidgetsAnimation() },
+            Thread { this.finish() })
+    }
+
+    private fun startWidgetsAnimation() {
+        // Start the widgets animation
+        onScreenViewsAnimation.startVlaAnimation()
     }
 
     private fun initResetOperation() {

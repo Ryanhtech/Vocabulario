@@ -21,7 +21,6 @@ import android.os.Bundle
 import android.view.WindowManager
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.admin.internal.AdminPasswordManager
 import com.ryanhtech.vocabulario.admin.internal.AdminPermissions
 import com.ryanhtech.vocabulario.admin.ui.AdminPassActivity
@@ -96,15 +95,5 @@ open class VocabularioActivity : AppCompatActivity() {
         if (isSecuredActivity) {
             window.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
         }
-
-        /*overridePendingTransition(R.anim.std_transition_in_frm_open,
-            R.anim.std_transition_out_frm_open)*/
-    }
-
-    override fun onPause() {
-        super.onPause()
-        // Start the transition if the user is still in the app
-        if (hasWindowFocus()) overridePendingTransition(R.anim.std_transition_in_frm_close,
-                                    R.anim.std_transition_out_frm_close)
     }
 }

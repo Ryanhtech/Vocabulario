@@ -16,6 +16,7 @@
 
 package com.ryanhtech.vocabulario.internal.reset
 
+import android.app.ActivityManager
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
@@ -223,6 +224,19 @@ class VocabularioResetOperation(resetType: String, context: Context) {
         if (requestedOperation == VocabularioResetType.TYPE_RESET_UNINSTALL) {
             runUninstallOperation()
         }
+        if (requestedOperation == VocabularioResetType.TYPE_RESET_SYSTEM) {
+            runResetFromSystemOperation()
+        }
+    }
+
+    @DangerousOperation
+    private fun runResetFromSystemOperation() {
+        // Instantiate a new ActivityManager
+        val activityManager = mContext.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+
+        // Ask the system to clear the app's data immediately.
+        // THIS OPERATION CANNOT BE UNDONE
+        activityManager.clearApplicationUserData()
     }
 
     @DangerousOperation
