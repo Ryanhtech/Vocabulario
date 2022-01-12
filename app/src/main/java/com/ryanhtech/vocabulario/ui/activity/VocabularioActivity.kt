@@ -22,19 +22,46 @@ import android.view.WindowManager
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.ryanhtech.vocabulario.R
-import com.ryanhtech.vocabulario.admin.ui.AdminPassActivity
 import com.ryanhtech.vocabulario.admin.internal.AdminPasswordManager
 import com.ryanhtech.vocabulario.admin.internal.AdminPermissions
+import com.ryanhtech.vocabulario.admin.ui.AdminPassActivity
 import com.ryanhtech.vocabulario.utils.DataManager
 
+/**
+ * This provides the base Activity class for all Vocabulario
+ * activities. It helps defining custom properties for Activities
+ * in Vocabulario.
+ *
+ * @since initial version
+ * @author Ryanhtech Labs
+ */
 open class VocabularioActivity : AppCompatActivity() {
+    /**
+     * If you should allow this Activity starting even if
+     * the app is in Forgot password mode, set this to `false`.
+     */
     open val applyEmergencyBlock: Boolean = true
+
+    /**
+     * If it's better to ask an administrator password to start
+     * this app, set this to `true`.
+     */
     open val isProtectedActivity: Boolean = false
+
+    /**
+     * If this Activity must start even if the app's maintenance is
+     * discontinued, set this to `false`.
+     */
     open val applyEndOfSupport: Boolean = true
+
+    /**
+     * If you should not prevent this Activity from starting if the user
+     * hasn't accepted the software license, set this to `false`.
+     */
     open val applyLicenseApprovalProtection = true
 
     /**
-     * If set to true, this tells to the Android internal that the
+     * If set to `true`, this tells to the Android system that the
      * Activity must be secured (prevents screenshots and overlays).
      */
     open val isSecuredActivity: Boolean = false

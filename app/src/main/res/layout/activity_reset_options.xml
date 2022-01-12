@@ -224,7 +224,7 @@
             </FrameLayout>
 
             <FrameLayout
-                android:id="@+id/resetOperationSystemReset"
+                android:id="@+id/resetOperationResetAppSystem"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"

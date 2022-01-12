@@ -20,6 +20,7 @@ import android.os.Bundle
 import android.util.Log
 import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.internal.reset.VocabularioResetOperation
+import com.ryanhtech.vocabulario.internal.reset.VocabularioResetType
 import kotlinx.android.synthetic.main.activity_reset_confirmation.*
 
 /**
@@ -72,8 +73,15 @@ class ResetConfirmationActivity : BaseResetActivity() {
         super.onResume()
 
         if (ignoreAuthenticationOnResume) return
-        resetOperationInstance.authenticate(Thread {}, Thread { this.finish() })
         ignoreAuthenticationOnResume = true
+
+        // Skip the authentication if the user requested an uninstall, it
+        // is not required.
+        if (requestedOperation == VocabularioResetType.TYPE_RESET_UNINSTALL) {
+            return
+        }
+
+        resetOperationInstance.authenticate(Thread {}, Thread { this.finish() })
     }
 
     private fun initResetOperation() {

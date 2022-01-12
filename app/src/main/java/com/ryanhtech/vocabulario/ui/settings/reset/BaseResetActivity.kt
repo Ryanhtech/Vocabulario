@@ -35,10 +35,11 @@ import com.ryanhtech.vocabulario.ui.activity.VocabularioActivity
  * @since initial version
  */
 open class BaseResetActivity : VocabularioActivity() {
-    // Set this to bypass the Emergency Block mode. In this way, if
-    // an administrator has forgotten his password, he'll be able to
-    // reset the app anyways.
-    override val applyEmergencyBlock: Boolean = false
+    // Set this to enforce Emergency Block to these Activities,
+    // so if the app is in Forgot Password mode, the admin will
+    // be able to access those Activities only with the security
+    // code.
+    override val applyEmergencyBlock: Boolean = true
 
     // Set this to require the admin password in order to use the
     // Activity.

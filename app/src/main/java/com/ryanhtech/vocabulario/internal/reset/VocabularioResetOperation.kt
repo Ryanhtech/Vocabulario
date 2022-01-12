@@ -70,6 +70,8 @@ class VocabularioResetOperation(resetType: String, context: Context) {
         // Don't allow variable change if it's not allowed
         if (!authorizeIsAuthenticatedModification) throw IllegalAccessException(
             "You can't change this variable! (Access denied)")
+        authorizeIsAuthenticatedModification = false
+
         // Don't allow setting to another value than the permitted ones
         if (setAttempt != AUTHENTICATION_TYPE_DENIED
             && setAttempt != AUTHENTICATION_TYPE_GRANTED
@@ -78,7 +80,7 @@ class VocabularioResetOperation(resetType: String, context: Context) {
                 "ResetOperation.AUTHENTICATION_* attributes")
         }
         // Don't allow reverting to anything once it's set to anything else but PENDING
-        if (field == AUTHENTICATION_TYPE_GRANTED && field == AUTHENTICATION_TYPE_DENIED) {
+        if (field == AUTHENTICATION_TYPE_PENDING) {
             field = setAttempt
         }
     }
@@ -119,12 +121,13 @@ class VocabularioResetOperation(resetType: String, context: Context) {
         // Now check if the reset type actually exists (the caller might want to confuse
         // us ;))
         if (resetType != VocabularioResetType.TYPE_RESET_COLLECTION
-            && resetType != VocabularioResetType.TYPE_RESET_FULL
+            && resetType != VocabularioResetType.TYPE_RESET_SYSTEM
             && resetType != VocabularioResetType.TYPE_RESET_LOCAL
             && resetType != VocabularioResetType.TYPE_RESET_UNINSTALL) {
             // Raise the exception
             lockdownInstanceAndThrowException(
-                IllegalStateException("The provided reset type doesn't exists. Type: \"$resetType\""))
+                IllegalStateException(
+                    "The provided reset type doesn't exists. Type: \"$resetType\""))
         }
 
         // Then we have our reset type. Copy it into mResetType, and the context as

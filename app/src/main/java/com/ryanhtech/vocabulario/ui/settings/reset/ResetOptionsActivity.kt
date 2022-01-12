@@ -18,23 +18,72 @@ package com.ryanhtech.vocabulario.ui.settings.reset
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.FrameLayout
 import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.internal.reset.VocabularioResetType
-import kotlinx.android.synthetic.main.activity_reset_options.*
+import com.ryanhtech.vocabulario.ui.animations.VocabularioListAnimation
 
+/**
+ * This Activity displays a list of reset options to the user. It
+ * lets the user decide which option they want, and then starts
+ * the ResetConfirmationActivity to ask the permission to the user
+ * to perform this.
+ *
+ * @see ResetConfirmationActivity
+ * @see BaseResetActivity
+ * @author Ryanhtech Labs
+ * @since initial version
+ */
 class ResetOptionsActivity : BaseResetActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reset_options)
 
-        // Debug -- no documentation yet
+        // Initialize the UI components. These are initialized using the
+        // findViewById() method.
+        val resetOperationResetCollection: FrameLayout = findViewById(
+            R.id.resetOperationResetCollection)
+        val resetOperationResetAppLocal: FrameLayout = findViewById(
+            R.id.resetOperationResetAppLocal)
+        val resetOperationResetAppSystem: FrameLayout = findViewById(
+            R.id.resetOperationResetAppSystem)
+        val resetOperationUninstallApplication: FrameLayout = findViewById(
+            R.id.resetOperationUninstallApplication)
 
+        // Now, set the onClickListeners to perform on-click actions.
         resetOperationResetCollection.setOnClickListener {
+            internalRunResetOperationSystemCall(VocabularioResetType.TYPE_RESET_COLLECTION)
+        }
+        resetOperationResetAppLocal.setOnClickListener {
+            internalRunResetOperationSystemCall(VocabularioResetType.TYPE_RESET_LOCAL)
+        }
+        resetOperationResetAppSystem.setOnClickListener {
+            internalRunResetOperationSystemCall(VocabularioResetType.TYPE_RESET_SYSTEM)
+        }
+        resetOperationUninstallApplication.setOnClickListener {
             internalRunResetOperationSystemCall(VocabularioResetType.TYPE_RESET_UNINSTALL)
         }
+
+        // Here, start the VocabularioListAnimation on our items (debug)
+        val viewsToAnimate = listOf<View>(resetOperationResetCollection, resetOperationResetAppLocal,
+            resetOperationResetAppSystem, resetOperationUninstallApplication)
+
+        // Create a new Vocabulario ListAnimation instance
+        val vla = VocabularioListAnimation(viewsToAnimate, this)
+
+        // Start the animation and delete the Activity transition
+        vla.startVlaAnimation()
+        overridePendingTransition(0, 0)
     }
 
+    /**
+     * This runs an internal Vocabulario system call to perform the selected
+     * reset operation. (private method)
+     */
     private fun internalRunResetOperationSystemCall(ope: String) {
+        // Create an Intent to the reset confirmation activity, add the requested operation
+        // to the Intent, and start the Intent
         val confirmIntent = Intent(this, ResetConfirmationActivity::class.java)
         confirmIntent.putExtra(ResetConfirmationActivity.EXTRA_REQUESTED_OPERATION, ope)
         startActivity(confirmIntent)
