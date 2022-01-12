@@ -88,11 +88,18 @@ class VocabularioListAnimation(views: List<View>, activity: VocabularioActivity)
         lWorkingThread.start()
     }
 
-    private fun runWorkOnSeparateThread(delay: Long) {
-        // Start by hiding all the Views that we haven't animated
+    /**
+     * This hides the Views to animate.
+     */
+    fun hideViews() {
         mActivity.runOnUiThread {
             for (viewToHide in mViewList) viewToHide.visibility = View.INVISIBLE
         }
+    }
+
+    private fun runWorkOnSeparateThread(delay: Long) {
+        // Start by hiding all the Views that we haven't animated
+        hideViews()
 
         for (view in mViewList) {
             // For each view in the view list, perform the animation
@@ -111,7 +118,7 @@ class VocabularioListAnimation(views: List<View>, activity: VocabularioActivity)
             // Bring the View down a bit so we see something
             mActivity.runOnUiThread {
                 val lViewYAxis = view.translationY
-                view.translationY = (lViewYAxis - 600) * -1
+                view.translationY = (lViewYAxis - 400) * -1
 
                 // Start the SpringAnimation on our object on the UI thread
                 lSpringAnimation.start()

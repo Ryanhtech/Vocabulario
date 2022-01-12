@@ -39,6 +39,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.setup.base.UserSetupActivity
 import com.ryanhtech.vocabulario.ui.activity.VocabularioActivity
+import com.ryanhtech.vocabulario.ui.animations.VocabularioListAnimation
 import com.ryanhtech.vocabulario.ui.main.collection.CollectionFragment
 import com.ryanhtech.vocabulario.utils.DataManager
 import com.ryanhtech.vocabulario.utils.StaticData
@@ -152,19 +153,16 @@ class MainActivity : VocabularioActivity() {
                 )
             }
 
-            // Set the fade in animation to start after 3 seconds
-            val widgetsToAnimate = listOf(nextButtonWelcome, appTitle, appLogo, appAssistanceInfo)
+            // Set the animation to start after 1s
+            val widgetsToAnimate = listOf(appLogo, appTitle, appAssistanceInfo, nextButtonWelcome)
 
-            for (view in widgetsToAnimate) view.isVisible = false
-
-            val fadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fade_in)
+            // Create a VocabularioListAnimation instance and run it after 1s
+            val lVocListAnim = VocabularioListAnimation(widgetsToAnimate, this)
+            lVocListAnim.hideViews()
 
             Handler(Looper.getMainLooper()).postDelayed({
-                for (view in widgetsToAnimate) {
-                    view.isVisible = true
-                    view.startAnimation(fadeInAnimation)
-                }
-            }, 3000)
+                lVocListAnim.startVlaAnimation()
+            }, 1000)
 
             return true
         }
