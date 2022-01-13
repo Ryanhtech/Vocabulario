@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2021-2022 Ryanhtech Labs
+  ~
+  ~ This Software (Vocabulario) is licensed under the RHT-PSLA
+  ~ license (Ryanhtech Proprietary Software License Agreement).
+  ~ You must not use this Software or this source code if you
+  ~ don't comply with this license.
+  -->
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.ryanhtech.vocabulario">

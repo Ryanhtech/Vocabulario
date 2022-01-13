@@ -2,17 +2,10 @@
 <!--
   ~ Copyright 2021-2022 Ryanhtech Labs
   ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~     http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
+  ~ This Software (Vocabulario) is licensed under the RHT-PSLA
+  ~ license (Ryanhtech Proprietary Software License Agreement).
+  ~ You must not use this Software or this source code if you
+  ~ don't comply with this license.
   -->
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -23,6 +16,7 @@
     tools:context=".setup.base.UserSetupActivity">
 
     <ScrollView
+        android:id="@+id/scrollView4"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="12dp"
@@ -30,7 +24,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backSetupLayout"
         tools:ignore="SpeakableTextPresentCheck">
 
 
@@ -39,19 +33,51 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <FrameLayout
-                android:id="@+id/fragmentContainerViewSetup"
-                android:name="com.ryanhtech.vocabulario.setup.SetupEulaFragment"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
+                android:layout_height="match_parent">
 
-            </FrameLayout>
+                <ImageView
+                    android:id="@+id/imageView17"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:tint="@color/title_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_baseline_settings_24" />
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="100dp" />
+                <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/catamaran_extrabold"
+                    android:text="@string/setup_finished_title"
+                    android:textAlignment="center"
+                    android:textColor="@color/title_text"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView17" />
 
+                <TextView
+                    android:id="@+id/textView43"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/catamaran_semibold"
+                    android:text="@string/setup_finished_descr"
+                    android:textAlignment="center"
+                    android:textColor="@color/basic_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView24" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
 
@@ -70,41 +96,40 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:visibility="visible" />
 
+    <Button
+        android:id="@+id/backSetupLayout"
+        style="?attr/borderlessButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/catamaran_semibold"
+        android:text="@string/back"
+        android:textAllCaps="false"
+        android:textColor="@color/title_text"
+        app:icon="@drawable/ic_baseline_arrow_back_ios_24"
+        app:iconGravity="textStart"
+        app:iconPadding="5dp"
+        app:iconSize="17dp"
+        app:iconTint="@color/title_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setupWait" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
         android:background="@color/background_default_transparent"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <Button
-            android:id="@+id/backSetupLayout"
-            style="?attr/borderlessButtonStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/catamaran_semibold"
-            android:text="@string/back_setup_new"
-            android:textAllCaps="false"
-            android:textColor="@color/basic_text"
-            app:icon="@drawable/ic_baseline_arrow_back_ios_24"
-            app:iconGravity="textStart"
-            app:iconPadding="5dp"
-            app:iconSize="17dp"
-            app:iconTint="@color/basic_text"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/nextSetupLayout"
-            app:layout_constraintStart_toStartOf="@+id/nextSetupLayout" />
-
         <com.google.android.material.button.MaterialButton
             android:id="@+id/nextSetupLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="4dp"
             android:background="@drawable/shape_gradient_bluepurple_round"
             android:fontFamily="@font/catamaran_semibold"
             android:shadowRadius="100"
@@ -118,7 +143,7 @@
             app:iconPadding="5dp"
             app:iconSize="17dp"
             app:iconTint="@color/white"
-            app:layout_constraintBottom_toTopOf="@+id/backSetupLayout"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
