@@ -28,6 +28,7 @@ import com.ryanhtech.vocabulario.admin.internal.AdminPasswordManager
 import com.ryanhtech.vocabulario.admin.internal.AdminPermissions
 import com.ryanhtech.vocabulario.internal.block.EmergencyBlockActivity
 import com.ryanhtech.vocabulario.internal.notifications.NotificationManager
+import com.ryanhtech.vocabulario.internal.reset.LocalConfigurationRequest
 import com.ryanhtech.vocabulario.setup.base.UserSetupActivity
 import com.ryanhtech.vocabulario.ui.activity.VocabularioActivity
 import com.ryanhtech.vocabulario.ui.main.MainActivity
@@ -47,6 +48,9 @@ class SplashScreenActivity : VocabularioActivity() {
         setContentView(R.layout.activity_splash_screen)
 
         setupApp()
+
+        // Delete the reinstall request
+        LocalConfigurationRequest.deleteReConfigRequest(this)
 
         if (checkIfAppCrashModeEnabled()) {
             /**

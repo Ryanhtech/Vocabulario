@@ -25,7 +25,7 @@ object CollectionWordContentManager {
     // IMPORTANT: NEVER CHANGE THIS!!! If you do, the app will be unable
     // to find the words from the pointers in the Collection database!
     private const val COLLECTION_WORD_CONTENT_FILE_NAME = "collectionWordContent.vocabulario"
-    private const val COLLECTION_CURRENT_WORD_POINTER_FILE_NAME = "collectionWordPointer.vocabulario"
+    const val COLLECTION_CURRENT_WORD_POINTER_FILE_NAME = "collectionWordPointer.vocabulario"
     private const val COLLECTION_WORD_CONTENT_SEPARATOR = "\n"
     private const val COLLECTION_WORD_MAGIC_POINTER_CONTENT_SEPARATOR = "\u0541"
 

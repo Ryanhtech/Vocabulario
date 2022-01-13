@@ -289,6 +289,7 @@
     <string name="system_reset_descr">This operation will ask your Android system to clear Vocabulario\'s data for you. It will reinstall the app on the system. All the permissions, notification-related settings, and all the system settings related to Vocabulario will be removed. This action is useful for troubleshooting.</string>
     <string name="uninstall_app_reset_ope_title">Uninstall Vocabulario</string>
     <string name="uninstall_app_reset_ope_descr">This action will remove Vocabulario from your device. You can also do it by accessing to Settings > Apps > Vocabulario > Uninstall on your device.</string>
+    <string name="reset_operation_finished">The requested operation has finished.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

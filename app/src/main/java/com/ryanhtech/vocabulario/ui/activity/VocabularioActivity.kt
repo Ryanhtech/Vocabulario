@@ -24,6 +24,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.ryanhtech.vocabulario.admin.internal.AdminPasswordManager
 import com.ryanhtech.vocabulario.admin.internal.AdminPermissions
 import com.ryanhtech.vocabulario.admin.ui.AdminPassActivity
+import com.ryanhtech.vocabulario.internal.reset.LocalConfigurationRequest
+import com.ryanhtech.vocabulario.ui.startup.SplashScreenActivity
 import com.ryanhtech.vocabulario.utils.DataManager
 
 /**
@@ -65,6 +67,12 @@ open class VocabularioActivity : AppCompatActivity() {
      */
     open val isSecuredActivity: Boolean = false
 
+    /**
+     * If set to `true`, the Activity will close if the app isn't configured
+     * properly after a local reset.
+     */
+    open val applyLocalResetConfigurationRequest = true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         val registerResult = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()) { result ->
@@ -94,6 +102,17 @@ open class VocabularioActivity : AppCompatActivity() {
 
         if (isSecuredActivity) {
             window.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        if (applyLocalResetConfigurationRequest
+            && LocalConfigurationRequest.isReConfigRequested(this)) {
+            // Start the splash screen to re-configure the app
+            startActivity(Intent(this, SplashScreenActivity::class.java))
+            finish()
         }
     }
 }

@@ -47,4 +47,8 @@ open class BaseResetActivity : VocabularioActivity() {
 
     // Prevent screenshots and overlays
     override val isSecuredActivity: Boolean = true
+
+    // Prevent undesired activity start while processing
+    // reset operations
+    override val applyLocalResetConfigurationRequest = false
 }

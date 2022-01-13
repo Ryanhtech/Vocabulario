@@ -16,11 +16,15 @@
 
 package com.ryanhtech.vocabulario.ui.settings.reset
 
+import android.app.AlertDialog
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.internal.reset.VocabularioResetOperation
 import com.ryanhtech.vocabulario.internal.reset.VocabularioResetType
@@ -34,10 +38,10 @@ import kotlinx.android.synthetic.main.activity_reset_confirmation.*
  */
 class ResetConfirmationActivity : BaseResetActivity() {
     private lateinit var resetOperationInstance: VocabularioResetOperation
-
     private lateinit var requestedOperation: String
 
     private lateinit var onScreenViewsAnimation: VocabularioListAnimation
+    private lateinit var pendingEmptyDialog: AlertDialog
 
     private var ignoreAuthenticationOnResume = false
 
@@ -84,12 +88,24 @@ class ResetConfirmationActivity : BaseResetActivity() {
         // Initialize the reset operation instance.
         initResetOperation()
 
+        // Initialize the pending empty alert dialog.
+        pendingEmptyDialog = AlertDialog.Builder(this).apply {
+            setCancelable(false)
+        }.create()  // create(): returns the AlertDialog from the Builder
+
         // Initialize the button, so that when the user clicks it, the operation
         // is launched.
         resetConfirmationRunOperationButton.setOnClickListener {
+            // Show an empty dialog to prevent the user from interacting
+            // with the Activity
+            pendingEmptyDialog.show()
+
             // Run the requested operation. This can be an uninstallation,
             // a reset, or something else.
             resetOperationInstance.runOperation(this)
+
+            // Wait 1 second to dismiss the empty pending dialog
+            Handler(Looper.getMainLooper()).postDelayed({ handleOperationEnd() }, 1000)
         }
 
         // Check if the user requested an uninstall operation. If so, start the
@@ -116,6 +132,12 @@ class ResetConfirmationActivity : BaseResetActivity() {
 
         resetOperationInstance.authenticate(Thread { this.startWidgetsAnimation() },
             Thread { this.finish() })
+    }
+
+    private fun handleOperationEnd() {
+        pendingEmptyDialog.dismiss()
+        Toast.makeText(this, R.string.reset_operation_finished, Toast.LENGTH_LONG).show()
+        finish()
     }
 
     private fun startWidgetsAnimation() {

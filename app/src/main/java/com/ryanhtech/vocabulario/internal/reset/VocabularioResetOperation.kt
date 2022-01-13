@@ -28,6 +28,9 @@ import com.ryanhtech.vocabulario.BuildConfig
 import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.internal.annotations.DangerousOperation
 import com.ryanhtech.vocabulario.internal.annotations.RequiresVocabularioUserInteraction
+import com.ryanhtech.vocabulario.tools.collection.db.CollectionDatabase
+import com.ryanhtech.vocabulario.tools.collection.wordpointers.CollectionWordContentManager
+import java.io.File
 
 /**
  * This class makes the reset operations. To run such operation, you
@@ -227,6 +230,12 @@ class VocabularioResetOperation(resetType: String, context: Context) {
         if (requestedOperation == VocabularioResetType.TYPE_RESET_SYSTEM) {
             runResetFromSystemOperation()
         }
+        if (requestedOperation == VocabularioResetType.TYPE_RESET_COLLECTION) {
+            runClearCollectionOperation()
+        }
+        if (requestedOperation == VocabularioResetType.TYPE_RESET_LOCAL) {
+            runLocalResetOperation()
+        }
     }
 
     @DangerousOperation
@@ -237,6 +246,50 @@ class VocabularioResetOperation(resetType: String, context: Context) {
         // Ask the system to clear the app's data immediately.
         // THIS OPERATION CANNOT BE UNDONE
         activityManager.clearApplicationUserData()
+    }
+
+    @DangerousOperation
+    private fun runLocalResetOperation() {
+        // First, clear the Collection
+        runClearCollectionOperation()
+
+        // Then, delete all the files that stores the data
+        val dataDir = File(mContext.applicationContext.filesDir.toString())
+        val fileList = dataDir.list() ?: return
+
+        for (file in fileList) {
+            val currentFile = File(mContext.applicationContext.filesDir, file)
+            currentFile.delete()
+        }
+
+        // Don't forget to request a setup to the other Activities!
+        LocalConfigurationRequest.requestReConfig(mContext)
+
+        // All the files have been deleted. We can return
+        return
+    }
+
+    @DangerousOperation
+    private fun runClearCollectionOperation() {
+        // Get a new instance of the Collection Room db
+        val db = CollectionDatabase.getDatabase(mContext)
+
+        // Delete all tables, which means "Delete all word groups". This
+        // operation is asynchronous no there is no way to tell when it's
+        // done, so delete the word pointers while it's working.
+        Thread { db.clearAllTables() }.start()
+
+        // Delete the Collection word pointers file
+        val collectionPointerFile = File(mContext.applicationContext.filesDir,
+            CollectionWordContentManager.COLLECTION_CURRENT_WORD_POINTER_FILE_NAME)
+
+        collectionPointerFile.delete()
+
+        // Reconfigure the word pointer system
+        CollectionWordContentManager.initFile(mContext)
+
+        // Return, though the operation might still be running!
+        return
     }
 
     @DangerousOperation

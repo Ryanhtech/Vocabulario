@@ -19,12 +19,12 @@ package com.ryanhtech.vocabulario.admin.internal
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
-import com.ryanhtech.vocabulario.security.Hash
-import com.ryanhtech.vocabulario.setup.config.UserSetupStatus
 import com.ryanhtech.vocabulario.internal.block.EmergencyBlockActivity
 import com.ryanhtech.vocabulario.internal.notifications.NotificationManager
 import com.ryanhtech.vocabulario.internal.notifications.Notifications
 import com.ryanhtech.vocabulario.internal.services.AlertVibratorService
+import com.ryanhtech.vocabulario.security.Hash
+import com.ryanhtech.vocabulario.setup.config.UserSetupStatus
 import com.ryanhtech.vocabulario.utils.Utils
 import java.io.File
 import java.io.FileNotFoundException
@@ -35,15 +35,19 @@ class AdminPasswordManager {
      */
 
     companion object {
+        const val PASSWORD_FILE = "pwd.ini"
+        const val SECURITY_CODE_FILE = "secCode.ini"
+        const val EMERG_BLOCK_FILE = "blk.ini"
+
         fun setPassword(applicationContext: Context, password: String) {
-            File(applicationContext.filesDir, "pwd.ini")
+            File(applicationContext.filesDir, PASSWORD_FILE)
                 .writeText(Hash.getHash(password, "SHA-512"))
         }
 
         fun isPasswordCorrect(applicationContext: Context, password: String): Boolean {
             return File(
                 applicationContext.filesDir,
-                "pwd.ini"
+                PASSWORD_FILE
             ).readText() == Hash.getHash(password, "SHA-512")
         }
 
@@ -54,14 +58,14 @@ class AdminPasswordManager {
 
             val securityCode = (100000..999999).random().toString()
 
-            File(applicationContext.filesDir, "secCode.ini")
+            File(applicationContext.filesDir, SECURITY_CODE_FILE)
                 .writeText(Hash.getHash(securityCode))
 
             return securityCode
         }
 
         fun isSecurityCodeCorrect(applicationContext: Context, code: String): Boolean {
-            return File(applicationContext.filesDir, "secCode.ini")
+            return File(applicationContext.filesDir, SECURITY_CODE_FILE)
                 .readText() == Hash.getHash(code)
         }
 
@@ -88,14 +92,14 @@ class AdminPasswordManager {
 
         fun saveEmergencyBlockModeStatus(status: Boolean, applicationContext: Context) {
             if (status) {
-                File(applicationContext.filesDir, "blk.ini")
+                File(applicationContext.filesDir, EMERG_BLOCK_FILE)
                     .createNewFile()
 
                 return
             }
 
             try {
-                File(applicationContext.filesDir, "blk.ini")
+                File(applicationContext.filesDir, EMERG_BLOCK_FILE)
                     .delete()
             } catch (e: FileNotFoundException) {}
 
@@ -103,7 +107,7 @@ class AdminPasswordManager {
         }
 
         fun isEmergencyModeEnabled(applicationContext: Context): Boolean {
-            return File(applicationContext.filesDir, "blk.ini").exists()
+            return File(applicationContext.filesDir, EMERG_BLOCK_FILE).exists()
         }
 
         fun startAlertVibration(applicationContext: Context) {

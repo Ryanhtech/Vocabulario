@@ -156,7 +156,10 @@ class FeaturesInstallFragment : AppSetupFragment() {
     private fun setupCollection() {
         val context = requireActivity()
 
-        CollectionManager.setup(context)
+        try {
+            CollectionManager.setup(context)
+        } catch (e: IllegalStateException) { }
+
         CollectionWordContentManager.initFile(context)
     }
 
