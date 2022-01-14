@@ -38,8 +38,10 @@ class UserSetupActivity : VocabularioActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_setup)
 
-        setCurrentFragment(
-            UserSetupList.setupPages[intent.getIntExtra("step", UserSetupList.SETUP_RESET_APP)])
+        // Get the fragment to inflate and set it.
+        val lStartupExtraStep = intent.getIntExtra("step", UserSetupList.SETUP_EULA)
+        val lFragmentToApply = UserSetupList.setupPages[lStartupExtraStep]
+        setCurrentFragment(lFragmentToApply)
 
         setupClickListeners()
     }
@@ -54,32 +56,32 @@ class UserSetupActivity : VocabularioActivity() {
     }
 
     private fun setupClickListeners() {
-        /**
-         * Sets up the onClickListeners.
-         */
-
         setupNextButton.setOnClickListener {
             if (currentFragment!!.onNextPressed()) {
-
+                // Check if the fragment allows the Next button
+                // (dynamically). If it's the case, show the
+                // progress bar and disable the next button.
                 setupNextButton.isEnabled = false
                 setupProgressBar.isVisible = true
 
+                // Start the new activity in a new thread.
                 Thread {
-                    startActivity(
-                        Intent(
-                            this,
-                            UserSetupActivity::class.java
-                        ).putExtra("step", currentFragment!!.nextStep)
-                    )
+                    // Create a new Intent and put the requested step
+                    // into it as a string extra.
+                    val lActivityIntent = Intent(this, UserSetupActivity::class.java)
+                    lActivityIntent.putExtra("step", currentFragment!!.nextStep)
 
+                    // Start the requested Activity and remove the
+                    // Activity transition
+                    startActivity(lActivityIntent)
                     overridePendingTransition(0, 0)
-
                 }.start()
             }
         }
 
         setupBackButton.setOnClickListener {
             if (currentFragment!!.onBackPressed()) {
+                // If the fragment allows the back button, end the Activity
                 finish()
             }
         }
@@ -98,8 +100,6 @@ class UserSetupActivity : VocabularioActivity() {
         } else {
             setupDescription.text = getString(lSetupDescription)
         }
-
-        //currentFragment!!.startJob()
     }
 
     override fun onResume() {
@@ -117,18 +117,8 @@ class UserSetupActivity : VocabularioActivity() {
         setupNextButton.isEnabled = true
         setupProgressBar.isVisible = false
 
-        /**
-         * Play the animation
-         */
+        // If the Activity has already been initialized
         if (!alreadySteppedIn) {
-            /*val anim = AnimationUtils.loadAnimation(
-                    this,
-                    R.anim.zoom_in
-            )
-
-            anim.startOffset = 200
-
-            fragmentContainerViewSetup.startAnimation(anim)*/
             val springAnimation = setupContents.let { view ->
                 SpringAnimation(view, DynamicAnimation.TRANSLATION_X, 0f).apply {
                     spring.dampingRatio = SpringForce.DAMPING_RATIO_NO_BOUNCY
@@ -157,11 +147,9 @@ class UserSetupActivity : VocabularioActivity() {
 
     override fun onBackPressed() {
         if (currentFragment!!.displayBackButton) {
-
-            /**
-             * Go back only if the back button is enabled.
-             */
-
+            // Go back only if the back button is enabled in the
+            // setup fragment. Also, ask to the fragment if we
+            // should let the user go back.
             if (currentFragment!!.onBackPressed()) {
                 super.onBackPressed()
             }

@@ -93,7 +93,6 @@ open class AppSetupFragment : Fragment() {
         /**
          * When the fragment is ready.
          */
-        this.startJob()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -104,6 +103,10 @@ open class AppSetupFragment : Fragment() {
             ?: return super.onCreateView(inflater, container, savedInstanceState)
 
         globalView = inflater.inflate(lFragmentLayout, container, false)
+
+        // Start the job to process the Fragment's job
+        this.startJob()
+
         return globalView
     }
 }
