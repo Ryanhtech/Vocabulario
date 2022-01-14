@@ -16,31 +16,14 @@
 
 package com.ryanhtech.vocabulario.setup.fragment
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.setup.base.AppSetupFragment
 import com.ryanhtech.vocabulario.setup.config.UserSetupList
 
 class OrganizationSetupIntroFragment : AppSetupFragment() {
-
-    private lateinit var globalView: View
     override val nextStep: Int = UserSetupList.ORG_SETUP_ENTER_NAME
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        // Inflate the layout for this fragment
-
-        globalView = inflater.inflate(R.layout.fragment_organization_setup_intro, container, false)
-
-        return globalView
-    }
-
-    override fun onNextPressed(): Boolean {
-        return true
-    }
+    override val fragmentIconResource: Int = R.drawable.ic_baseline_business_24
+    override val fragmentTitleResource: Int = R.string.school_config
+    override val fragmentDescriptionResource: Int = R.string.school_setup_intro_admin
 }

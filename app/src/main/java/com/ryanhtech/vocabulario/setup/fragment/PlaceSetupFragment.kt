@@ -16,32 +16,24 @@
 
 package com.ryanhtech.vocabulario.setup.fragment
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.ryanhtech.vocabulario.R
+import com.ryanhtech.vocabulario.internal.ryanhtech.familylink.FamilyLinkScan
 import com.ryanhtech.vocabulario.setup.base.AppSetupFragment
 import com.ryanhtech.vocabulario.setup.config.UserSetupList
 import com.ryanhtech.vocabulario.setup.config.UserSetupStatus
-import com.ryanhtech.vocabulario.internal.ryanhtech.familylink.FamilyLinkScan
 import kotlinx.android.synthetic.main.fragment_place_setup.view.*
 
 class PlaceSetupFragment : AppSetupFragment() {
     override val displayBackButton = false
     override var nextStep: Int = UserSetupList.SETUP_ID_PERS
 
-    private lateinit var globalView: View
+    override val fragmentLayout: Int = R.layout.fragment_place_setup
+    override val fragmentIconResource: Int = R.drawable.ic_baseline_location_on_24
+    override val fragmentTitleResource: Int = R.string.setup_place_title
+    override val fragmentDescriptionResource: Int? = null
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View {
-        // Inflate the layout for this fragment
-        globalView = inflater.inflate(R.layout.fragment_place_setup, container, false)
-
+    override fun startJob() {
         scanFamilyLinkAndDisplayResult()
-
-        return globalView
     }
 
     override fun onNextPressed(): Boolean {
@@ -49,7 +41,7 @@ class PlaceSetupFragment : AppSetupFragment() {
          * Check if the school option has been selected.
          */
 
-        nextStep = if (globalView.schoolRadioButtonChoice.isChecked) {
+        nextStep = if (globalView!!.schoolRadioButtonChoice.isChecked) {
             UserSetupList.ORG_SETUP_ADMIN_INTRO
         } else {
             UserSetupList.SETUP_ID_PERS
@@ -78,9 +70,9 @@ class PlaceSetupFragment : AppSetupFragment() {
 
         // The device is "Family Linked". We must disable the managed option and show
         // a message to the user.
-        globalView.schoolRadioButtonChoice.isEnabled = false
-        globalView.schoolRadioButtonChoice.alpha = 0.5F
-        globalView.schoolRadioButtonChoiceDescription.text = requireActivity()
+        globalView!!.schoolRadioButtonChoice.isEnabled = false
+        globalView!!.schoolRadioButtonChoice.alpha = 0.5F
+        globalView!!.schoolRadioButtonChoiceDescription.text = requireActivity()
             .getString(R.string.family_link_managed_mode_unavailable)
     }
 }

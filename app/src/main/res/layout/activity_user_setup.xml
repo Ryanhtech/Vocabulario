@@ -23,7 +23,7 @@
     tools:context=".setup.base.UserSetupActivity">
 
     <ScrollView
-        android:id="@+id/scrollView4"
+        android:id="@+id/setupContentsScrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="12dp"
@@ -31,7 +31,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backSetupLayout"
+        app:layout_constraintTop_toBottomOf="@+id/setupBackButton"
         tools:ignore="SpeakableTextPresentCheck">
 
 
@@ -45,17 +45,18 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/imageView17"
+                    android:id="@+id/setupImage"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    app:tint="@color/title_text"
+                    android:importantForAccessibility="no"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_baseline_settings_24" />
+                    app:srcCompat="@drawable/ic_baseline_settings_24"
+                    app:tint="@color/title_text" />
 
                 <TextView
-                    android:id="@+id/textView24"
+                    android:id="@+id/setupTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -68,10 +69,10 @@
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView17" />
+                    app:layout_constraintTop_toBottomOf="@+id/setupImage" />
 
                 <TextView
-                    android:id="@+id/textView43"
+                    android:id="@+id/setupDescription"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -83,13 +84,26 @@
                     android:textColor="@color/basic_text"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView24" />
+                    app:layout_constraintTop_toBottomOf="@+id/setupTitle" />
+
+                <FrameLayout
+                    android:id="@+id/setupContents"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/setupDescription">
+
+                </FrameLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
 
     <ProgressBar
-        android:id="@+id/setupWait"
+        android:id="@+id/setupProgressBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -104,10 +118,11 @@
         tools:visibility="visible" />
 
     <Button
-        android:id="@+id/backSetupLayout"
+        android:id="@+id/setupBackButton"
         style="?attr/borderlessButtonStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
         android:fontFamily="@font/catamaran_semibold"
         android:text="@string/back"
         android:textAllCaps="false"
@@ -118,15 +133,12 @@
         app:iconSize="17dp"
         app:iconTint="@color/title_text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setupWait" />
+        app:layout_constraintTop_toBottomOf="@+id/setupProgressBar" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="8dp"
         android:background="@color/background_default_transparent"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -134,9 +146,12 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/nextSetupLayout"
+            android:id="@+id/setupNextButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/shape_gradient_bluepurple_round"
             android:fontFamily="@font/catamaran_semibold"
             android:shadowRadius="100"

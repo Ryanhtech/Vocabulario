@@ -17,10 +17,6 @@
 package com.ryanhtech.vocabulario.setup.fragment
 
 import android.annotation.SuppressLint
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.admin.internal.AdminPasswordManager
 import com.ryanhtech.vocabulario.setup.base.AppSetupFragment
@@ -29,26 +25,24 @@ import com.ryanhtech.vocabulario.utils.Utils
 import kotlinx.android.synthetic.main.fragment_display_admin_security_code_setup.view.*
 
 class DisplayAdminSecurityCodeSetupFragment : AppSetupFragment() {
-
-    private lateinit var globalView: View
     override val nextStep: Int = UserSetupList.ORG_ENABLE_ADMIN
+    override val fragmentLayout: Int = R.layout.fragment_display_admin_security_code_setup
+    override val fragmentIconResource = R.drawable.ic_baseline_password_24
+    override val fragmentTitleResource = R.string.admin_security_code
+    override val fragmentDescriptionResource = R.string.admin_security_code_descr
 
-    @SuppressLint("SetTextI18n")
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View {
-        // Inflate the layout for this fragment
-
-        globalView = inflater.inflate(R.layout.fragment_display_admin_security_code_setup, container, false)
-
-        globalView.adminSecurityCode.text = generateCode()
-        globalView.displaySecCodeDeviceId.text =
-            getString(R.string.device_id) + Utils.getDeviceId(requireActivity())
-
-        return globalView
-    }
 
     private fun generateCode(): String {
         return AdminPasswordManager.setSecurityCode(requireActivity().applicationContext)
+    }
+
+    @SuppressLint("SetTextI18n")
+    override fun startJob() {
+        super.startJob()
+
+        // Set the info on the screen
+        globalView?.adminSecurityCode?.text = generateCode()
+        globalView?.displaySecCodeDeviceId?.text =
+            getString(R.string.device_id) + Utils.getDeviceId(requireActivity())
     }
 }

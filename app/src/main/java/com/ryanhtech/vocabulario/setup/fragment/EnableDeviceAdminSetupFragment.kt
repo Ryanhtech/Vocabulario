@@ -19,10 +19,6 @@ package com.ryanhtech.vocabulario.setup.fragment
 import android.app.admin.DevicePolicyManager
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.admin.deviceadmin.VocabularioDeviceAdminReceiver
 import com.ryanhtech.vocabulario.setup.base.AppSetupFragment
@@ -30,18 +26,11 @@ import com.ryanhtech.vocabulario.setup.base.UserSetupActivity
 import com.ryanhtech.vocabulario.setup.config.UserSetupList
 
 class EnableDeviceAdminSetupFragment : AppSetupFragment() {
-    private lateinit var globalView: View
     override val nextStep: Int = UserSetupList.SETUP_FEATURES_PERS
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View {
-        // Inflate the layout for this fragment
-
-        globalView = inflater.inflate(R.layout.fragment_enable_admin_setup, container, false)
-
-        return globalView
-    }
+    override val fragmentLayout: Int? = null
+    override val fragmentIconResource = R.drawable.ic_baseline_lock_24
+    override val fragmentTitleResource = R.string.enable_device_admin
+    override val fragmentDescriptionResource = R.string.enable_device_admin_descr
 
     override fun onNextPressed(): Boolean {
         super.onNextPressed()

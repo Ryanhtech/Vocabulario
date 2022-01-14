@@ -18,6 +18,7 @@ package com.ryanhtech.vocabulario.setup.base
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.isVisible
 import androidx.dynamicanimation.animation.DynamicAnimation
 import androidx.dynamicanimation.animation.SpringAnimation
@@ -37,8 +38,6 @@ class UserSetupActivity : VocabularioActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_setup)
 
-        val stepsInstance = UserSetupList
-
         setCurrentFragment(
             UserSetupList.setupPages[intent.getIntExtra("step", UserSetupList.SETUP_RESET_APP)])
 
@@ -49,7 +48,7 @@ class UserSetupActivity : VocabularioActivity() {
         currentFragment = fragment
 
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.fragmentContainerViewSetup, fragment!!)
+            replace(R.id.setupContents, fragment!!)
             commit()
         }
     }
@@ -59,11 +58,11 @@ class UserSetupActivity : VocabularioActivity() {
          * Sets up the onClickListeners.
          */
 
-        nextSetupLayout.setOnClickListener {
+        setupNextButton.setOnClickListener {
             if (currentFragment!!.onNextPressed()) {
 
-                nextSetupLayout.isEnabled = false
-                setupWait.isVisible = true
+                setupNextButton.isEnabled = false
+                setupProgressBar.isVisible = true
 
                 Thread {
                     startActivity(
@@ -79,16 +78,28 @@ class UserSetupActivity : VocabularioActivity() {
             }
         }
 
-        backSetupLayout.setOnClickListener {
+        setupBackButton.setOnClickListener {
             if (currentFragment!!.onBackPressed()) {
                 finish()
             }
         }
 
-        backSetupLayout.isEnabled = currentFragment!!.displayBackButton
-        nextSetupLayout.isVisible = currentFragment!!.displayNextButton
+        setupBackButton.isEnabled = currentFragment!!.displayBackButton
+        setupNextButton.isVisible = currentFragment!!.displayNextButton
 
-        currentFragment!!.startJob()
+        setupImage.setImageDrawable(AppCompatResources.getDrawable(
+            this, currentFragment!!.fragmentIconResource))
+        setupTitle.text = getString(currentFragment!!.fragmentTitleResource)
+
+        // Check if the description is not null
+        val lSetupDescription = currentFragment!!.fragmentDescriptionResource
+        if (lSetupDescription == null) {
+            setupDescription.isVisible = false
+        } else {
+            setupDescription.text = getString(lSetupDescription)
+        }
+
+        //currentFragment!!.startJob()
     }
 
     override fun onResume() {
@@ -102,9 +113,9 @@ class UserSetupActivity : VocabularioActivity() {
         if (DataManager.checkIfAppConfigured(this)
             && !isFragmentInNonFinishExceptions) finish()
 
-        fragmentContainerViewSetup.isVisible = true
-        nextSetupLayout.isEnabled = true
-        setupWait.isVisible = false
+        setupContents.isVisible = true
+        setupNextButton.isEnabled = true
+        setupProgressBar.isVisible = false
 
         /**
          * Play the animation
@@ -118,25 +129,25 @@ class UserSetupActivity : VocabularioActivity() {
             anim.startOffset = 200
 
             fragmentContainerViewSetup.startAnimation(anim)*/
-            val springAnimation = fragmentContainerViewSetup.let { view ->
+            val springAnimation = setupContents.let { view ->
                 SpringAnimation(view, DynamicAnimation.TRANSLATION_X, 0f).apply {
                     spring.dampingRatio = SpringForce.DAMPING_RATIO_NO_BOUNCY
                     spring.stiffness = SpringForce.STIFFNESS_LOW
                 }
             }
 
-            fragmentContainerViewSetup.translationX = 400f
+            setupContents.translationX = 400f
 
             springAnimation.start()
         } else {
-            val springAnimation = fragmentContainerViewSetup.let { view ->
+            val springAnimation = setupContents.let { view ->
                 SpringAnimation(view, DynamicAnimation.TRANSLATION_X, 0f).apply {
                     spring.dampingRatio = SpringForce.DAMPING_RATIO_NO_BOUNCY
                     spring.stiffness = SpringForce.STIFFNESS_LOW
                 }
             }
 
-            fragmentContainerViewSetup.translationX = -200f
+            setupContents.translationX = -200f
 
             springAnimation.start()
         }

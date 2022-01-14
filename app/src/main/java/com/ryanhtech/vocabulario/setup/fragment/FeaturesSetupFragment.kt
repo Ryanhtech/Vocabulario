@@ -16,26 +16,17 @@
 
 package com.ryanhtech.vocabulario.setup.fragment
 
-import android.app.AlertDialog
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
-import com.google.android.gms.common.ConnectionResult
-import com.google.android.gms.common.GoogleApiAvailability
 import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.setup.base.AppSetupFragment
 import com.ryanhtech.vocabulario.setup.base.UserSetupActivity
 import com.ryanhtech.vocabulario.setup.config.UserSetupList
-import com.ryanhtech.vocabulario.utils.Utils
-import kotlinx.android.synthetic.main.fragment_features_setup.view.*
 
 class FeaturesSetupFragment : AppSetupFragment() {
-
-    private lateinit var globalView: View
     override val nextStep: Int = UserSetupList.SETUP_SUGGESTIONS_C
 
     private var areGmsAvailable = true
@@ -47,7 +38,7 @@ class FeaturesSetupFragment : AppSetupFragment() {
     ): View {
         // Inflate the layout for this fragment
 
-        globalView = inflater.inflate(R.layout.fragment_features_setup, container, false)
+        val lGlobalView = inflater.inflate(R.layout.fragment_features_setup, container, false)
 
         /*checkGooglePlayServices()
         checkIsWiFiConnected()
@@ -59,10 +50,10 @@ class FeaturesSetupFragment : AppSetupFragment() {
             .putExtra("step", UserSetupList.SETUP_SUGGESTIONS_C))
         activity?.finish()
 
-        return globalView
+        return lGlobalView
     }
 
-    override fun onNextPressed(): Boolean {
+    /*override fun onNextPressed(): Boolean {
         // Set the Suggestion setting
         UserSetupList.configIsSuggestionsEnabled = globalView.suggestionsEnabledSetup.isChecked
         return true
@@ -135,5 +126,5 @@ class FeaturesSetupFragment : AppSetupFragment() {
         }
 
         if (!isWifiAvailable) revalidateSuggestions()
-    }
+    }*/
 }

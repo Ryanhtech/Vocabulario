@@ -18,12 +18,8 @@ package com.ryanhtech.vocabulario.setup.fragment
 
 import android.app.AlertDialog
 import android.content.Intent
-import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.google.mlkit.common.model.DownloadConditions
 import com.google.mlkit.nl.translate.TranslateLanguage
 import com.google.mlkit.nl.translate.Translation
@@ -41,20 +37,14 @@ import com.ryanhtech.vocabulario.utils.DataManager
 import com.ryanhtech.vocabulario.utils.Utils
 
 class FeaturesInstallFragment : AppSetupFragment() {
-
-    private lateinit var globalView: View
-
     override val displayBackButton = false
     override val displayNextButton = false
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        // Inflate the layout for this fragment
+    override val fragmentLayout: Int = R.layout.fragment_features_install
+    override val fragmentIconResource: Int = R.drawable.ic_round_cloud_download_24
+    override val fragmentTitleResource: Int = R.string.preparing_app
 
-        globalView = inflater.inflate(R.layout.fragment_features_install, container, false)
-
+    override fun startJob() {
         if (checkInternetConnection()) setupSuggestions()
 
         // If Suggestions are disabled, set up the Collection and immediately restart the app.
@@ -64,8 +54,6 @@ class FeaturesInstallFragment : AppSetupFragment() {
 
             finishSetup()
         }
-
-        return globalView
     }
 
     private fun checkInternetConnection(): Boolean {

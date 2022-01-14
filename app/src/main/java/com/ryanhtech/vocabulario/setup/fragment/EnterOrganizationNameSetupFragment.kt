@@ -16,10 +16,6 @@
 
 package com.ryanhtech.vocabulario.setup.fragment
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.setup.base.AppSetupFragment
@@ -29,28 +25,19 @@ import com.ryanhtech.vocabulario.utils.UiUtils
 import kotlinx.android.synthetic.main.fragment_setup_organization_enter_name.view.*
 
 class EnterOrganizationNameSetupFragment : AppSetupFragment() {
-
-    private lateinit var globalView: View
     override val nextStep: Int = UserSetupList.ORG_SETUP_ENTER_PWD
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        // Inflate the layout for this fragment
-
-        globalView = inflater.inflate(R.layout.fragment_setup_organization_enter_name, container, false)
-
-        return globalView
-    }
+    override val fragmentLayout: Int = R.layout.fragment_setup_organization_enter_name
+    override val fragmentIconResource: Int = R.drawable.ic_baseline_business_24
+    override val fragmentTitleResource: Int = R.string.org_name
 
     override fun onNextPressed(): Boolean {
-        if (globalView.setupOrgName.text.length < 4) {
+        if (globalView!!.setupOrgName.text.length < 4) {
             alertUserIncorrectName()
 
             return false
         }
-        UserSetupStatus.orgName = globalView.setupOrgName.text.toString()
+        UserSetupStatus.orgName = globalView!!.setupOrgName.text.toString()
         UserSetupList.isOrgPasswordConfigPending = true
 
         return true
@@ -60,6 +47,6 @@ class EnterOrganizationNameSetupFragment : AppSetupFragment() {
         Toast.makeText(activity, R.string.enter_real_name, Toast.LENGTH_LONG)
             .show()
 
-        UiUtils.animateEditTextIncorrect(globalView.setupOrgName)
+        UiUtils.animateEditTextIncorrect(globalView!!.setupOrgName)
     }
 }

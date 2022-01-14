@@ -35,8 +35,8 @@
             android:background="@drawable/critical_action_background"
             android:orientation="horizontal"
             android:padding="20dp"
-            app:layout_constraintEnd_toEndOf="@+id/textView3"
-            app:layout_constraintStart_toStartOf="@+id/textView3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
 
             <ImageView
@@ -60,50 +60,6 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="30dp"
-            android:fontFamily="@font/catamaran_semibold"
-            android:singleLine="false"
-            android:text="@string/suggestions_main_feature_descr"
-            android:textAlignment="center"
-            android:textColor="@color/title_text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/setupPlaceFragmentTitle" />
-
-        <ImageView
-            android:id="@+id/setupPlaceFragmentIcon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="32dp"
-            android:importantForAccessibility="no"
-            android:src="@drawable/ic_baseline_assistant_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/primary_colour" />
-
-        <TextView
-            android:id="@+id/setupPlaceFragmentTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="50dp"
-            android:fontFamily="@font/catamaran_extrabold"
-            android:text="@string/activate_suggestions_settings"
-            android:textAlignment="center"
-            android:textColor="@color/primary_colour"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/setupPlaceFragmentIcon" />
-
         <LinearLayout
             android:id="@+id/linearLayout7"
             android:layout_width="0dp"
@@ -112,8 +68,8 @@
             android:background="@drawable/tile_background"
             android:orientation="horizontal"
             android:padding="20dp"
-            app:layout_constraintEnd_toEndOf="@+id/textView3"
-            app:layout_constraintStart_toStartOf="@+id/textView3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/isSuggestionsEnabledV2">
 
             <ImageView
@@ -142,15 +98,14 @@
             android:id="@+id/isSuggestionsEnabledV2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:buttonTint="@color/primary_colour"
             android:fontFamily="@font/catamaran_extrabold"
             android:text="@string/activate_suggestions_settings"
             android:textColor="@color/title_text"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/textView3"
-            app:layout_constraintStart_toStartOf="@+id/textView3"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

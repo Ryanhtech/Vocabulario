@@ -16,28 +16,12 @@
 
 package com.ryanhtech.vocabulario.setup.fragment
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.setup.base.AppSetupFragment
 
 class LicenseErrorFragment : AppSetupFragment() {
-    private lateinit var globalView: View
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        // Inflate the layout for this fragment
-
-        globalView = inflater.inflate(R.layout.fragment_license_error, container, false)
-
-        return globalView
-    }
-
-    override fun onNextPressed(): Boolean {
-        return true
-    }
+    override val fragmentLayout: Int = R.layout.fragment_license_error
+    override val fragmentIconResource: Int = R.drawable.ic_round_error_24
+    override val fragmentTitleResource: Int = R.string.license_error_oops
+    override val fragmentDescriptionResource: Int = R.string.license_error_descr
 }

@@ -19,6 +19,7 @@ package com.ryanhtech.vocabulario.internal.notifications
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.ryanhtech.vocabulario.R
@@ -52,7 +53,8 @@ class Notifications {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK
             }
 
-            val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
+            val pendingIntent = PendingIntent.getActivity(context, 0, intent,
+                getDefaultPendingIntentFlag())
 
             var builder = NotificationCompat.Builder(context, NotificationManager.ADMIN_CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_baseline_lock_open_24)
@@ -98,7 +100,8 @@ class Notifications {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK
             }
 
-            val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
+            val pendingIntent = PendingIntent.getActivity(context, 0, intent,
+                getDefaultPendingIntentFlag())
 
             var builder = NotificationCompat.Builder(context, NotificationManager.ADMIN_ALERTS_CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_round_error_24)
@@ -125,7 +128,8 @@ class Notifications {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK
             }
 
-            val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
+            val pendingIntent = PendingIntent.getActivity(context, 0, intent,
+                getDefaultPendingIntentFlag())
 
             var builder = NotificationCompat.Builder(context, NotificationManager.ADMIN_ALERTS_CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_baseline_lock_24)
@@ -144,6 +148,14 @@ class Notifications {
 
             with(NotificationManagerCompat.from(context)) {
                 notify(ADMIN_APP_BLOCKED_NOTIF, builder.build())
+            }
+        }
+
+        fun getDefaultPendingIntentFlag(): Int {
+            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                PendingIntent.FLAG_IMMUTABLE
+            } else {
+                0
             }
         }
     }

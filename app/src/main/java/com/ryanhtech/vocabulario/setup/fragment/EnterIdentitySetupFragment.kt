@@ -16,10 +16,6 @@
 
 package com.ryanhtech.vocabulario.setup.fragment
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.setup.base.AppSetupFragment
 import com.ryanhtech.vocabulario.setup.config.UserSetupList
@@ -27,15 +23,11 @@ import com.ryanhtech.vocabulario.utils.DataManager
 import kotlinx.android.synthetic.main.fragment_enter_identity_setup.*
 
 class EnterIdentitySetupFragment : AppSetupFragment() {
+    override val nextStep = UserSetupList.SETUP_FEATURES_PERS
 
-    override val nextStep = UserSetupList.SETUP_LEVEL_PERS
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_enter_identity_setup, container, false)
-    }
+    override val fragmentLayout: Int = R.layout.fragment_enter_identity_setup
+    override val fragmentIconResource: Int = R.drawable.ic_round_perm_identity_24
+    override val fragmentTitleResource: Int = R.string.id_quest
 
     override fun onNextPressed(): Boolean {
         DataManager.setName(requireActivity().applicationContext, id_fragment_name.text.toString())

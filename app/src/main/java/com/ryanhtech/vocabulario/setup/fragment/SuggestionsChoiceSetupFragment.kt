@@ -16,33 +16,22 @@
 
 package com.ryanhtech.vocabulario.setup.fragment
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.setup.base.AppSetupFragment
 import com.ryanhtech.vocabulario.setup.config.UserSetupList
 import kotlinx.android.synthetic.main.fragment_setup_suggestions_choice.view.*
 
 class SuggestionsChoiceSetupFragment : AppSetupFragment() {
-    private lateinit var globalView: View
     override val nextStep: Int = UserSetupList.SETUP_FEATURES_INSTALL
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View {
-        // Inflate the layout for this fragment
-
-        globalView = inflater.inflate(R.layout.fragment_setup_suggestions_choice, container, false)
-
-        return globalView
-    }
+    override val fragmentLayout: Int = R.layout.fragment_setup_suggestions_choice
+    override val fragmentTitleResource: Int = R.string.activate_suggestions_settings
+    override val fragmentDescriptionResource: Int = R.string.suggestions_main_feature_descr
+    override val fragmentIconResource: Int = R.drawable.ic_baseline_assistant_24
 
     override fun onNextPressed(): Boolean {
         super.onNextPressed()
-
-        UserSetupList.configIsSuggestionsEnabled = globalView.isSuggestionsEnabledV2.isChecked
+        UserSetupList.configIsSuggestionsEnabled = globalView!!.isSuggestionsEnabledV2.isChecked
 
         return true
     }

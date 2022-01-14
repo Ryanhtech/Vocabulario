@@ -16,10 +16,6 @@
 
 package com.ryanhtech.vocabulario.setup.fragment
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.google.android.material.snackbar.Snackbar
 import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.setup.base.AppSetupFragment
@@ -30,22 +26,15 @@ import kotlinx.android.synthetic.main.activity_user_setup.*
 import kotlinx.android.synthetic.main.fragment_enter_admin_password_setup.*
 
 class EnterAdminPasswordSetupFragment : AppSetupFragment() {
-
-    private lateinit var globalView: View
     override val nextStep: Int = UserSetupList.ORG_SETUP_SEC_CODE
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View {
-        // Inflate the layout for this fragment
-
-        globalView = inflater.inflate(R.layout.fragment_enter_admin_password_setup, container, false)
-
-        return globalView
-    }
+    override val fragmentLayout: Int = R.layout.fragment_enter_admin_password_setup
+    override val fragmentIconResource = R.drawable.ic_baseline_lock_24
+    override val fragmentTitleResource = R.string.choose_admin_pwd
+    override val fragmentDescriptionResource: Int = R.string.pwd_descr
 
     override fun onNextPressed(): Boolean {
-        val containerView = requireActivity().fragmentContainerViewSetup
+        val containerView = requireActivity().setupContents
             ?: requireActivity().changePasswordFragment
 
         if (adminPwdSetupEnter.text.toString() != adminPwdSetupEnterConfirm.text.toString()) {

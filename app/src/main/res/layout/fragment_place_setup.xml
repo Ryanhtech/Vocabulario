@@ -28,43 +28,14 @@
         android:layout_height="wrap_content"
         tools:context=".setup.fragment.SetupEulaFragment">
 
-        <ImageView
-            android:id="@+id/setupPlaceFragmentIcon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="32dp"
-            android:importantForAccessibility="no"
-            android:src="@drawable/ic_baseline_location_on_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/primary_colour" />
-
-        <TextView
-            android:id="@+id/setupPlaceFragmentTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="50dp"
-            android:fontFamily="@font/catamaran_semibold"
-            android:text="@string/setup_place_title"
-            android:textAlignment="center"
-            android:textColor="@color/primary_colour"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/setupPlaceFragmentIcon" />
-
         <RadioGroup
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/setupPlaceFragmentTitle">
+            app:layout_constraintTop_toTopOf="parent">
 
             <RadioButton
                 android:id="@+id/homeRadioButton"

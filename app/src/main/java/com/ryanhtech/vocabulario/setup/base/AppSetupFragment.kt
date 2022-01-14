@@ -16,7 +16,15 @@
 
 package com.ryanhtech.vocabulario.setup.base
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.annotation.DrawableRes
+import androidx.annotation.LayoutRes
+import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
+import com.ryanhtech.vocabulario.R
 
 open class AppSetupFragment : Fragment() {
     /**
@@ -36,6 +44,33 @@ open class AppSetupFragment : Fragment() {
      */
 
     open val displayBackButton = true
+
+    /**
+     * The layout to inflate when you start up the Fragment. If `null`,
+     * no layout will be shown.
+     */
+    @LayoutRes open val fragmentLayout: Int? = null
+
+    /**
+     * The View of the fragment.
+     */
+    open var globalView: View? = null
+
+    /**
+     * The title resource for the fragment.
+     */
+    @StringRes open val fragmentTitleResource: Int = R.string.setup_finished_title
+
+    /**
+     * The icon to display to the user while the fragment is on the screen.
+     */
+    @DrawableRes open val fragmentIconResource : Int = R.drawable.ic_baseline_settings_24
+
+    /**
+     * The description to show to the user. If `null`, no description will be
+     * displayed. **Do not** use `0`.
+     */
+    @StringRes open val fragmentDescriptionResource: Int? = null
 
     open fun onNextPressed(): Boolean {
         /**
@@ -58,5 +93,17 @@ open class AppSetupFragment : Fragment() {
         /**
          * When the fragment is ready.
          */
+        this.startJob()
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        // Inflate the view, and return the view. After this operation, the
+        // fragment can access views with globalView.<viewName>.
+        val lFragmentLayout = fragmentLayout
+            ?: return super.onCreateView(inflater, container, savedInstanceState)
+
+        globalView = inflater.inflate(lFragmentLayout, container, false)
+        return globalView
     }
 }

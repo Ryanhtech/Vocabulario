@@ -27,8 +27,7 @@ import com.ryanhtech.vocabulario.utils.DataManager
 import kotlinx.android.synthetic.main.fragment_enter_identity_setup.*
 
 class SetupFinishedFragment : AppSetupFragment() {
-
-    override val nextStep = UserSetupList.SETUP_LEVEL_PERS
+    override val nextStep = UserSetupList.SETUP_SUGGESTIONS_C
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

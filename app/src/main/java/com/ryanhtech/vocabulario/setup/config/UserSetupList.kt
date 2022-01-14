@@ -23,7 +23,6 @@ object UserSetupList {
     const val SETUP_EULA:             Int = 1
     const val SETUP_PLACE:            Int = 2
     const val SETUP_ID_PERS:          Int = 3
-    const val SETUP_LEVEL_PERS:       Int = 4
     const val SETUP_FEATURES_PERS:    Int = 5
     const val SETUP_FEATURES_INSTALL: Int = 6
     const val SETUP_RESET_APP:        Int = 7
@@ -43,11 +42,8 @@ object UserSetupList {
         SETUP_EULA to SetupEulaFragment(),
         SETUP_PLACE to PlaceSetupFragment(),
         SETUP_ID_PERS to EnterIdentitySetupFragment(),
-        SETUP_LEVEL_PERS to SelectLevelSetupFragment(),
         SETUP_FEATURES_PERS to FeaturesSetupFragment(),
         SETUP_FEATURES_INSTALL to FeaturesInstallFragment(),
-        SETUP_RESET_APP to ResetAppFragment(),
-        SETUP_RESET_APP_OPR to ResetAppProgressFragment(),
         ORG_SETUP_ADMIN_INTRO to OrganizationSetupIntroFragment(),
         ORG_SETUP_ENTER_NAME to EnterOrganizationNameSetupFragment(),
         ORG_SETUP_ENTER_PWD to EnterAdminPasswordSetupFragment(),
@@ -58,8 +54,6 @@ object UserSetupList {
     )
 
     val nonSetupPagesExceptions: List<Class<out AppSetupFragment>> = listOf(
-        ResetAppFragment::class.java,
-        ResetAppProgressFragment::class.java,
         LicenseErrorFragment::class.java,
     )
 }
