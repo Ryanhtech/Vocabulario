@@ -290,6 +290,7 @@
     <string name="uninstall_app_reset_ope_title">Uninstall Vocabulario</string>
     <string name="uninstall_app_reset_ope_descr">This action will remove Vocabulario from your device. You can also do it by accessing to Settings > Apps > Vocabulario > Uninstall on your device.</string>
     <string name="reset_operation_finished">The requested operation has finished.</string>
+    <string name="setup_install_progress_description">Setting up Vocabulario so it\'s ready to go</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

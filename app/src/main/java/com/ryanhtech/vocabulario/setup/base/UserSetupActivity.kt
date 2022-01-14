@@ -18,14 +18,13 @@ package com.ryanhtech.vocabulario.setup.base
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.isVisible
-import androidx.dynamicanimation.animation.DynamicAnimation
-import androidx.dynamicanimation.animation.SpringAnimation
-import androidx.dynamicanimation.animation.SpringForce
 import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.setup.config.UserSetupList
 import com.ryanhtech.vocabulario.ui.activity.VocabularioActivity
+import com.ryanhtech.vocabulario.ui.animations.VocabularioListAnimation
 import com.ryanhtech.vocabulario.utils.DataManager
 import kotlinx.android.synthetic.main.activity_user_setup.*
 
@@ -95,11 +94,13 @@ class UserSetupActivity : VocabularioActivity() {
 
         // Check if the description is not null
         val lSetupDescription = currentFragment!!.fragmentDescriptionResource
-        if (lSetupDescription == null) {
-            setupDescription.isVisible = false
-        } else {
-            setupDescription.text = getString(lSetupDescription)
+        val lSetupDescriptionExt: String = if (lSetupDescription == null) { "" }
+        else {
+            getString(lSetupDescription)
         }
+
+        setupDescription.text = lSetupDescriptionExt
+        if (lSetupDescriptionExt == "") setupDescription.visibility = View.GONE
     }
 
     override fun onResume() {
@@ -115,34 +116,28 @@ class UserSetupActivity : VocabularioActivity() {
 
         setupContents.isVisible = true
         setupNextButton.isEnabled = true
-        setupProgressBar.isVisible = false
+        setupProgressBar.visibility = View.INVISIBLE
 
         // If the Activity has already been initialized
         if (!alreadySteppedIn) {
-            val springAnimation = setupContents.let { view ->
-                SpringAnimation(view, DynamicAnimation.TRANSLATION_X, 0f).apply {
-                    spring.dampingRatio = SpringForce.DAMPING_RATIO_NO_BOUNCY
-                    spring.stiffness = SpringForce.STIFFNESS_LOW
-                }
-            }
-
-            setupContents.translationX = 400f
-
-            springAnimation.start()
-        } else {
-            val springAnimation = setupContents.let { view ->
-                SpringAnimation(view, DynamicAnimation.TRANSLATION_X, 0f).apply {
-                    spring.dampingRatio = SpringForce.DAMPING_RATIO_NO_BOUNCY
-                    spring.stiffness = SpringForce.STIFFNESS_LOW
-                }
-            }
-
-            setupContents.translationX = -200f
-
-            springAnimation.start()
+            startVbListAnimationOnViews()
         }
 
         alreadySteppedIn = true
+    }
+
+    /**
+     * Starts the [VocabularioListAnimation] to enhance the user experience.
+     */
+    private fun startVbListAnimationOnViews() {
+        // Start by creating ths list of the Views to animate.
+        val lViewList = listOf<View>(setupImage, setupTitle, setupDescription, setupContents)
+
+        // Instantiate a new VocabularioListAnimation by passing the view list
+        val lListAnim = VocabularioListAnimation(lViewList, this)
+
+        // Now start the animation on the widgets
+        lListAnim.startVlaAnimation()
     }
 
     override fun onBackPressed() {

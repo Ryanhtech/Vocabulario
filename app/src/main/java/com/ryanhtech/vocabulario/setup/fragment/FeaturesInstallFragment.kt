@@ -43,6 +43,7 @@ class FeaturesInstallFragment : AppSetupFragment() {
     override val fragmentLayout: Int = R.layout.fragment_features_install
     override val fragmentIconResource: Int = R.drawable.ic_round_cloud_download_24
     override val fragmentTitleResource: Int = R.string.preparing_app
+    override val fragmentDescriptionResource: Int = R.string.setup_install_progress_description
 
     override fun startJob() {
         if (checkInternetConnection()) setupSuggestions()
