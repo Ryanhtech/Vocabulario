@@ -1,20 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright 2021-2022 Ryanhtech Labs
-  ~
-  ~  Licensed under the Apache License, Version 2.0 (the "License");
-  ~  you may not use this file except in compliance with the License.
-  ~  You may obtain a copy of the License at
-  ~
-  ~       http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~  Unless required by applicable law or agreed to in writing, software
-  ~  distributed under the License is distributed on an "AS IS" BASIS,
-  ~  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~  See the License for the specific language governing permissions and
-  ~  limitations under the License.
-  -->
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.ryanhtech.vocabulario">
@@ -32,7 +16,6 @@
         android:label="@string/receive_collection_events_permission"
         android:permissionGroup="com.ryanhtech.vocabulario.permission.group.PERMISSIONS"
         android:protectionLevel="normal" />
-
     <permission
         android:name="com.ryanhtech.vocabulario.permission.MANAGE_VOCABULARIO_RESET"
         android:description="@string/manage_vocabulario_reset_permission_descr"
@@ -68,10 +51,19 @@
         android:theme="@style/Theme.Vocabulario.Light"
         tools:ignore="LockedOrientationActivity"
         tools:targetApi="q">
+        <receiver
+            android:name=".internal.receiver.CollectionLocalReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="@string/action_collection_add_word_group" />
+            </intent-filter>
+        </receiver>
+
         <activity
             android:name=".ui.settings.reset.ResetConfirmationActivity"
             android:exported="false"
-            android:theme="@style/vocabularioBlocked"/>
+            android:theme="@style/vocabularioBlocked" />
         <activity
             android:name=".ui.settings.reset.ResetOptionsActivity"
             android:exported="false"
@@ -213,7 +205,7 @@
         <receiver
             android:name=".internal.receiver.BootStartupReceiver"
             android:enabled="true"
-            android:exported="false"
+            android:exported="true"
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -251,4 +243,5 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
+
 </manifest>

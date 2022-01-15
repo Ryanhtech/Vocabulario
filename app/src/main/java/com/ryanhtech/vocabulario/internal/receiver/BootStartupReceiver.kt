@@ -19,6 +19,7 @@ package com.ryanhtech.vocabulario.internal.receiver
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import com.ryanhtech.vocabulario.internal.notifications.Notifications
 
 class BootStartupReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {

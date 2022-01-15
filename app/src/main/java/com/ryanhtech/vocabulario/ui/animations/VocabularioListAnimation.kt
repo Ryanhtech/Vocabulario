@@ -18,6 +18,8 @@ package com.ryanhtech.vocabulario.ui.animations
 
 import android.view.View
 import android.view.animation.AnimationUtils
+import androidx.annotation.AnimRes
+import androidx.annotation.WorkerThread
 import androidx.dynamicanimation.animation.DynamicAnimation
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
@@ -36,14 +38,14 @@ import com.ryanhtech.vocabulario.ui.activity.VocabularioActivity
  * To begin, put the `Views` you need in a `List<View>`
  * instance (Kotlin). Then, create a new instance of this
  * class by passing the list you just created in the
- * views parameter, and call `startVlaAnimation()`. This will
+ * views parameter, and call `startAnimation()`. This will
  * perform a VocabularioListAnimation on all of the
  * views you specified in the list.
  *
- * OPTIONAL - You can also add a delay in the `startVlaAnimation()`
+ * OPTIONAL - You can also add a delay in the `startAnimation()`
  * as the delay parameter. The default delay is 100ms. For example,
- * you could use `startVlaAnimation(300)` instead of
- * `startVlaAnimation()`.
+ * you could use `startAnimation(300)` instead of
+ * `startAnimation()`.
  */
 class VocabularioListAnimation(views: List<View>, activity: VocabularioActivity) {
     // Initialize the class with the required elements.
@@ -63,8 +65,8 @@ class VocabularioListAnimation(views: List<View>, activity: VocabularioActivity)
         mActivity = activity
     }
 
-    fun startVlaAnimation() {
-        startVlaAnimation(50)
+    fun startAnimation() {
+        startAnimation(50)
     }
 
     /**
@@ -74,18 +76,38 @@ class VocabularioListAnimation(views: List<View>, activity: VocabularioActivity)
      *
      * @param delay The delay between each View as a Long object.
      */
-    fun startVlaAnimation(delay: Long) {
+    fun startAnimation(delay: Long) {
         // Call the internal tool
         processInternalStartAnimation(delay)
+    }
+
+    fun startReversedAnimation() {
+        startReversedAnimation(50)
+    }
+
+    /**
+     * Starts the reversed animation. The widgets will go down
+     * and will fade in at the same time.
+     */
+    fun startReversedAnimation(delay: Long) {
+        processInternalStartReversedAnimation(delay)
     }
 
     private fun processInternalStartAnimation(delay: Long) {
         // Create the new working thread that will execute all
         // the actions.
-        val lWorkingThread = Thread { runWorkOnSeparateThread(delay) }
+        val lWorkingThread = Thread { runAnimationWorkOnSeparateThread(delay) }
 
         // Execute the thread
         lWorkingThread.start()
+    }
+
+    private fun processInternalStartReversedAnimation(delay: Long) {
+        // Create the working thread for the reversed animation
+        val lReverseWorkingThread = Thread { runReversedAnimationWorkOnSeparateThread(delay) }
+
+        // Start the thread
+        lReverseWorkingThread.start()
     }
 
     /**
@@ -97,33 +119,73 @@ class VocabularioListAnimation(views: List<View>, activity: VocabularioActivity)
         }
     }
 
-    private fun runWorkOnSeparateThread(delay: Long) {
+    @WorkerThread
+    private fun runAnimationWorkOnSeparateThread(delay: Long) {
+        runAnyAnimationWorkOnSeparateThread(delay, false)
+    }
+
+    @WorkerThread
+    private fun runReversedAnimationWorkOnSeparateThread(delay: Long) {
+        runAnyAnimationWorkOnSeparateThread(delay, true)
+    }
+
+    @WorkerThread
+    private fun runAnyAnimationWorkOnSeparateThread(delay: Long, isReversedAnimation: Boolean) {
         // Start by hiding all the Views that we haven't animated
         hideViews()
 
-        for (view in mViewList) {
+        // If we must make a reversed animation, reverse the list!!
+        val lViewList = mViewList
+        if (isReversedAnimation) {
+            lViewList.reversed()
+        }
+
+        // Ignore the delay if we are in a reversed animation
+        var lDelay = delay
+        if (isReversedAnimation) {
+            lDelay = 0
+        }
+
+        // To perform the SpringAnimation, we need a spring stiffness.
+        // We may prefer a low stiffness on a standard animation, and
+        // an average one on a reversed animation.
+        var lSpringStiffness = SpringForce.STIFFNESS_LOW
+        if (isReversedAnimation) {
+            lSpringStiffness = SpringForce.STIFFNESS_MEDIUM
+        }
+
+        for (view in lViewList) {
             // For each view in the view list, perform the animation
             // and wait the delay that we have
 
             // Create a new SpringAnimation object
             val lSpringAnimation = SpringAnimation(view, DynamicAnimation.TRANSLATION_Y,
                 view.translationY).apply {
-                spring.stiffness = SpringForce.STIFFNESS_LOW
+                spring.stiffness = lSpringStiffness
                 spring.dampingRatio = SpringForce.DAMPING_RATIO_NO_BOUNCY
             }
 
-            // Get an animation instance
-            val lZoomInAnimationInstance = AnimationUtils.loadAnimation(mActivity, R.anim.vla_zoom_in)
+            // Get an animation instance, depending on the requested mode
+            @AnimRes val lAnimationRes = if (isReversedAnimation) R.anim.no_anim
+                else R.anim.vla_zoom_in
 
-            // Bring the View down a bit so we see something moving
+            val lZoomInAnimationInstance = AnimationUtils.loadAnimation(mActivity, lAnimationRes)
+
+            // Bring the View down a bit (or up) so we see something moving
             mActivity.runOnUiThread {
                 val lViewYAxis = view.translationY
-                view.translationY = (lViewYAxis - 400) * -1
+                val lDestinationTranslationOnYAxis =
+                    if (isReversedAnimation) {
+                        lViewYAxis - 200
+                    }
+                    else { (lViewYAxis - 400) * -1 }
+
+                view.translationY = lDestinationTranslationOnYAxis
 
                 // Start the SpringAnimation on our object on the UI thread
                 lSpringAnimation.start()
 
-                // Start the zoom in animation
+                // Start the zoom (in or out) animation
                 view.startAnimation(lZoomInAnimationInstance)
 
                 // Don't forget to show the View again
@@ -131,7 +193,7 @@ class VocabularioListAnimation(views: List<View>, activity: VocabularioActivity)
             }
 
             // Wait the delay we have been provided.
-            Thread.sleep(delay)
+            Thread.sleep(lDelay)
         }
 
         // We have finished our animation. We can return

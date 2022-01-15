@@ -33,6 +33,12 @@ class UserSetupActivity : VocabularioActivity() {
     private var alreadySteppedIn = false
     override val isProtectedActivity: Boolean = true
 
+    // If this Activity launched another setup Activity
+    var isNewSetupPageLaunched = false
+
+    // The ListAnimation instance
+    private lateinit var listAnimation: VocabularioListAnimation
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_setup)
@@ -74,6 +80,9 @@ class UserSetupActivity : VocabularioActivity() {
                     // Activity transition
                     startActivity(lActivityIntent)
                     overridePendingTransition(0, 0)
+
+                    // Register the event
+                    isNewSetupPageLaunched = true
                 }.start()
             }
         }
@@ -123,7 +132,14 @@ class UserSetupActivity : VocabularioActivity() {
             startVbListAnimationOnViews()
         }
 
+        // If we just came back from another setup page, then just
+        // start the reversed animation
+        if (isNewSetupPageLaunched) {
+            listAnimation.startReversedAnimation()
+        }
+
         alreadySteppedIn = true
+        isNewSetupPageLaunched = false
     }
 
     /**
@@ -134,10 +150,10 @@ class UserSetupActivity : VocabularioActivity() {
         val lViewList = listOf<View>(setupImage, setupTitle, setupDescription, setupContents)
 
         // Instantiate a new VocabularioListAnimation by passing the view list
-        val lListAnim = VocabularioListAnimation(lViewList, this)
+        listAnimation = VocabularioListAnimation(lViewList, this)
 
         // Now start the animation on the widgets
-        lListAnim.startVlaAnimation()
+        listAnimation.startAnimation()
     }
 
     override fun onBackPressed() {

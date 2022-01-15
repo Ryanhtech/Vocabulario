@@ -19,6 +19,7 @@ package com.ryanhtech.vocabulario.tools.collection
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.ryanhtech.vocabulario.BuildConfig
 import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.tools.collection.db.CollectionData
@@ -116,10 +117,9 @@ class CollectionManager(collectionDir: String) {
                 val broadcastIntent = Intent(
                     context.getString(R.string.action_collection_add_word_group))
 
-                // We have our Intent. Now try to send the broadcast using it. The receiver will
-                // require the RECEIVE_COLLECTION_EVENTS permission to be able to receive it.
-                context.sendBroadcast(
-                    broadcastIntent/*, com.ryanhtech.vocabulario.Manifest.permission.RECEIVE_COLLECTION_EVENTS*/)
+                // We have our Intent. Now try to send the broadcast using it.
+                val lBrMgr = LocalBroadcastManager.getInstance(context)
+                lBrMgr.sendBroadcast(broadcastIntent)
             }
             catch (e: Exception) {
                 // We have an exception here, so log it and return False.

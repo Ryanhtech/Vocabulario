@@ -142,7 +142,7 @@ class ResetConfirmationActivity : BaseResetActivity() {
 
     private fun startWidgetsAnimation() {
         // Start the widgets animation
-        onScreenViewsAnimation.startVlaAnimation()
+        onScreenViewsAnimation.startAnimation()
     }
 
     private fun initResetOperation() {

@@ -161,7 +161,7 @@ class MainActivity : VocabularioActivity() {
             lVocListAnim.hideViews()
 
             Handler(Looper.getMainLooper()).postDelayed({
-                lVocListAnim.startVlaAnimation()
+                lVocListAnim.startAnimation()
             }, 1000)
 
             return true

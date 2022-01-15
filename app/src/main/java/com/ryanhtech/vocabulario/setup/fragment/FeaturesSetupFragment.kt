@@ -45,10 +45,12 @@ class FeaturesSetupFragment : AppSetupFragment() {
 
         globalView.suggestionsDisabledLearnMoreButton.setOnClickListener { learnMoreInfo() }*/
 
-        activity?.startActivity(
+        val lUserSetupActivity = activity as UserSetupActivity
+
+        lUserSetupActivity.startActivity(
             Intent(requireActivity(), UserSetupActivity::class.java)
             .putExtra("step", UserSetupList.SETUP_SUGGESTIONS_C))
-        activity?.finish()
+        lUserSetupActivity.finish()
 
         return lGlobalView
     }

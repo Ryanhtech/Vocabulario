@@ -74,7 +74,7 @@ class ResetOptionsActivity : BaseResetActivity() {
         val vla = VocabularioListAnimation(viewsToAnimate, this)
 
         // Start the animation and change the Activity transition
-        vla.startVlaAnimation()
+        vla.startAnimation()
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
     }
 
