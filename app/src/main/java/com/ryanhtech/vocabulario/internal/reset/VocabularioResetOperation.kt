@@ -131,7 +131,7 @@ class VocabularioResetOperation(resetType: String, context: Context) {
             // Raise the exception
             lockdownInstanceAndThrowException(
                 IllegalStateException(
-                    "The provided reset type doesn't exists. Type: \"$resetType\""))
+                    "The provided reset type doesn't exist. Type: \"$resetType\""))
         }
 
         // Then we have our reset type. Copy it into mResetType, and the context as
