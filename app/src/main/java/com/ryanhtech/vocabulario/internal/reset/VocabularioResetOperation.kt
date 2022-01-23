@@ -277,7 +277,8 @@ class VocabularioResetOperation(resetType: String, context: Context) {
         // Delete all tables, which means "Delete all word groups". This
         // operation is asynchronous no there is no way to tell when it's
         // done, so delete the word pointers while it's working.
-        Thread { db.clearAllTables() }.start()
+        val pointerThread = Thread { db.clearAllTables() }
+        pointerThread.start()
 
         // Delete the Collection word pointers file
         val collectionPointerFile = File(mContext.applicationContext.filesDir,
@@ -288,7 +289,10 @@ class VocabularioResetOperation(resetType: String, context: Context) {
         // Reconfigure the word pointer system
         CollectionWordContentManager.initFile(mContext)
 
-        // Return, though the operation might still be running!
+        // Wait until the pointer thread has finished running.
+        // Don't return until it's done!
+        pointerThread.join()
+
         return
     }
 
