@@ -80,7 +80,7 @@ class UserSettings(context: Context) {
      * with the rules for usernames in Vocabulario. It returns the following
      * values:
      *
-     *  - `NameCheckStatus.NAME_VALID`: if the name is valid. Good job!
+     *  - `NameCheckStatus.NAME_VALID`: the name is valid. Good job!
      *  - `NameCheckStatus.NAME_WHITESPACE`: the name doesn't respect the whitespace
      *    rules.
      *  - `NameCheckStatus.NAME_CASE_ERROR`: the name doesn't respect the case rules.
@@ -170,5 +170,21 @@ class UserSettings(context: Context) {
      */
     fun setSchoolName(schoolName: String) {
         mSchoolName = schoolName
+    }
+
+    /**
+     * This method writes the settings defined in this class
+     * into the shared preferences.
+     *
+     * @see LocalSettingsManager.applyUserSettingsInstance
+     */
+    fun applySettings() {
+        // Create an instance of the settings manager
+        val lLocalSettingsMgrInst = LocalSettingsManager(mContext)
+
+        // Write this class (this) to the settings using the local
+        // settings manager. This is the global algorithm operations:
+        // this (conversion)-> json (raw class data)-> shared preferences
+        lLocalSettingsMgrInst.applyUserSettingsInstance(this)
     }
 }
