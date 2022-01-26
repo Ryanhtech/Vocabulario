@@ -53,11 +53,6 @@
         <item name="android:statusBarColor">@color/invisible_bkg</item>
     </style>
 
-    <style name="popUpActivityTheme" parent="Theme.Vocabulario.Light">
-        <item name="android:windowLightStatusBar">false</item>
-        <item name="android:statusBarColor">@color/pop_up_activity_status_bar</item>
-    </style>
-
     <style name="vocabularioBlocked" parent="Theme.Vocabulario.Light">
         <item name="android:statusBarColor">@color/block_bkg</item>
         <item name="android:navigationBarColor">@color/block_bkg</item>

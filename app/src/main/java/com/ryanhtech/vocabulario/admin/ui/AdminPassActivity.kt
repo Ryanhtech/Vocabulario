@@ -29,9 +29,9 @@ import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.core.view.isVisible
 import com.ryanhtech.vocabulario.R
+import com.ryanhtech.vocabulario.admin.deviceadmin.VocabularioDeviceAdminReceiver
 import com.ryanhtech.vocabulario.admin.internal.AdminPasswordManager
 import com.ryanhtech.vocabulario.admin.internal.AdminPermissions
-import com.ryanhtech.vocabulario.admin.deviceadmin.VocabularioDeviceAdminReceiver
 import com.ryanhtech.vocabulario.internal.block.ForgotPasswordBlockPromptActivity
 import com.ryanhtech.vocabulario.internal.notifications.Notifications
 import com.ryanhtech.vocabulario.ui.activity.VocabularioPopupActivity

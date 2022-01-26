@@ -107,6 +107,10 @@
     </style>
 
     <style name="popUpActivityTheme" parent="Theme.Vocabulario.Light">
-        <item name="android:statusBarColor">@color/pop_up_activity_status_bar</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:gravity">bottom</item>
     </style>
 </resources>
