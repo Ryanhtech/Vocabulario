@@ -51,6 +51,10 @@
         android:theme="@style/Theme.Vocabulario.Light"
         tools:ignore="LockedOrientationActivity"
         tools:targetApi="q">
+        <activity
+            android:name=".ui.popup.PopupContainerActivity"
+            android:exported="false" />
+
         <receiver
             android:name=".internal.receiver.CollectionLocalReceiver"
             android:enabled="true"

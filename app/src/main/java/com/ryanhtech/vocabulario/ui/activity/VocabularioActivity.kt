@@ -16,15 +16,20 @@
 
 package com.ryanhtech.vocabulario.ui.activity
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.WindowManager
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.ryanhtech.vocabulario.admin.internal.AdminPasswordManager
 import com.ryanhtech.vocabulario.admin.internal.AdminPermissions
 import com.ryanhtech.vocabulario.admin.ui.AdminPassActivity
 import com.ryanhtech.vocabulario.internal.reset.LocalConfigurationRequest
+import com.ryanhtech.vocabulario.internal.vocabulario.Vocabulario
+import com.ryanhtech.vocabulario.ui.popup.PopupContainerActivity
 import com.ryanhtech.vocabulario.ui.startup.SplashScreenActivity
 import com.ryanhtech.vocabulario.utils.DataManager
 
@@ -113,6 +118,39 @@ open class VocabularioActivity : AppCompatActivity() {
             // Start the splash screen to re-configure the app
             startActivity(Intent(this, SplashScreenActivity::class.java))
             finish()
+        }
+    }
+
+    open fun displayPopupFragment(fragmentInst: Fragment, activityContext: Activity) {
+        // Put the root view into a local variable
+        val lActivityRootView = activityContext.window.decorView.rootView
+
+        // Convert them to JSON
+        val lGsonInst = Vocabulario.getGson()
+        val lActivityRootViewJson = lGsonInst.toJson(lActivityRootView)
+        val lFragmentJson = lGsonInst.toJson(fragmentInst)
+
+        // Now initialize the Intent and put the string extras into it
+        val lPopupIntent = Intent(activityContext, PopupContainerActivity::class.java)
+
+        // Set the new task flag else it won't work
+        lPopupIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+
+        // Set the extras
+        lPopupIntent.apply {
+            putExtra(PopupContainerActivity.EXTRA_FRAGMENT_TO_SET, lFragmentJson)
+            putExtra(PopupContainerActivity.EXTRA_PARENT_ACTIVITY_ROOTVIEW, lActivityRootViewJson)
+        }
+
+        // Start the popup Activity using our Intent
+        try {
+            activityContext.startActivity(lPopupIntent)
+        }
+        catch (err: Exception) {
+            // An exception occurred while starting the Activity
+            Log.e("VocabularioActivity",
+                "An error occurred while starting the PopupContainerActivity.")
+            throw err
         }
     }
 }

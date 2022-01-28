@@ -31,6 +31,7 @@ import com.ryanhtech.vocabulario.R
  * class, just call the PopupActivityExecutor.runPopupActivity()
  * method and it will do all the work for you.
  */
+@Deprecated("See PopupContainerActivity instead")
 open class VocabularioPopupActivity : VocabularioActivity() {
     companion object {
         /**
