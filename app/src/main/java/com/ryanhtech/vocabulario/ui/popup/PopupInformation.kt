@@ -34,12 +34,12 @@ class PopupInformation(popupFragment: PopupFragment) {
      *
      * @see PopupDataContainer
      */
-    private val mPopupDataContainerInstance: PopupDataContainer = TODO("Create PopupDataContainer first!")
+    private lateinit var mPopupDataContainerInstance: PopupDataContainer
 
     /**
      * This contains a PopupStatus instance.
      */
-    private val mPopupStatusInstance: PopupStatus = TODO("Create PopupStatus first!")
+    private lateinit var mPopupStatusInstance: PopupStatus
 
     /**
      * This contains an unique ID associated with the PopupFragment.
@@ -55,6 +55,44 @@ class PopupInformation(popupFragment: PopupFragment) {
      * Constant variable to define the allowed characters in an identifier.
      */
     val POPUP_FRAGMENT_IDENTIFIER_ALLOWED_CHARS = ('A'..'Z') + ('a'..'z')
+
+    /**
+     * The popup status. Use this to change the status of the Popup.
+     *
+     * **WARNING**: This variable will NEVER change, even when you assign a value
+     * to it (e.g. `myPopupInfo.popupStatus = this.bla`). Instead, it will verify
+     * your value and set it into a private variable. To say this shortly, when you
+     * reference this variable (`myPopupInfo.popupStatus`), it will return the value
+     * of mPopupStatusInstance instead, and when you set it, it will set the
+     * mPopupStatusInstance variable to your request.
+     *
+     * @since Initial version
+     */
+    var popupStatus: PopupStatus
+    get() {
+        return mPopupStatusInstance
+    }
+    set(value) {
+        mPopupStatusInstance = value
+    }
+
+    /**
+     * The Popup ID. You shouldn't use it in your program.
+     *
+     * **WARNING**: Do not set this value. If you do, you will have an
+     * `IllegalAccessException` right in the face.
+     */
+    var popupId: String
+    get() {
+        return mPopupIdentifier
+    }
+    set(value) {
+        // Fun fact: I used the $value in the string because I didn't want Android Studio
+        // telling me "Variable is never used". I also used it because it's quite useful
+        // for debugging, when you don't read the docs just above. ^^
+        //                                                         ||
+        throw IllegalAccessException("Don't set this value!! (your value: $value)")
+    }
 
     // Main class constructor - this code will be executed when the class is instantiated
     init {
@@ -87,7 +125,14 @@ class PopupInformation(popupFragment: PopupFragment) {
         // Set the local ID to the newly created ID
         this.mPopupIdentifier = lPopupIdentifier
 
-        //
+        // Initialize a new PopupStatus instance and set it
+        val lNewPopupStatusInstance = PopupStatus()
+        this.mPopupStatusInstance = lNewPopupStatusInstance
+
+        // Init a new PopupDataContainer instance
+        // TODO PopupDataContainer
+        val lPpDataContainer = PopupDataContainer()
+        mPopupDataContainerInstance = lPpDataContainer
     }
 
     private fun generateLocalIdentifier(): String {
@@ -96,9 +141,5 @@ class PopupInformation(popupFragment: PopupFragment) {
         return (1..POPUP_FRAGMENT_IDENTIFIER_LENGTH)
             .map { POPUP_FRAGMENT_IDENTIFIER_ALLOWED_CHARS.random() }
             .joinToString("")
-    }
-
-    fun getPopupIdentifier(): String {
-        return mPopupIdentifier
     }
 }

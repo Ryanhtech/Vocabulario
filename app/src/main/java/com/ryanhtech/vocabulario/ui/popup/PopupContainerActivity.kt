@@ -24,6 +24,7 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.ryanhtech.vocabulario.R
+import com.ryanhtech.vocabulario.internal.vocabulario.Vocabulario
 import jp.wasabeef.blurry.Blurry
 
 /**
@@ -82,15 +83,22 @@ class PopupContainerActivity : AppCompatActivity() {
         // Set the content view
         setContentView(R.layout.activity_vocabulario_popup)
 
-        // Save the screenshot as a View for now
-        val lParentActivityRootView = intent.getSerializableExtra(EXTRA_PARENT_ACTIVITY_ROOTVIEW)
-            ?: throw IllegalArgumentException("EXTRA_PARENT_ACTIVITY_ROOTVIEW is null!")
-        mParentActivityRootView = lParentActivityRootView as View
+        // Convert everything from JSON
+        val lGsonInst = Vocabulario.getGson()
 
-        // Save the fragment to display
-        val lFragmentFromIntent = intent.getSerializableExtra(EXTRA_FRAGMENT_TO_SET)
+        // Save the screenshot as a View for now
+        val lParentActivityRootViewJson = intent.getStringExtra(EXTRA_PARENT_ACTIVITY_ROOTVIEW)
+            ?: throw IllegalArgumentException("EXTRA_PARENT_ACTIVITY_ROOTVIEW is null!")
+
+        mParentActivityRootView = lGsonInst.fromJson(lParentActivityRootViewJson,
+            View::class.java) as View
+
+        // Perform the same operation on the fragment to set
+        val lFragmentFromIntent = intent.getStringExtra(EXTRA_FRAGMENT_TO_SET)
             ?: throw IllegalArgumentException("EXTRA_FRAGMENT_TO_SET is null!")
-        mFragmentToInflate = lFragmentFromIntent as Fragment
+
+        mFragmentToInflate = lGsonInst.fromJson(lFragmentFromIntent, Fragment::class.java)
+            as Fragment
 
         // Remove transitions (if you pass 0 on both parameters it will remove everything)
         overridePendingTransition(0, 0)
@@ -109,7 +117,7 @@ class PopupContainerActivity : AppCompatActivity() {
 
         // Now inflate the fragment
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.subSettingsFragment, lFragmentFromIntent)
+            replace(R.id.subSettingsFragment, mFragmentToInflate)
             commit()
         }
 

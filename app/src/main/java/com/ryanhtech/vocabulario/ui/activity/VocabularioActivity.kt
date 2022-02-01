@@ -133,9 +133,6 @@ open class VocabularioActivity : AppCompatActivity() {
         // Now initialize the Intent and put the string extras into it
         val lPopupIntent = Intent(activityContext, PopupContainerActivity::class.java)
 
-        // Set the new task flag else it won't work
-        lPopupIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-
         // Set the extras
         lPopupIntent.apply {
             putExtra(PopupContainerActivity.EXTRA_FRAGMENT_TO_SET, lFragmentJson)

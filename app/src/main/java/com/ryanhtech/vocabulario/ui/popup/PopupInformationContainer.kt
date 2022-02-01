@@ -39,7 +39,6 @@ object PopupInformationContainer {
      * fragment.
      */
     val mPopupInfoList: MutableList<PopupInformation> = mutableListOf()
-    // TODO Put an ID into the PopupInformation
 
     /**
      * This adds a new PopupFragment instance to the fragment list. An ID will be
@@ -48,6 +47,12 @@ object PopupInformationContainer {
      */
     fun registerPopupFragment(popupFragment: PopupFragment): PopupInformation {
         // First, create a new PopupInformation with the fragment instance
+        val lCurrentPopupInformation = PopupInformation(popupFragment)
 
+        // Add the popup info to the list
+        mPopupInfoList.add(lCurrentPopupInformation)
+
+        // Return the popup information
+        return lCurrentPopupInformation
     }
 }

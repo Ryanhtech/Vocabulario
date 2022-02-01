@@ -91,7 +91,6 @@
     <string name="start">Start</string>
     <string name="manage_planification">Manage planification</string>
     <string name="edit_profile">Edit profile</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="eula_description">This software comes with an EULA, or End-User License Agreement. This EULA helps you understaind how to use this software legally. Vocabulario is licensed under the Apache License, version 2.0, an open-source license. If you do not accept it, uninstall this software.</string>
     <string name="view_license">View license</string>
     <string name="apache_license_url" translatable="false">https://www.apache.org/licenses/LICENSE-2.0</string>
@@ -291,6 +290,4 @@
     <string name="uninstall_app_reset_ope_descr">This action will remove Vocabulario from your device. You can also do it by accessing to Settings > Apps > Vocabulario > Uninstall on your device.</string>
     <string name="reset_operation_finished">The requested operation has finished.</string>
     <string name="setup_install_progress_description">Setting up Vocabulario so it\'s ready to go</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
 </resources>

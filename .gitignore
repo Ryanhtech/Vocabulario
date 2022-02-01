@@ -16,3 +16,6 @@ app/~$icon.pptx
 /app/release
 /.git_old
 /app/src/main/java/com/ryanhtech/raf
+
+# Ignore MS Office lock files
+~$*.*x
