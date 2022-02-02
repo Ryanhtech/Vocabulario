@@ -25,6 +25,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.internal.vocabulario.Vocabulario
+import com.ryanhtech.vocabulario.setup.fragment.OrganizationSetupIntroFragment
+import com.ryanhtech.vocabulario.ui.activity.VocabularioActivity
 import com.ryanhtech.vocabulario.ui.settings.SettingsActivity
 import com.ryanhtech.vocabulario.utils.DataManager
 import kotlinx.android.synthetic.main.fragment_profile.view.*
@@ -49,7 +51,10 @@ class ProfileFragment: Fragment(R.layout.fragment_profile) {
             startActivity(SettingsActivity::class.java)
         }
         viewLayout.editProfileButtonProfileFragment.setOnClickListener {
-            startActivity(EditProfileActivity::class.java)
+            //startActivity(EditProfileActivity::class.java)
+            // <DEBUG>: Starting test
+            val act = activity as VocabularioActivity
+            act.displayPopupFragment(QuizFragment(), act)
         }
 
         return viewLayout

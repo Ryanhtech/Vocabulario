@@ -28,9 +28,9 @@ import com.ryanhtech.vocabulario.admin.internal.AdminPasswordManager
 import com.ryanhtech.vocabulario.admin.internal.AdminPermissions
 import com.ryanhtech.vocabulario.admin.ui.AdminPassActivity
 import com.ryanhtech.vocabulario.internal.reset.LocalConfigurationRequest
-import com.ryanhtech.vocabulario.internal.vocabulario.Vocabulario
 import com.ryanhtech.vocabulario.ui.popup.PopupContainerActivity
 import com.ryanhtech.vocabulario.ui.startup.SplashScreenActivity
+import com.ryanhtech.vocabulario.ui.viewmanager.ViewContainer
 import com.ryanhtech.vocabulario.utils.DataManager
 
 /**
@@ -125,18 +125,17 @@ open class VocabularioActivity : AppCompatActivity() {
         // Put the root view into a local variable
         val lActivityRootView = activityContext.window.decorView.rootView
 
-        // Convert them to JSON
-        val lGsonInst = Vocabulario.getGson()
-        val lActivityRootViewJson = lGsonInst.toJson(lActivityRootView)
-        val lFragmentJson = lGsonInst.toJson(fragmentInst)
-
         // Now initialize the Intent and put the string extras into it
         val lPopupIntent = Intent(activityContext, PopupContainerActivity::class.java)
 
+        // Save the class instance and the fragment to get them back in the next Activity
+        val lViewId = ViewContainer.saveInstance(lActivityRootView)
+        val lFragId = ViewContainer.saveInstance(fragmentInst)
+
         // Set the extras
         lPopupIntent.apply {
-            putExtra(PopupContainerActivity.EXTRA_FRAGMENT_TO_SET, lFragmentJson)
-            putExtra(PopupContainerActivity.EXTRA_PARENT_ACTIVITY_ROOTVIEW, lActivityRootViewJson)
+            putExtra(PopupContainerActivity.EXTRA_FRAGMENT_TO_SET, lFragId)
+            putExtra(PopupContainerActivity.EXTRA_PARENT_ACTIVITY_ROOTVIEW, lViewId)
         }
 
         // Start the popup Activity using our Intent

@@ -52,4 +52,14 @@
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowBackground">@color/reset_back</item>
     </style>
+
+    <style name="popupContainerActivity" parent="Theme.Vocabulario.Light">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:statusBarColor">@color/popup_status</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
 </resources>

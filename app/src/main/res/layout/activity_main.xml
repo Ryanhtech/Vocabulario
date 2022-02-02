@@ -40,11 +40,12 @@
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:background="@color/background_default"
-        app:itemIconTint="@color/title_text"
-        app:itemRippleColor="@color/title_text"
-        app:itemTextColor="@color/title_text"
+        app:itemIconTint="@drawable/bottom_nav_color"
+        app:itemTextColor="@drawable/bottom_nav_color"
+        app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
@@ -57,6 +58,6 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationBarMainActivity"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"></LinearLayout>
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

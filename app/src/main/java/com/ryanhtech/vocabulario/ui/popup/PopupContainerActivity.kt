@@ -17,14 +17,21 @@
 package com.ryanhtech.vocabulario.ui.popup
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.FrameLayout
-import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.doOnLayout
+import androidx.dynamicanimation.animation.DynamicAnimation
+import androidx.dynamicanimation.animation.SpringAnimation
+import androidx.dynamicanimation.animation.SpringForce
 import androidx.fragment.app.Fragment
 import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.internal.vocabulario.Vocabulario
+import com.ryanhtech.vocabulario.ui.viewmanager.ViewContainer
 import jp.wasabeef.blurry.Blurry
 
 /**
@@ -69,7 +76,7 @@ class PopupContainerActivity : AppCompatActivity() {
     private lateinit var mFragmentToInflate: Fragment
 
     // Background ImageView
-    private lateinit var mImageView: ImageView
+    private lateinit var mBackgroundView: View
 
     // Content LinearLayout
     private lateinit var mContentLayout: LinearLayout
@@ -87,24 +94,28 @@ class PopupContainerActivity : AppCompatActivity() {
         val lGsonInst = Vocabulario.getGson()
 
         // Save the screenshot as a View for now
-        val lParentActivityRootViewJson = intent.getStringExtra(EXTRA_PARENT_ACTIVITY_ROOTVIEW)
-            ?: throw IllegalArgumentException("EXTRA_PARENT_ACTIVITY_ROOTVIEW is null!")
+        val lParentActivityRootViewJson = intent.getIntExtra(EXTRA_PARENT_ACTIVITY_ROOTVIEW, -1)
 
-        mParentActivityRootView = lGsonInst.fromJson(lParentActivityRootViewJson,
-            View::class.java) as View
+        if (lParentActivityRootViewJson == -1) {
+            throw IllegalArgumentException("EXTRA_PARENT_ACTIVITY_ROOTVIEW can't be found!")
+        }
+
+        mParentActivityRootView = ViewContainer.getInstance(lParentActivityRootViewJson) as View
 
         // Perform the same operation on the fragment to set
-        val lFragmentFromIntent = intent.getStringExtra(EXTRA_FRAGMENT_TO_SET)
-            ?: throw IllegalArgumentException("EXTRA_FRAGMENT_TO_SET is null!")
+        val lFragmentFromIntent = intent.getIntExtra(EXTRA_FRAGMENT_TO_SET, -144)
 
-        mFragmentToInflate = lGsonInst.fromJson(lFragmentFromIntent, Fragment::class.java)
-            as Fragment
+        if (lFragmentFromIntent == -144) {
+            throw IllegalArgumentException("Can't found EXTRA_FRAGMENT_TO_SET")
+        }
+
+        mFragmentToInflate = ViewContainer.getInstance(lFragmentFromIntent) as Fragment
 
         // Remove transitions (if you pass 0 on both parameters it will remove everything)
         overridePendingTransition(0, 0)
 
         // Then, initialize the widgets
-        mImageView = findViewById(R.id.popupActivityBackImageView)
+        mBackgroundView = findViewById(R.id.popupActivityBackgroundView)
         mContentLayout = findViewById(R.id.popupContentLinearLayout)
         mFragmentFrameLayout = findViewById(R.id.popupFragmentContentFrameLayout)
 
@@ -113,19 +124,74 @@ class PopupContainerActivity : AppCompatActivity() {
         mParentActivityBlurryScreenshot = lBlurryScreenshot
 
         // Set the ImageView image to the blurry image
-        mParentActivityBlurryScreenshot.into(mImageView)
+        //mParentActivityBlurryScreenshot.into(mImageView)
+        // TODO: Update screenshot (keep it or remove it?)
 
         // Now inflate the fragment
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.subSettingsFragment, mFragmentToInflate)
+            replace(R.id.popupFragmentContentFrameLayout, mFragmentToInflate)
             commit()
         }
 
-        // Start the ultimate popup animation
-        startPopupAnimation()
+        // Run the animation after the mContentLayout has been drawn on the screen
+        mContentLayout.doOnLayout {
+            startPopupAnimationThread()
+        }
+    }
+
+    private fun startPopupAnimationThread() {
+        // Create the thread and start it
+        val lAnimThread = Thread { startPopupAnimation() }
+        lAnimThread.start()
     }
 
     private fun startPopupAnimation() {
-        // TODO Animation
+        // Instantiate a new SpringAnimation
+        val lSprAnim = SpringAnimation(mContentLayout, DynamicAnimation.TRANSLATION_Y,
+            mContentLayout.y).apply {
+                spring.dampingRatio = SpringForce.DAMPING_RATIO_NO_BOUNCY
+                spring.stiffness = SpringForce.STIFFNESS_MEDIUM
+        }
+
+        runOnUiThread {
+            // Move the View down a bit
+            // For some reason you have to use + instead of -
+            mContentLayout.y = mContentLayout.y + mContentLayout.measuredHeight
+
+            // Run the animation
+            lSprAnim.start()
+
+            // Show the content layout because it is hidden by default
+            mContentLayout.visibility = View.VISIBLE
+        }
+
+        // Now, prepare the background animation
+        // The aim of this animation is to make the user feel like it's switching
+        // in another world.
+        val lPopupBackgroundAnimationInst = AnimationUtils.loadAnimation(this,
+            R.anim.popup_anim_background_fadein)
+
+        // Set the animation listeners to detect the end of the animation and to keep the background
+        // transparent after the animation
+        lPopupBackgroundAnimationInst.setAnimationListener(object: Animation.AnimationListener {
+            // You don't need to implement these
+            override fun onAnimationStart(animation: Animation?) {}
+            override fun onAnimationRepeat(animation: Animation?) {}
+
+            override fun onAnimationEnd(animation: Animation?) {
+                // Check if we have the right animation
+                if (lPopupBackgroundAnimationInst != animation) {
+                    Log.w("PopupContainerActivity", "The animation in AnimationListener " +
+                            "is not right.")
+                    return
+                }
+
+                // Then set the background's alpha to the right one
+                mBackgroundView.alpha = 0.9F
+            }
+        })
+
+        // Start the fade in animation
+        mBackgroundView.startAnimation(lPopupBackgroundAnimationInst)
     }
 }
