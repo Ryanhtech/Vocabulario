@@ -31,4 +31,28 @@
         <item name="android:background">@color/gray_400</item>
         <item name="exampleColor">@color/light_blue_400</item>
     </style>
+
+    <style name="SettingsTileStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:background">@drawable/tile_background</item>
+        <item name="android:baselineAligned">false</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">20dp</item>
+    </style>
+
+    <style name="AppColourTitleTextViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/catamaran_extrabold</item>
+        <item name="android:textColor">@color/primary_colour</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="DescriptionTextViewStyle">
+        <item name="android:fontFamily">@font/catamaran_semibold</item>
+        <item name="android:textColor">@color/basic_text</item>
+        <item name="android:textSize">12sp</item>
+    </style>
 </resources>
