@@ -94,7 +94,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/okPopupButton"
                 app:layout_constraintStart_toEndOf="@+id/cancelPopupButton"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="@string/app_name" />
+                android:text="@string/app_name" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ScrollView

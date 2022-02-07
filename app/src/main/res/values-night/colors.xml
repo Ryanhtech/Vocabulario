@@ -39,5 +39,5 @@
     <color name="limiter_background">#222222</color>
     <color name="top_tile_separator">#252525</color>
     <color name="background_default_transparent">#F21E1E1E</color>
-    <color name="popup_status">#000000</color>
+    <color name="popup_status">@color/black</color>
 </resources>

@@ -34,13 +34,13 @@ import com.ryanhtech.vocabulario.admin.internal.AdminPasswordManager
 import com.ryanhtech.vocabulario.admin.internal.AdminPermissions
 import com.ryanhtech.vocabulario.internal.block.ForgotPasswordBlockPromptActivity
 import com.ryanhtech.vocabulario.internal.notifications.Notifications
-import com.ryanhtech.vocabulario.ui.activity.VocabularioPopupActivity
+import com.ryanhtech.vocabulario.ui.activity.VocabularioActivity
 import com.ryanhtech.vocabulario.utils.DataManager
 import com.ryanhtech.vocabulario.utils.UiUtils
 import kotlinx.android.synthetic.main.activity_admin_pass.*
 import java.io.FileNotFoundException
 
-class AdminPassActivity : VocabularioPopupActivity() {
+class AdminPassActivity : VocabularioActivity() {
     var tries: Int = 5
 
     private var goneToForgotPwd = false

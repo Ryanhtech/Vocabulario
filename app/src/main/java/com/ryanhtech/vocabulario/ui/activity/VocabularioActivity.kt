@@ -19,18 +19,16 @@ package com.ryanhtech.vocabulario.ui.activity
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.WindowManager
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import com.ryanhtech.vocabulario.admin.internal.AdminPasswordManager
 import com.ryanhtech.vocabulario.admin.internal.AdminPermissions
 import com.ryanhtech.vocabulario.admin.ui.AdminPassActivity
 import com.ryanhtech.vocabulario.internal.reset.LocalConfigurationRequest
-import com.ryanhtech.vocabulario.ui.popup.PopupContainerActivity
+import com.ryanhtech.vocabulario.ui.popup.PopupFragment
+import com.ryanhtech.vocabulario.ui.popup.PopupFragmentExecutor
 import com.ryanhtech.vocabulario.ui.startup.SplashScreenActivity
-import com.ryanhtech.vocabulario.ui.viewmanager.ViewContainer
 import com.ryanhtech.vocabulario.utils.DataManager
 
 /**
@@ -121,32 +119,8 @@ open class VocabularioActivity : AppCompatActivity() {
         }
     }
 
-    open fun displayPopupFragment(fragmentInst: Fragment, activityContext: Activity) {
-        // Put the root view into a local variable
-        val lActivityRootView = activityContext.window.decorView.rootView
-
-        // Now initialize the Intent and put the string extras into it
-        val lPopupIntent = Intent(activityContext, PopupContainerActivity::class.java)
-
-        // Save the class instance and the fragment to get them back in the next Activity
-        val lViewId = ViewContainer.saveInstance(lActivityRootView)
-        val lFragId = ViewContainer.saveInstance(fragmentInst)
-
-        // Set the extras
-        lPopupIntent.apply {
-            putExtra(PopupContainerActivity.EXTRA_FRAGMENT_TO_SET, lFragId)
-            putExtra(PopupContainerActivity.EXTRA_PARENT_ACTIVITY_ROOTVIEW, lViewId)
-        }
-
-        // Start the popup Activity using our Intent
-        try {
-            activityContext.startActivity(lPopupIntent)
-        }
-        catch (err: Exception) {
-            // An exception occurred while starting the Activity
-            Log.e("VocabularioActivity",
-                "An error occurred while starting the PopupContainerActivity.")
-            throw err
-        }
+    open fun displayPopupFragment(fragmentInst: PopupFragment, activityContext: Activity) {
+        // Call the PopupFragmentExecutor API
+        PopupFragmentExecutor.displayPopupFragment(fragmentInst, activityContext)
     }
 }

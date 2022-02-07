@@ -30,7 +30,6 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.internal.vocabulario.Vocabulario
-import com.ryanhtech.vocabulario.setup.fragment.OrganizationSetupIntroFragment
 import com.ryanhtech.vocabulario.tools.collection.CollectionManager
 import com.ryanhtech.vocabulario.tools.collection.CollectionProperties
 import com.ryanhtech.vocabulario.tools.collection.CollectionWord
@@ -106,9 +105,6 @@ class CreateWordGroupActivity : VocabularioActivity() {
                     Vocabulario.getGson().toJson(EditWordToken(
                         null, wordGroup
                 ))))
-
-            // TODO Remove this
-            displayPopupFragment(OrganizationSetupIntroFragment(), this)
         }
 
         startUpdateRecyclerViewCheckThread()

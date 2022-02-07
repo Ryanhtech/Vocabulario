@@ -17,7 +17,6 @@
 package com.ryanhtech.vocabulario.ui.main
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -27,7 +26,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.internal.vocabulario.Vocabulario
-import com.ryanhtech.vocabulario.ui.quiz.QuizActivity
+import com.ryanhtech.vocabulario.ui.popup.PopupFragmentExecutor
+import com.ryanhtech.vocabulario.ui.quiz.QuizStartupPopupFragment
 import com.ryanhtech.vocabulario.utils.UiUtils
 import kotlinx.android.synthetic.main.fragment_quiz.view.*
 
@@ -46,12 +46,9 @@ class QuizFragment: Fragment() {
         )
 
         viewLayout.startQuizButton.setOnClickListener {
-            requireActivity().startActivity(
-                Intent(
-                    activity,
-                    QuizActivity::class.java
-                )
-            )
+            // Show the popup
+            PopupFragmentExecutor.displayPopupFragment(QuizStartupPopupFragment(),
+                requireActivity())
         }
 
         Handler(Looper.getMainLooper()).postDelayed({

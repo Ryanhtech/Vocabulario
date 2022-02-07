@@ -290,4 +290,10 @@
     <string name="uninstall_app_reset_ope_descr">This action will remove Vocabulario from your device. You can also do it by accessing to Settings > Apps > Vocabulario > Uninstall on your device.</string>
     <string name="reset_operation_finished">The requested operation has finished.</string>
     <string name="setup_install_progress_description">Setting up Vocabulario so it\'s ready to go</string>
+    <string name="number_of_questions">Number of questions</string>
+    <string name="short_quiz_session_nbr" translatable="false">7</string>
+    <string name="long_quiz_session_nbr" translatable="false">12</string>
+    <string name="save_in_average">Save results in average</string>
+    <string name="save_in_average_descr">It is recommended to select this option to track your results in time. Do not select this if you don\'t want to change your average after this quiz.</string>
+    <string name="number_of_questions_descr">We recommend answering at 12 questions daily, but if you don\'t have enough time, you can answer at 7 instead.</string>
 </resources>

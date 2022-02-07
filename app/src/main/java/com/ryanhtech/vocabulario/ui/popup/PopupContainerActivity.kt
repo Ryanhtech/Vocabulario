@@ -30,7 +30,6 @@ import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 import androidx.fragment.app.Fragment
 import com.ryanhtech.vocabulario.R
-import com.ryanhtech.vocabulario.internal.vocabulario.Vocabulario
 import com.ryanhtech.vocabulario.ui.viewmanager.ViewContainer
 import jp.wasabeef.blurry.Blurry
 
@@ -90,17 +89,14 @@ class PopupContainerActivity : AppCompatActivity() {
         // Set the content view
         setContentView(R.layout.activity_vocabulario_popup)
 
-        // Convert everything from JSON
-        val lGsonInst = Vocabulario.getGson()
-
         // Save the screenshot as a View for now
-        val lParentActivityRootViewJson = intent.getIntExtra(EXTRA_PARENT_ACTIVITY_ROOTVIEW, -1)
+        val lParentActivityRootViewId = intent.getIntExtra(EXTRA_PARENT_ACTIVITY_ROOTVIEW, -1)
 
-        if (lParentActivityRootViewJson == -1) {
+        if (lParentActivityRootViewId == -1) {
             throw IllegalArgumentException("EXTRA_PARENT_ACTIVITY_ROOTVIEW can't be found!")
         }
 
-        mParentActivityRootView = ViewContainer.getInstance(lParentActivityRootViewJson) as View
+        mParentActivityRootView = ViewContainer.getInstance(lParentActivityRootViewId) as View
 
         // Perform the same operation on the fragment to set
         val lFragmentFromIntent = intent.getIntExtra(EXTRA_FRAGMENT_TO_SET, -144)
@@ -109,7 +105,17 @@ class PopupContainerActivity : AppCompatActivity() {
             throw IllegalArgumentException("Can't found EXTRA_FRAGMENT_TO_SET")
         }
 
-        mFragmentToInflate = ViewContainer.getInstance(lFragmentFromIntent) as Fragment
+        // Get the PopupFragment instance under a try/catch
+        try {
+            mFragmentToInflate = ViewContainer.getInstance(lFragmentFromIntent) as PopupFragment
+        } catch (err: ClassCastException) {
+            // We have been unable to cast the class. It means that the class that has been passed
+            // to us isn't a PopupFragment.
+            Log.w("PopupContainerActivity", "Can't cast Any to PopupFragment (it " +
+                "usually means that you haven't passed a PopupFragment in the  " +
+                "EXTRA_FRAGMENT_TO_SET extra. Please use the PopupFragmentExecutor API.")
+            throw err
+        }
 
         // Remove transitions (if you pass 0 on both parameters it will remove everything)
         overridePendingTransition(0, 0)
@@ -174,7 +180,7 @@ class PopupContainerActivity : AppCompatActivity() {
         // Set the animation listeners to detect the end of the animation and to keep the background
         // transparent after the animation
         lPopupBackgroundAnimationInst.setAnimationListener(object: Animation.AnimationListener {
-            // You don't need to implement these
+            // You don't need to implement these two
             override fun onAnimationStart(animation: Animation?) {}
             override fun onAnimationRepeat(animation: Animation?) {}
 
@@ -187,7 +193,7 @@ class PopupContainerActivity : AppCompatActivity() {
                 }
 
                 // Then set the background's alpha to the right one
-                mBackgroundView.alpha = 0.9F
+                mBackgroundView.alpha = 1F
             }
         })
 
