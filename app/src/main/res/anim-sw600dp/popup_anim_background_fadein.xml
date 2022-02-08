@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright 2021-2022 Ryanhtech Labs
   ~
@@ -14,7 +15,9 @@
   ~  limitations under the License.
   -->
 
-<resources>
-    <dimen name="fab_margin">16dp</dimen>
-    <dimen name="popup_background_target_alpha">1</dimen>
-</resources>
+<set xmlns:android="http://schemas.android.com/apk/res/android" android:duration="200">
+    <!-- WARNING - If you change this, change the value in PopupContainerActivity too -->
+    <alpha
+        android:fromAlpha="0"
+        android:toAlpha="0.5" />
+</set>

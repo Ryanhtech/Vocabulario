@@ -1,4 +1,4 @@
-<!--
+<?xml version="1.0" encoding="UTF-8" ?><!--
   ~ Copyright 2021-2022 Ryanhtech Labs
   ~
   ~  Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,6 +15,5 @@
   -->
 
 <resources>
-    <dimen name="fab_margin">16dp</dimen>
-    <dimen name="popup_background_target_alpha">1</dimen>
+    <string name="popup_background_target_alpha">0.5</string>
 </resources>

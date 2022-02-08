@@ -16,19 +16,22 @@
 
 package com.ryanhtech.vocabulario.ui.popup
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.doOnLayout
 import androidx.dynamicanimation.animation.DynamicAnimation
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
-import androidx.fragment.app.Fragment
 import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.ui.viewmanager.ViewContainer
 import jp.wasabeef.blurry.Blurry
@@ -72,7 +75,7 @@ class PopupContainerActivity : AppCompatActivity() {
     private lateinit var mParentActivityBlurryScreenshot: Blurry.ImageComposer
 
     // The fragment to inflate
-    private lateinit var mFragmentToInflate: Fragment
+    private lateinit var mFragmentToInflate: PopupFragment
 
     // Background ImageView
     private lateinit var mBackgroundView: View
@@ -82,6 +85,15 @@ class PopupContainerActivity : AppCompatActivity() {
 
     // Fragment FrameLayout
     private lateinit var mFragmentFrameLayout: FrameLayout
+
+    // Fragment title TextView
+    private lateinit var mFragmentTitleTextView: TextView
+
+    // Negative button
+    private lateinit var mFragmentNegativeButton: Button
+
+    // Positive button
+    private lateinit var mFragmentPositiveButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -124,6 +136,9 @@ class PopupContainerActivity : AppCompatActivity() {
         mBackgroundView = findViewById(R.id.popupActivityBackgroundView)
         mContentLayout = findViewById(R.id.popupContentLinearLayout)
         mFragmentFrameLayout = findViewById(R.id.popupFragmentContentFrameLayout)
+        mFragmentTitleTextView = findViewById(R.id.popupTitle)
+        mFragmentNegativeButton = findViewById(R.id.cancelPopupButton)
+        mFragmentPositiveButton = findViewById(R.id.okPopupButton)
 
         // Get the blurry image
         val lBlurryScreenshot = Blurry.with(this).capture(mParentActivityRootView)
@@ -143,6 +158,9 @@ class PopupContainerActivity : AppCompatActivity() {
         mContentLayout.doOnLayout {
             startPopupAnimationThread()
         }
+
+        // Set the fragment info on the screen
+        internalInitPopupInformation()
     }
 
     private fun startPopupAnimationThread() {
@@ -154,7 +172,7 @@ class PopupContainerActivity : AppCompatActivity() {
     private fun startPopupAnimation() {
         // Instantiate a new SpringAnimation
         val lSprAnim = SpringAnimation(mContentLayout, DynamicAnimation.TRANSLATION_Y,
-            mContentLayout.y).apply {
+            /*mContentLayout.y*/0F).apply {
                 spring.dampingRatio = SpringForce.DAMPING_RATIO_NO_BOUNCY
                 spring.stiffness = SpringForce.STIFFNESS_MEDIUM
         }
@@ -193,11 +211,81 @@ class PopupContainerActivity : AppCompatActivity() {
                 }
 
                 // Then set the background's alpha to the right one
-                mBackgroundView.alpha = 1F
+                mBackgroundView.alpha = getString(R.string.popup_background_target_alpha)
+                    .toDouble().toFloat()
+
+                Log.i("PopupContainerActivity", "onAnimationEnd reached!")
             }
         })
 
-        // Start the fade in animation
-        mBackgroundView.startAnimation(lPopupBackgroundAnimationInst)
+        Log.i("PopupContainerActivity", "Starting fade in animation")
+
+        // Start the fade in animation inside the UI thread
+        runOnUiThread {
+            if (resources.getBoolean(R.bool.isTablet)) {
+                // Do little tweaks if we are on a tablet
+                mBackgroundView.visibility = View.VISIBLE
+                mBackgroundView.alpha = getString(R.string.popup_background_target_alpha).toDouble()
+                    .toFloat()
+            }
+            mBackgroundView.startAnimation(lPopupBackgroundAnimationInst)
+        }
+    }
+
+    /**
+     * This will initialize the PopupFragment's information on the screen, like the title, the
+     * button's text, and more.
+     */
+    private fun internalInitPopupInformation() {
+        // Get the context to use with the fragment
+        // Caution: use only the application's Context to avoid security issues
+        val lContext = applicationContext
+
+        // First set the title
+        val lFragmentTitle = mFragmentToInflate.getTitleText(lContext)
+        if (lFragmentTitle == null || lFragmentTitle == "") {
+            // There is no title to display, so hide the TextView.
+            mFragmentTitleTextView.visibility = View.GONE
+        }
+        else {
+            mFragmentTitleTextView.text = lFragmentTitle
+        }
+
+        if (lFragmentTitle == "") {
+            // Display a warning - it isn't correct to return "" to this Activity, you should return
+            // null instead
+            Log.w("PopupContainerActivity", "Do not use \"\" as a title to your Popup" +
+                "Fragment, return null instead")
+        }
+
+        // Determine which visibility we should apply to the button
+        var lNegativeButtonVisibility = View.VISIBLE
+        if (!mFragmentToInflate.hasNegativeButton) {
+            lNegativeButtonVisibility = View.INVISIBLE
+        }
+
+        // Set the visibility
+        mFragmentNegativeButton.visibility = lNegativeButtonVisibility
+
+        // Now we should set the text of the negative button
+        // If the button is invisible all this has no effect to the user
+        val lNegButtonText = mFragmentToInflate.getNegativeButtonText(lContext)
+        mFragmentNegativeButton.text = lNegButtonText
+
+        // Set the text and the color of the positive button
+        val lPositiveButtonText = mFragmentToInflate.getPositiveButtonText(lContext)
+        val lPositiveButtonColorRes = mFragmentToInflate.posButtonTintRes
+
+        // The text is quite simple to set
+        mFragmentPositiveButton.text = lPositiveButtonText
+
+        // Now get the color depending on the Android version (compatibility stuff)
+        val lButtonTint =
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                ContextCompat.getColor(this, lPositiveButtonColorRes)
+            } else {
+                resources.getColor(lPositiveButtonColorRes)
+            }
+        mFragmentPositiveButton.setTextColor(lButtonTint)
     }
 }

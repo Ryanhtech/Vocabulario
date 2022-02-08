@@ -20,6 +20,8 @@ import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.ui.popup.PopupFragment
 
 class QuizStartupPopupFragment: PopupFragment() {
-    // Set the layout
+    // Set the layout and other properties
     override val popupLayoutRes = R.layout.fragment_quiz_startup_popup
+    override val titleDefaultText = R.string.take_quiz
+    override val posButtonTintRes = R.color.quiz_tint
 }
