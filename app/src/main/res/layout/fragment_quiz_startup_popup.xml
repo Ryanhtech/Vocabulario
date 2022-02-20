@@ -52,7 +52,7 @@
                     android:textColor="@color/title_text"
                     android:textSize="16sp" />
 
-                <LinearLayout
+                <RadioGroup
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_weight="0"
@@ -69,8 +69,7 @@
                         android:paddingStart="0dp"
                         android:paddingEnd="4dp"
                         android:text="@string/short_quiz_session_nbr"
-                        android:textColor="@color/title_text"
-                        tools:ignore="TextContrastCheck" />
+                        android:textColor="@color/title_text" />
 
                     <RadioButton
                         android:id="@+id/longQuizSessionRadioButton"
@@ -79,9 +78,8 @@
                         android:buttonTint="@color/quiz_tint"
                         android:fontFamily="@font/catamaran_semibold"
                         android:text="@string/long_quiz_session_nbr"
-                        android:textColor="@color/title_text"
-                        tools:ignore="TextContrastCheck" />
-                </LinearLayout>
+                        android:textColor="@color/title_text" />
+                </RadioGroup>
             </LinearLayout>
 
             <TextView

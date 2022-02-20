@@ -55,7 +55,6 @@
             android:name=".ui.popup.PopupContainerActivity"
             android:exported="false"
             android:theme="@style/popupContainerActivity" />
-
         <receiver
             android:name=".internal.receiver.CollectionLocalReceiver"
             android:enabled="true"

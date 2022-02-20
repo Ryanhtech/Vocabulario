@@ -66,6 +66,11 @@ class PopupContainerActivity : AppCompatActivity() {
          */
         const val EXTRA_FRAGMENT_TO_SET = "com.ryanhtech.vocabulario.ui.popup." +
                 "PopupContainerActivity.EXTRA_FRAGMENT_TO_SET"
+
+        /**
+         * If you should keep the finish method default behavior *(not recommended)*.
+         */
+        const val SHOULD_KEEP_DEFAULT_FINISH_BEHAVIOR = false
     }
 
     // Contains the parent Activity's RootView
@@ -161,18 +166,60 @@ class PopupContainerActivity : AppCompatActivity() {
 
         // Set the fragment info on the screen
         internalInitPopupInformation()
+
+        // Set the button listeners
+        setViewEventListeners()
     }
 
-    private fun startPopupAnimationThread() {
+    override fun finish() {
+        // First start the finish super method.
+        super.finish()
+
+        // Delete the transition, only if you should not keep the default behavior.
+        if (SHOULD_KEEP_DEFAULT_FINISH_BEHAVIOR) {
+            return
+        }
+
+        // 0 means nothing
+        overridePendingTransition(0, 0)
+    }
+
+    override fun onBackPressed() {
+        // Delete the super method that will calls the standard finish, and call the cleanup method.
+        finishPopup()
+    }
+
+    private fun startPopupAnimationThread(enterAnimation: Boolean = true) {
         // Create the thread and start it
-        val lAnimThread = Thread { startPopupAnimation() }
+        val lAnimThread = Thread { startPopupAnimation(enterAnimation) }
         lAnimThread.start()
     }
 
-    private fun startPopupAnimation() {
+    private fun startPopupAnimation(enterAnimation: Boolean = true) {
+        // Determine which values you should use depending on the enterAnimation parameter.
+        var lSpringAnimationTargetLocation = mContentLayout.y
+        if (!enterAnimation) {
+            lSpringAnimationTargetLocation = mContentLayout.y + mContentLayout.measuredHeight
+        }
+
+        var lSpringAnimationStartY = mContentLayout.y + mContentLayout.measuredHeight
+        if (!enterAnimation) {
+            lSpringAnimationStartY = mContentLayout.y
+        }
+
+        var lBackgroundAnimationRes = R.anim.popup_anim_background_fadein
+        if (!enterAnimation) {
+            lBackgroundAnimationRes = R.anim.popup_anim_background_fadeout
+        }
+
+        var lBackgroundFinalAlpha = 1F
+        if (!enterAnimation) {
+            lBackgroundFinalAlpha = 0F
+        }
+
         // Instantiate a new SpringAnimation
         val lSprAnim = SpringAnimation(mContentLayout, DynamicAnimation.TRANSLATION_Y,
-            mContentLayout.y).apply {
+            lSpringAnimationTargetLocation).apply {
                 spring.dampingRatio = SpringForce.DAMPING_RATIO_NO_BOUNCY
                 spring.stiffness = SpringForce.STIFFNESS_MEDIUM
         }
@@ -180,7 +227,7 @@ class PopupContainerActivity : AppCompatActivity() {
         runOnUiThread {
             // Move the View down a bit
             // For some reason you have to use + instead of -
-            mContentLayout.y = mContentLayout.y + mContentLayout.measuredHeight
+            mContentLayout.y = lSpringAnimationStartY
 
             // Run the animation
             lSprAnim.start()
@@ -193,7 +240,7 @@ class PopupContainerActivity : AppCompatActivity() {
         // The aim of this animation is to make the user feel like it's switching
         // in another world.
         val lPopupBackgroundAnimationInst = AnimationUtils.loadAnimation(this,
-            R.anim.popup_anim_background_fadein)
+            lBackgroundAnimationRes)
 
         // Set the animation listeners to detect the end of the animation and to keep the background
         // transparent after the animation
@@ -211,11 +258,12 @@ class PopupContainerActivity : AppCompatActivity() {
                 }
 
                 // Then set the background's alpha to the right one
-                mBackgroundView.alpha = 1F
+                mBackgroundView.alpha = lBackgroundFinalAlpha
 
-                Log.i("PopupContainerActivity", "onAnimationEnd reached!")
-
-                Log.d("PopupContainerActivity", "Current alpha is ${mBackgroundView.alpha}")
+                // If you are doing the fade out animation, finish the Activity now.
+                if (!enterAnimation) {
+                    finish()
+                }
             }
         })
 
@@ -286,5 +334,61 @@ class PopupContainerActivity : AppCompatActivity() {
                 resources.getColor(lPositiveButtonColorRes)
             }
         mFragmentPositiveButton.setTextColor(lButtonTint)
+    }
+
+    /**
+     * This will set all the appropriate listeners for the Views. The Views
+     * must already be initialized (they are initialized in the `onCreate` method
+     * by default).
+     */
+    private fun setViewEventListeners() {
+        // For each view, you should call the handler method when your event occurs.
+        // You need to define your handler method of course.
+
+        // Positive button click
+        mFragmentPositiveButton.setOnClickListener {
+            // Call the handler method
+            processPositiveButtonClick()
+        }
+
+        // Negative button click
+        mFragmentNegativeButton.setOnClickListener {
+            processNegativeButtonClick()
+        }
+    }
+
+    private fun processPositiveButtonClick() {
+        // First of all call the Fragment's onPositiveButtonClick method, and if we have true as
+        // a result, then close this Activity.
+        val lPositiveButtonClickMethodResult = mFragmentToInflate.onPositiveButtonClick()
+        if (!lPositiveButtonClickMethodResult) {
+            return
+        }
+
+        // Close the Activity because we have true as a result
+        finishPopup()
+    }
+
+    private fun processNegativeButtonClick() {
+        // This is the same as the processPositiveButtonClick, but we are managing the negative
+        // button instead
+        val lNegativeButtonClickMethodResult = mFragmentToInflate.onNegativeButtonClick()
+        if (!lNegativeButtonClickMethodResult) {
+            return
+        }
+
+        // Close the Activity using our cleanup method
+        finishPopup()
+    }
+
+    private fun finishPopup() {
+        // Check if we should keep the default finish behavior, in which case we finish now.
+        if (SHOULD_KEEP_DEFAULT_FINISH_BEHAVIOR) {
+            finish()
+            return
+        }
+
+        // Then, animate the contents so they are going down
+        startPopupAnimationThread(false)
     }
 }
