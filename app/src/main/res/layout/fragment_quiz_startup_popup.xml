@@ -23,99 +23,144 @@
     android:orientation="vertical">
 
     <LinearLayout
+        style="@style/TileStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/tile_background"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:layout_weight="0"
-                android:ellipsize="marquee"
-                android:fontFamily="@font/catamaran_extrabold"
-                android:gravity="center"
-                android:singleLine="true"
-                android:text="@string/number_of_questions"
-                android:textColor="@color/title_text"
-                android:textSize="16sp" />
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="match_parent"
                 android:layout_weight="0"
-                android:gravity="end"
                 android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/shortQuizSessionRadioButton"
+                <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/quiz_tint"
-                    android:checked="true"
-                    android:fontFamily="@font/catamaran_semibold"
-                    android:paddingStart="0dp"
-                    android:paddingEnd="4dp"
-                    android:text="@string/short_quiz_session_nbr"
+                    android:layout_height="48dp"
+                    android:layout_weight="0"
+                    android:ellipsize="marquee"
+                    android:fontFamily="@font/catamaran_extrabold"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="@string/number_of_questions"
                     android:textColor="@color/title_text"
-                    tools:ignore="TextContrastCheck" />
+                    android:textSize="16sp" />
 
-                <RadioButton
-                    android:id="@+id/longQuizSessionRadioButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/quiz_tint"
-                    android:fontFamily="@font/catamaran_semibold"
-                    android:text="@string/long_quiz_session_nbr"
-                    android:textColor="@color/title_text"
-                    tools:ignore="TextContrastCheck" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_weight="0"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/shortQuizSessionRadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/quiz_tint"
+                        android:checked="true"
+                        android:fontFamily="@font/catamaran_semibold"
+                        android:paddingStart="0dp"
+                        android:paddingEnd="4dp"
+                        android:text="@string/short_quiz_session_nbr"
+                        android:textColor="@color/title_text"
+                        tools:ignore="TextContrastCheck" />
+
+                    <RadioButton
+                        android:id="@+id/longQuizSessionRadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/quiz_tint"
+                        android:fontFamily="@font/catamaran_semibold"
+                        android:text="@string/long_quiz_session_nbr"
+                        android:textColor="@color/title_text"
+                        tools:ignore="TextContrastCheck" />
+                </LinearLayout>
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:fontFamily="@font/catamaran_semibold"
+                android:text="@string/number_of_questions_descr"
+                android:textColor="@color/basic_text"
+                android:textSize="12sp" />
+
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0"
-            android:fontFamily="@font/catamaran_semibold"
-            android:text="@string/number_of_questions_descr"
-            android:textColor="@color/basic_text"
-            android:textSize="12sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/saveInAverageQuizOptions"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:checked="true"
+                android:fontFamily="@font/catamaran_extrabold"
+                android:text="@string/save_in_average"
+                android:textColor="@color/title_text"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/catamaran_semibold"
+                android:text="@string/save_in_average_descr"
+                android:textColor="@color/basic_text"
+                android:textSize="12sp" />
+        </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
+        style="@style/TileStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/tile_background"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:orientation="vertical">
 
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/saveInAverageQuizOptions"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:checked="true"
-            android:fontFamily="@font/catamaran_extrabold"
-            android:text="@string/save_in_average"
-            android:textColor="@color/title_text"
-            android:textSize="16sp" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/catamaran_semibold"
-            android:text="@string/save_in_average_descr"
-            android:textColor="@color/basic_text"
-            android:textSize="12sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/TitleTextViewStyleInLinearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/quiz_settings" />
+
+                <ImageView
+                    style="@style/ArrowIconInTileStyle"
+                    app:srcCompat="@drawable/ic_baseline_arrow_forward_24"
+                    app:tint="@color/title_text" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/DescriptionTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/quiz_settings_descr" />
+        </LinearLayout>
+
     </LinearLayout>
+
 </LinearLayout>

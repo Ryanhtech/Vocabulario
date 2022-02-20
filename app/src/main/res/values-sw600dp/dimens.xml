@@ -15,5 +15,5 @@
   -->
 
 <resources>
-    <dimen name="popup_background_target_alpha">0.5</dimen>
+    <dimen name="popup_background_target_alpha">1</dimen>
 </resources>

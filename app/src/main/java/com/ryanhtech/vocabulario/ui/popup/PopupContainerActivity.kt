@@ -172,7 +172,7 @@ class PopupContainerActivity : AppCompatActivity() {
     private fun startPopupAnimation() {
         // Instantiate a new SpringAnimation
         val lSprAnim = SpringAnimation(mContentLayout, DynamicAnimation.TRANSLATION_Y,
-            /*mContentLayout.y*/0F).apply {
+            mContentLayout.y).apply {
                 spring.dampingRatio = SpringForce.DAMPING_RATIO_NO_BOUNCY
                 spring.stiffness = SpringForce.STIFFNESS_MEDIUM
         }
@@ -211,10 +211,11 @@ class PopupContainerActivity : AppCompatActivity() {
                 }
 
                 // Then set the background's alpha to the right one
-                mBackgroundView.alpha = getString(R.string.popup_background_target_alpha)
-                    .toDouble().toFloat()
+                mBackgroundView.alpha = 1F
 
                 Log.i("PopupContainerActivity", "onAnimationEnd reached!")
+
+                Log.d("PopupContainerActivity", "Current alpha is ${mBackgroundView.alpha}")
             }
         })
 
@@ -222,13 +223,8 @@ class PopupContainerActivity : AppCompatActivity() {
 
         // Start the fade in animation inside the UI thread
         runOnUiThread {
-            if (resources.getBoolean(R.bool.isTablet)) {
-                // Do little tweaks if we are on a tablet
-                mBackgroundView.visibility = View.VISIBLE
-                mBackgroundView.alpha = getString(R.string.popup_background_target_alpha).toDouble()
-                    .toFloat()
-            }
             mBackgroundView.startAnimation(lPopupBackgroundAnimationInst)
+            mBackgroundView.visibility = View.VISIBLE
         }
     }
 
@@ -284,6 +280,9 @@ class PopupContainerActivity : AppCompatActivity() {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 ContextCompat.getColor(this, lPositiveButtonColorRes)
             } else {
+                // We can remove deprecation warnings since this will only be run on supported
+                // platforms
+                @Suppress("DEPRECATION")
                 resources.getColor(lPositiveButtonColorRes)
             }
         mFragmentPositiveButton.setTextColor(lButtonTint)

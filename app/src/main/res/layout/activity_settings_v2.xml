@@ -259,12 +259,9 @@
                     </LinearLayout>
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_weight="0"
                         android:src="@drawable/ic_baseline_arrow_forward_24"
-                        app:tint="@color/primary_colour" />
+                        app:tint="@color/primary_colour"
+                        style="@style/ArrowIconInTileStyle" />
 
                 </LinearLayout>
 
