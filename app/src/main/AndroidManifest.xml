@@ -73,9 +73,6 @@
             android:exported="false"
             android:theme="@style/vocabularioBlocked" />
         <activity
-            android:name=".setup.assistanceinfo.AssistanceInfoSetupActivity"
-            android:exported="false" />
-        <activity
             android:name=".internal.legal.licensemgr.LicenseErrorActivity"
             android:exported="false" />
         <activity

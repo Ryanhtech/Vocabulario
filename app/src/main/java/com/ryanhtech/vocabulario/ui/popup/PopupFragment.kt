@@ -92,6 +92,16 @@ open class PopupFragment : Fragment(), Serializable {
      */
     private lateinit var mPopupRootView: View
 
+    /**
+     * This contains the application's Context.
+     */
+    lateinit var applicationContext: Context
+
+    /**
+     * This contains the root view to use when finding views by ID.
+     */
+    lateinit var popupRootView: View
+
     // The layout inflater is here
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
@@ -101,6 +111,10 @@ open class PopupFragment : Fragment(), Serializable {
 
         // Inflate the layout here
         mPopupRootView = inflater.inflate(lFragmentLayout, container, false)
+        popupRootView = mPopupRootView
+
+        // Initialize the application context
+        applicationContext = requireActivity().applicationContext
 
         // Start the job to process the Fragment's job and return the root view to the system
         this.popupStartJob()
