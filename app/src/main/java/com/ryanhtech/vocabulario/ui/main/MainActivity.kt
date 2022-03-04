@@ -37,6 +37,7 @@ import androidx.dynamicanimation.animation.SpringForce
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.ryanhtech.vocabulario.R
+import com.ryanhtech.vocabulario.setup.assistanceinfo.AssistanceInfoPopupFragment
 import com.ryanhtech.vocabulario.setup.base.UserSetupActivity
 import com.ryanhtech.vocabulario.ui.activity.VocabularioActivity
 import com.ryanhtech.vocabulario.ui.animations.VocabularioListAnimation
@@ -151,6 +152,14 @@ class MainActivity : VocabularioActivity() {
                         UserSetupActivity::class.java
                     ).putExtra("step", StaticData.setupStep)
                 )
+            }
+
+            appAssistanceInfo.setOnClickListener {
+                // Instantiate a new AssistanceInfoPopupFragment
+                val lAssistanceInfoFragment = AssistanceInfoPopupFragment()
+
+                // Show the popup
+                displayPopupFragment(lAssistanceInfoFragment, this)
             }
 
             // Set the animation to start after 1s
