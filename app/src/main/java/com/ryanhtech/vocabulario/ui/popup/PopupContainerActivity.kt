@@ -100,6 +100,9 @@ class PopupContainerActivity : AppCompatActivity() {
     // Positive button
     private lateinit var mFragmentPositiveButton: Button
 
+    // Left title TextView padding View
+    private lateinit var mTitleTextViewLeftPaddingView: View
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -144,6 +147,7 @@ class PopupContainerActivity : AppCompatActivity() {
         mFragmentTitleTextView = findViewById(R.id.popupTitle)
         mFragmentNegativeButton = findViewById(R.id.cancelPopupButton)
         mFragmentPositiveButton = findViewById(R.id.okPopupButton)
+        mTitleTextViewLeftPaddingView = findViewById(R.id.popupTitleStartPadding)
 
         // Get the blurry image
         val lBlurryScreenshot = Blurry.with(this).capture(mParentActivityRootView)
@@ -302,7 +306,8 @@ class PopupContainerActivity : AppCompatActivity() {
                 "Fragment, return null instead")
         }
 
-        // Determine which visibility we should apply to the button
+        // Determine which visibility we should apply to the button. If the button is gone, align
+        // the title text to the left, and show the padding container (invisible to the user)
         var lNegativeButtonVisibility = View.VISIBLE
         if (!mFragmentToInflate.hasNegativeButton) {
             lNegativeButtonVisibility = View.INVISIBLE

@@ -96,6 +96,15 @@
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/okPopupButton"
+                app:layout_constraintStart_toEndOf="@id/popupTitleStartPadding"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/popupTitleStartPadding"
+                android:layout_width="10dp"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/cancelPopupButton"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
