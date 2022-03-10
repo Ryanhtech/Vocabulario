@@ -174,7 +174,7 @@
     <string name="add_word_button_descr">Cliquez pour ajouter…</string>
     <string name="no_word">Aucun mot pour le moment</string>
     <string name="no_word_group">Aucun cours pour le moment</string>
-    <string name="add_group_descr">Vous pouvez en ajouter un ci-dessous ↘</string>
+    <string name="add_group_descr">Cliquez sur le bouton + pour ajouter un nouveau cours.</string>
     <string name="verifying_app_integrity">Vérification de l\'intégrité de Vocabulario…</string>
     <string name="emergency_mode_text_descr">Un rapport d\'erreur nous a été envoyé, et nous allons nous en servir pour réparer notre application dans de futures mises à jour. Si cet écran apparait pour la première fois, cliquez sur Fermer. Sinon, cliquer sur Réparer pour tenter de trouver une solution à ce problème.</string>
     <string name="close">Fermer</string>

@@ -186,7 +186,7 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="no_word_group">No Word group for now</string>
-    <string name="add_group_descr">You can add one now below ↘</string>
+    <string name="add_group_descr">Click on the + icon to add a new Word group.</string>
     <string name="verifying_app_integrity">Verifying app integrity…</string>
     <string name="title_activity_crash_handler_user_choice">CrashHandlerUserChoiceActivity</string>
     <!-- Strings used for fragments for navigation -->

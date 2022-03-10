@@ -174,7 +174,7 @@ open class PopupFragment : Fragment(), Serializable {
      *
      * **Warning**: *Do not* return `""`. If you don't want any title, return `null` instead.
      *
-     * @return the text to display as a String. If null, no title will be displayed.
+     * @return the text to display as a [String]. If null, no title will be displayed.
      */
     open fun getTitleText(context: Context): String? {
         // [Note: this is the default super call]

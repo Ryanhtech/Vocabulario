@@ -97,6 +97,11 @@ class UserSetupActivity : VocabularioActivity() {
         setupBackButton.isEnabled = currentFragment!!.displayBackButton
         setupNextButton.isVisible = currentFragment!!.displayNextButton
 
+        // Indicate that the back button is disabled, if it is
+        if (!setupBackButton.isEnabled) {
+            setupBackButton.alpha = 0.5F
+        }
+
         setupImage.setImageDrawable(AppCompatResources.getDrawable(
             this, currentFragment!!.fragmentIconResource))
         setupTitle.text = getString(currentFragment!!.fragmentTitleResource)
