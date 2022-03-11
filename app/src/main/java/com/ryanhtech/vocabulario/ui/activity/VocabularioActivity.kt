@@ -25,6 +25,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.ryanhtech.vocabulario.admin.internal.AdminPasswordManager
 import com.ryanhtech.vocabulario.admin.internal.AdminPermissions
 import com.ryanhtech.vocabulario.admin.ui.AdminPassActivity
+import com.ryanhtech.vocabulario.internal.framework.VbUtils
 import com.ryanhtech.vocabulario.internal.reset.LocalConfigurationRequest
 import com.ryanhtech.vocabulario.ui.popup.PopupFragment
 import com.ryanhtech.vocabulario.ui.popup.PopupFragmentExecutor
@@ -76,6 +77,11 @@ open class VocabularioActivity : AppCompatActivity() {
      */
     open val applyLocalResetConfigurationRequest = true
 
+    /**
+     * The [VbUtils] instance for this Activity.
+     */
+    private lateinit var mVbUtilsInst: VbUtils
+
     override fun onCreate(savedInstanceState: Bundle?) {
         val registerResult = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()) { result ->
@@ -106,6 +112,8 @@ open class VocabularioActivity : AppCompatActivity() {
         if (isSecuredActivity) {
             window.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
         }
+
+        initializeVbUtils()
     }
 
     override fun onResume() {
@@ -122,5 +130,18 @@ open class VocabularioActivity : AppCompatActivity() {
     open fun displayPopupFragment(fragmentInst: PopupFragment, activityContext: Activity) {
         // Call the PopupFragmentExecutor API
         PopupFragmentExecutor.displayPopupFragment(fragmentInst, activityContext)
+    }
+
+    /**
+     * This returns the current [VbUtils] instance in this Activity.
+     */
+    fun getVbUtils(): VbUtils = mVbUtilsInst
+
+    private fun initializeVbUtils() {
+        // Instantiate a new instance of VbUtils
+        val lVbUtilsInst = VbUtils(this)
+
+        // Set this as the default utils instance
+        mVbUtilsInst = lVbUtilsInst
     }
 }
