@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2021-2022 Ryanhtech Labs
+  ~
+  ~  Licensed under the Apache License, Version 2.0 (the "License");
+  ~  you may not use this file except in compliance with the License.
+  ~  You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~  Unless required by applicable law or agreed to in writing, software
+  ~  distributed under the License is distributed on an "AS IS" BASIS,
+  ~  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~  See the License for the specific language governing permissions and
+  ~  limitations under the License.
+  -->
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/setup_nav"
+    app:startDestination="@id/setupEulaFragment">
+
+    <fragment
+        android:id="@+id/setupEulaFragment"
+        android:name="com.ryanhtech.vocabulario.setup.fragment.SetupEulaFragment"
+        android:label="SetupEulaFragment" >
+        <action
+            android:id="@+id/action_setupEulaFragment_to_placeSetupFragment"
+            app:destination="@id/placeSetupFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/placeSetupFragment"
+        android:name="com.ryanhtech.vocabulario.setup.fragment.PlaceSetupFragment"
+        android:label="PlaceSetupFragment" >
+        <action
+            android:id="@+id/action_placeSetupFragment_to_organizationSetupIntroFragment"
+            app:destination="@id/organizationSetupIntroFragment" />
+        <action
+            android:id="@+id/action_placeSetupFragment_to_enterIdentitySetupFragment"
+            app:destination="@id/enterIdentitySetupFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/organizationSetupIntroFragment"
+        android:name="com.ryanhtech.vocabulario.setup.fragment.OrganizationSetupIntroFragment"
+        android:label="OrganizationSetupIntroFragment" >
+        <action
+            android:id="@+id/action_organizationSetupIntroFragment_to_enterOrganizationNameSetupFragment"
+            app:destination="@id/enterOrganizationNameSetupFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/enterIdentitySetupFragment"
+        android:name="com.ryanhtech.vocabulario.setup.fragment.EnterIdentitySetupFragment"
+        android:label="EnterIdentitySetupFragment" >
+        <action
+            android:id="@+id/action_enterIdentitySetupFragment_to_suggestionsChoiceSetupFragment"
+            app:destination="@id/suggestionsChoiceSetupFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/enterOrganizationNameSetupFragment"
+        android:name="com.ryanhtech.vocabulario.setup.fragment.EnterOrganizationNameSetupFragment"
+        android:label="EnterOrganizationNameSetupFragment" >
+        <action
+            android:id="@+id/action_enterOrganizationNameSetupFragment_to_enterAdminPasswordSetupFragment"
+            app:destination="@id/enterAdminPasswordSetupFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/enterAdminPasswordSetupFragment"
+        android:name="com.ryanhtech.vocabulario.setup.fragment.EnterAdminPasswordSetupFragment"
+        android:label="EnterAdminPasswordSetupFragment" >
+        <action
+            android:id="@+id/action_enterAdminPasswordSetupFragment_to_displayAdminSecurityCodeSetupFragment"
+            app:destination="@id/displayAdminSecurityCodeSetupFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/displayAdminSecurityCodeSetupFragment"
+        android:name="com.ryanhtech.vocabulario.setup.fragment.DisplayAdminSecurityCodeSetupFragment"
+        android:label="DisplayAdminSecurityCodeSetupFragment" >
+        <action
+            android:id="@+id/action_displayAdminSecurityCodeSetupFragment_to_suggestionsChoiceSetupFragment"
+            app:destination="@id/suggestionsChoiceSetupFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/suggestionsChoiceSetupFragment"
+        android:name="com.ryanhtech.vocabulario.setup.fragment.SuggestionsChoiceSetupFragment"
+        android:label="SuggestionsChoiceSetupFragment" >
+        <action
+            android:id="@+id/action_suggestionsChoiceSetupFragment_to_featuresInstallFragment"
+            app:destination="@id/featuresInstallFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/featuresInstallFragment"
+        android:name="com.ryanhtech.vocabulario.setup.fragment.FeaturesInstallFragment"
+        android:label="FeaturesInstallFragment" />
+</navigation>
