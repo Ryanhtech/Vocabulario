@@ -25,8 +25,9 @@ import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import com.ryanhtech.vocabulario.R
+import com.ryanhtech.vocabulario.ui.fragment.VocabularioFragment
 
-open class AppSetupFragment : Fragment() {
+open class AppSetupFragment : VocabularioFragment() {
     /**
      * Base Fragment class that is used during the Setup.
      */

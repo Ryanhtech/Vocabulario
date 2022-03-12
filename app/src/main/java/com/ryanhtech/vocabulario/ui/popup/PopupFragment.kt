@@ -27,14 +27,14 @@ import androidx.annotation.ColorRes
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 import androidx.annotation.UiThread
-import androidx.fragment.app.Fragment
 import com.ryanhtech.vocabulario.R
+import com.ryanhtech.vocabulario.ui.fragment.VocabularioFragment
 import java.io.Serializable
 
 /**
  * This class represents a Popup fragment.
  */
-open class PopupFragment : Fragment(), Serializable {
+open class PopupFragment : VocabularioFragment(), Serializable {
     /**
      * The layout to inflate to the PopupFragment to display. You can use it like this in your
      * custom PopupFragment:
