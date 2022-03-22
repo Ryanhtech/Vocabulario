@@ -275,4 +275,5 @@
     <string name="save_in_average_descr">Il est recommandé de sélectionner cette option pour suivre vos résultats dans le temps. Ne sélectionnez pas ceci si vous ne voulez pas que votre moyenne ne soit modifiée après ce quiz.</string>
     <string name="number_of_questions_descr">Nous vous recommandons de répondre à 12 questions chaque jour, mais si vous n\'avez pas assez de temps, répondez plutôt à 7 questions.</string>
     <string name="version_name_assistance_info">Nom de version</string>
+    <string name="setup_finish_message">Commençons</string>
 </resources>

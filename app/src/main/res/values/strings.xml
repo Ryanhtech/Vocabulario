@@ -298,4 +298,5 @@
     <string name="number_of_questions_descr">We recommend answering at 12 questions daily, but if you don\'t have enough time, you can answer at 7 instead.</string>
     <string name="popup_background_target_alpha" translatable="false">1</string>
     <string name="version_name_assistance_info">Version name</string>
+    <string name="setup_finish_message">Let\'s begin</string>
 </resources>

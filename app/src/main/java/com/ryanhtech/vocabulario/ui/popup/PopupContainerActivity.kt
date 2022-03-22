@@ -26,13 +26,13 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.doOnLayout
 import androidx.dynamicanimation.animation.DynamicAnimation
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
 import com.ryanhtech.vocabulario.R
+import com.ryanhtech.vocabulario.ui.activity.VocabularioActivity
 import com.ryanhtech.vocabulario.ui.viewmanager.ViewContainer
 import jp.wasabeef.blurry.Blurry
 
@@ -49,7 +49,7 @@ import jp.wasabeef.blurry.Blurry
  * https://developer.apple.com/design/human-interface-guidelines/ios/views/sheets
  * to learn more).
  */
-class PopupContainerActivity : AppCompatActivity() {
+class PopupContainerActivity : VocabularioActivity() {
     companion object {
         /**
          * This Extra must contain the parent Activity's

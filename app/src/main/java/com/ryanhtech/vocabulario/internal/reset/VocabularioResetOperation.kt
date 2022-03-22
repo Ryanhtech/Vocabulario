@@ -187,7 +187,9 @@ class VocabularioResetOperation(resetType: String, context: Context) {
      * argument that you passed to instantiate the class.
      * There is no coming back, please know what you are doing when you run this.
      *
-     * @throws IllegalAccessException
+     * @throws IllegalAccessException If you do not have permission from the user to execute the
+     * requested action, or if the provided [Context] doesn't match with the [Context] that was
+     * provided as a parameter to initialize this class instance.
      * @author Ryanhtech Labs
      * @since initial version
      */
@@ -201,6 +203,10 @@ class VocabularioResetOperation(resetType: String, context: Context) {
 
     /**
      * This prepares the requested operation and runs it.
+     *
+     * @throws IllegalAccessException If you do not have permission from the user to execute the
+     * requested action, or if the provided [Context] doesn't match with the [Context] that was
+     * provided as a parameter to initialize this class instance.
      */
     private fun startRequestedOperationInternal(context: Context, requestedOperation: String) {
         // Check everything before doing anything
