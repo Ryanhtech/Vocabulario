@@ -69,7 +69,7 @@ class VocabularioResetOperation(resetType: String, context: Context) {
     /**
      * Determines if the current instance is authenticated by the user.
      */
-    var authenticationStatus = AUTHENTICATION_TYPE_PENDING
+    @Transient var authenticationStatus = AUTHENTICATION_TYPE_PENDING
     set (setAttempt) {
         // Don't allow variable change if it's not allowed
         if (!authorizeIsAuthenticatedModification) throw IllegalAccessException(
