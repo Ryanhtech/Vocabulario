@@ -339,6 +339,9 @@ class PopupContainerActivity : VocabularioActivity() {
                 resources.getColor(lPositiveButtonColorRes)
             }
         mFragmentPositiveButton.setTextColor(lButtonTint)
+
+        // Set the title to selected, so it scrolls correctly
+        mFragmentTitleTextView.isSelected = true
     }
 
     /**

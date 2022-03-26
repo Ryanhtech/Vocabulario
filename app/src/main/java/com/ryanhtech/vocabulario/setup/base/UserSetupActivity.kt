@@ -33,6 +33,12 @@ class UserSetupActivity : VocabularioActivity() {
     private var alreadySteppedIn = false
     override val isProtectedActivity: Boolean = true
 
+    /**
+     * This [List] contains everything you should dismiss when the variable
+     * [AppSetupFragment.displaySetupItems] is set to `false`.
+     */
+    private lateinit var mSetupItemsToDismiss: List<View>
+
     // If this Activity launched another setup Activity
     var isNewSetupPageLaunched = false
 
@@ -47,6 +53,12 @@ class UserSetupActivity : VocabularioActivity() {
         val lStartupExtraStep = intent.getIntExtra("step", UserSetupList.SETUP_EULA)
         val lFragmentToApply = UserSetupList.setupPages[lStartupExtraStep]
         setCurrentFragment(lFragmentToApply)
+
+        // Initialize the lists.
+        initializeLists()
+
+        // Initialize the fragment's settings.
+        applyShowSetupItems()
 
         setupClickListeners()
     }
@@ -152,7 +164,19 @@ class UserSetupActivity : VocabularioActivity() {
      */
     private fun startVbListAnimationOnViews() {
         // Start by creating ths list of the Views to animate.
-        val lViewList = listOf<View>(setupImage, setupTitle, setupDescription, setupContents)
+        val lViewList: List<View>
+        var lViewMutableList = mutableListOf<View>()
+
+        // If we can show all setup items, add these to the list
+        if (currentFragment!!.displaySetupItems) {
+            lViewMutableList = mutableListOf(setupImage, setupTitle, setupDescription)
+        }
+
+        // Add the contents
+        lViewMutableList.add(setupContents)
+
+        // Convert the mutable list into a read-only list
+        lViewList = lViewMutableList.toList()
 
         // Instantiate a new VocabularioListAnimation by passing the view list
         listAnimation = VocabularioListAnimation(lViewList, this)
@@ -176,5 +200,30 @@ class UserSetupActivity : VocabularioActivity() {
         super.onPause()
 
         overridePendingTransition(0, 0)
+    }
+
+    /**
+     * This initializes all the [List]s that have not been initialized yet.
+     */
+    private fun initializeLists() {
+        // Initialize the mSetupItemsToDismiss list
+        mSetupItemsToDismiss = listOf(setupBackButton, setupImage, setupTitle, setupDescription,
+            setupNextButton)
+    }
+
+    /**
+     * This applies the setting defined in [AppSetupFragment.displaySetupItems].
+     */
+    private fun applyShowSetupItems() {
+        // If we are set to true, return because you have nothing to do.
+        // (use "[stuff] != false" to handle null values)
+        if (currentFragment?.displaySetupItems != false) {
+            return
+        }
+
+        // We should dismiss all items on the screen. (= "setup items")
+        for (fViewToDismiss in mSetupItemsToDismiss) {
+            fViewToDismiss.visibility = View.GONE
+        }
     }
 }

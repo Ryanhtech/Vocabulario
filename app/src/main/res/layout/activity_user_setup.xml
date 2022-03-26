@@ -49,11 +49,13 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:importantForAccessibility="no"
+                    android:visibility="invisible"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_baseline_settings_24"
-                    app:tint="@color/title_text" />
+                    app:tint="@color/title_text"
+                    tools:visibility="visible" />
 
                 <TextView
                     android:id="@+id/setupTitle"
@@ -67,24 +69,27 @@
                     android:textAlignment="center"
                     android:textColor="@color/title_text"
                     android:textSize="18sp"
+                    android:visibility="invisible"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/setupImage" />
+                    app:layout_constraintTop_toBottomOf="@+id/setupImage"
+                    tools:visibility="visible" />
 
                 <TextView
                     android:id="@+id/setupDescription"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="4dp"
                     android:layout_marginEnd="16dp"
                     android:fontFamily="@font/catamaran_semibold"
                     android:text="@string/setup_finished_descr"
                     android:textAlignment="center"
                     android:textColor="@color/basic_text"
+                    android:visibility="invisible"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/setupTitle" />
+                    app:layout_constraintTop_toBottomOf="@+id/setupTitle"
+                    tools:visibility="visible" />
 
                 <FrameLayout
                     android:id="@+id/setupContents"
@@ -93,9 +98,11 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
+                    android:visibility="invisible"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/setupDescription">
+                    app:layout_constraintTop_toBottomOf="@+id/setupDescription"
+                    tools:visibility="visible">
 
                 </FrameLayout>
 
@@ -150,7 +157,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/background_default_transparent"
-        android:padding="10dp"
+        android:paddingTop="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -165,11 +172,14 @@
             android:background="@drawable/shape_gradient_bluepurple_round"
             android:fontFamily="@font/catamaran_semibold"
             android:shadowRadius="100"
+            android:stateListAnimator="@null"
             android:text="@string/next_setup_new"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16sp"
+            android:translationZ="12dp"
             app:backgroundTint="@null"
+            app:elevation="12dp"
             app:icon="@drawable/ic_baseline_arrow_forward_ios_24"
             app:iconGravity="textEnd"
             app:iconPadding="5dp"

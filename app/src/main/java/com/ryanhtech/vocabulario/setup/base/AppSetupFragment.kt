@@ -23,7 +23,6 @@ import android.view.ViewGroup
 import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
-import androidx.fragment.app.Fragment
 import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.ui.fragment.VocabularioFragment
 
@@ -56,6 +55,12 @@ open class AppSetupFragment : VocabularioFragment() {
      * The View of the fragment.
      */
     open var globalView: View? = null
+
+    /**
+     * If you should display the standard Setup items. Setting this to `false` will remove all
+     * [View]s on screen, and your content will be the only thing visible.
+     */
+    open val displaySetupItems = true
 
     /**
      * The title resource for the fragment.

@@ -34,6 +34,7 @@ object UserSetupList {
     const val ORG_ENABLE_ADMIN:       Int = 13
     const val SETUP_SUGGESTIONS_C:    Int = 14
     const val LICENSE_ERROR:          Int = 15
+    const val SETUP_FINISHED:         Int = 16
 
     var configIsSuggestionsEnabled: Boolean = false
     var isOrgPasswordConfigPending: Boolean = false
@@ -51,9 +52,11 @@ object UserSetupList {
         ORG_ENABLE_ADMIN to EnableDeviceAdminSetupFragment(),
         SETUP_SUGGESTIONS_C to SuggestionsChoiceSetupFragment(),
         LICENSE_ERROR to LicenseErrorFragment(),
+        SETUP_FINISHED to SetupFinishAnimationFragment(),
     )
 
     val nonSetupPagesExceptions: List<Class<out AppSetupFragment>> = listOf(
         LicenseErrorFragment::class.java,
+        SetupFinishAnimationFragment::class.java
     )
 }

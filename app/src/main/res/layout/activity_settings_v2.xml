@@ -33,8 +33,10 @@
         android:paddingBottom="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainSettingsTopTile">
+        app:layout_constraintTop_toBottomOf="@+id/mainSettingsTopTile"
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -105,16 +107,16 @@
                         android:paddingEnd="0dp">
 
                         <TextView
-                            android:text="@string/collection_settings"
-                            style="@style/AppColourTitleTextViewStyle" />
+                            style="@style/AppColourTitleTextViewStyle"
+                            android:text="@string/collection_settings" />
 
                         <TextView
                             android:id="@+id/textView24"
+                            style="@style/DescriptionTextViewStyle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingTop="4dp"
-                            android:text="@string/collection_settings_descr"
-                            style="@style/DescriptionTextViewStyle" />
+                            android:text="@string/collection_settings_descr" />
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -259,9 +261,9 @@
                     </LinearLayout>
 
                     <ImageView
+                        style="@style/ArrowIconInTileStyle"
                         android:src="@drawable/ic_baseline_arrow_forward_24"
-                        app:tint="@color/primary_colour"
-                        style="@style/ArrowIconInTileStyle" />
+                        app:tint="@color/primary_colour" />
 
                 </LinearLayout>
 
@@ -269,11 +271,11 @@
 
             <LinearLayout
                 android:id="@+id/mainSettingsQuizTile"
+                style="@style/SettingsTileStyle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
-                tools:ignore="TextContrastCheck"
-                style="@style/SettingsTileStyle">
+                tools:ignore="TextContrastCheck">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -300,10 +302,10 @@
                             android:text="@string/quiz_settings" />
 
                         <TextView
-                            android:layout_height="wrap_content"
-                            android:layout_width="match_parent"
-                            android:paddingTop="4dp"
                             style="@style/DescriptionTextViewStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="4dp"
                             android:text="@string/quiz_settings_descr" />
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -407,11 +409,11 @@
                             android:text="@string/profile_settings" />
 
                         <TextView
-                            android:paddingTop="4dp"
-                            android:text="@string/profile_settings_descr"
-                            android:layout_height="wrap_content"
+                            style="@style/DescriptionTextViewStyle"
                             android:layout_width="match_parent"
-                            style="@style/DescriptionTextViewStyle" />
+                            android:layout_height="wrap_content"
+                            android:paddingTop="4dp"
+                            android:text="@string/profile_settings_descr" />
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="wrap_content"
@@ -482,6 +484,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/madeByRyanhtechLabsMainSettings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/catamaran_extrabold"
@@ -501,14 +504,10 @@
         android:id="@+id/mainSettingsTopTile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/top_tile_background"
-        android:paddingStart="10dp"
-        android:paddingTop="0dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/TopTileStyle">
 
         <Button
             android:id="@+id/mainSettingsBackButton"

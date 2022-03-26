@@ -16,7 +16,11 @@
 
 package com.ryanhtech.vocabulario.setup.fragment
 
+import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.setup.base.AppSetupFragment
 
 class SetupFinishAnimationFragment: AppSetupFragment() {
+    // Define the fragment's properties
+    override val fragmentLayout = R.layout.fragment_setup_finish
+    override val displaySetupItems = false
 }

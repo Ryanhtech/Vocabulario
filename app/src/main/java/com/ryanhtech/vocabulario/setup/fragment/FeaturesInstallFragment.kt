@@ -135,11 +135,24 @@ class FeaturesInstallFragment : AppSetupFragment() {
         // Make a delay to be more impressive
 
         Handler(Looper.getMainLooper()).postDelayed({
-                DataManager.markSetupAsComplete(requireActivity().applicationContext)
-                Utils().restartApp(requireActivity().applicationContext)
-                requireActivity().finishAndRemoveTask()
+            DataManager.markSetupAsComplete(requireActivity().applicationContext)
+            Utils().restartApp(requireActivity())
+            requireActivity().finishAndRemoveTask()
+
+                /*// Start the "Let's begin" fragment
+                nextStep()*/
             }, 2000
         )
+    }
+
+    private fun nextStep() {
+        // Start the "Let's begin" fragment
+        val lLetsBeginIntent = Intent(requireActivity(), UserSetupActivity::class.java).apply {
+            putExtra("step", UserSetupList.SETUP_FINISHED)
+        }
+
+        // Start the Activity
+        requireActivity().startActivity(lLetsBeginIntent)
     }
 
     private fun setupCollection() {
