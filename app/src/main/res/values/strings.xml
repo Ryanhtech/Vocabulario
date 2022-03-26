@@ -300,4 +300,5 @@
     <string name="version_name_assistance_info">Version name</string>
     <string name="setup_finish_message">Let\'s begin</string>
     <string name="decline_eula_and_uninstall">Decline and uninstall</string>
+    <string name="music_distraction">Music could distract you</string>
 </resources>

@@ -20,7 +20,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginRight="2dp"
     android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="2dp"
+            android:layout_weight="1"
+            android:importantForAccessibility="no"
+            app:srcCompat="@drawable/ic_round_music_note_24"
+            app:tint="@color/basic_text" />
+
+        <TextView
+            style="@style/DescriptionTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/music_distraction"
+            android:textColor="@color/basic_text"
+            android:textSize="12sp" />
+    </LinearLayout>
 
     <LinearLayout
         style="@style/TileStyle"
@@ -155,7 +182,8 @@
                 style="@style/DescriptionTextViewStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/quiz_settings_descr" />
+                android:text="@string/quiz_settings_descr"
+                android:textColor="@color/basic_text" />
         </LinearLayout>
 
     </LinearLayout>
