@@ -18,7 +18,10 @@ package com.ryanhtech.vocabulario.setup.fragment
 
 import android.content.Intent
 import android.net.Uri
+import android.widget.Button
 import com.ryanhtech.vocabulario.R
+import com.ryanhtech.vocabulario.internal.reset.VocabularioResetOperation
+import com.ryanhtech.vocabulario.internal.reset.VocabularioResetType
 import com.ryanhtech.vocabulario.setup.base.AppSetupFragment
 import com.ryanhtech.vocabulario.setup.config.UserSetupList
 import kotlinx.android.synthetic.main.fragment_setup_eula.view.*
@@ -40,5 +43,28 @@ class SetupEulaFragment : AppSetupFragment() {
                 )
             )
         }
+
+        // Set the listener for the uninstall button
+        // If the button is null it means that the globalView is null which means that there is no
+        // view to handle. Return in this case.
+        val lDeclineButton = globalView?.findViewById<Button>(R.id.setupEulaUninstallAppButton)
+            ?: return
+
+        // Set the onClickListener
+        lDeclineButton.setOnClickListener {
+            // Call the uninstall method
+            processUninstall()
+        }
+    }
+
+    private fun processUninstall() {
+        // Get a new reset operation instance and pass the Activity's context
+        val lContext = requireActivity()
+        val lResetOperation = VocabularioResetOperation(VocabularioResetType.TYPE_RESET_UNINSTALL,
+            lContext)
+
+        // You do not need to authenticate the user when you uninstall. Start the operation right
+        // away
+        lResetOperation.runOperation(lContext)
     }
 }

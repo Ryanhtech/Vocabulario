@@ -299,4 +299,5 @@
     <string name="popup_background_target_alpha" translatable="false">1</string>
     <string name="version_name_assistance_info">Version name</string>
     <string name="setup_finish_message">Let\'s begin</string>
+    <string name="decline_eula_and_uninstall">Decline and uninstall</string>
 </resources>

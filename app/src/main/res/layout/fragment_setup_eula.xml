@@ -44,6 +44,24 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/setupEulaUninstallAppButton"
+            style="?attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/catamaran_semibold"
+            android:text="@string/decline_eula_and_uninstall"
+            android:textAllCaps="false"
+            android:textColor="@color/red"
+            app:icon="@drawable/ic_baseline_arrow_forward_ios_24"
+            app:iconGravity="textEnd"
+            app:iconPadding="5dp"
+            app:iconSize="17dp"
+            app:iconTint="@color/red"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/setupEulaFragmentLicenseButton" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
