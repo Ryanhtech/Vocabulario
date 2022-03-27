@@ -48,6 +48,14 @@ open class VocabularioFragment : Fragment() {
      */
     private var mVbUtilsInst: VbUtils? = null
 
+    /**
+     * This returns the current Fragment's [VbUtils] instance.
+     */
+    val vbUtils: VbUtils
+    get() {
+        return getVbUtils()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -105,7 +113,8 @@ open class VocabularioFragment : Fragment() {
     /**
      * This returns the current Fragment's [VbUtils] instance.
      */
-    private fun getVbUtils(): VbUtils {
+    @JvmName("getVbUtilsGeneric")
+    fun getVbUtils(): VbUtils {
         return mVbUtilsInst!!
     }
 }

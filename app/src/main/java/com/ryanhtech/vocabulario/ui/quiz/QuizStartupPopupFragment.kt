@@ -16,6 +16,8 @@
 
 package com.ryanhtech.vocabulario.ui.quiz
 
+import android.view.View
+import android.widget.LinearLayout
 import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.ui.popup.PopupFragment
 
@@ -24,4 +26,32 @@ class QuizStartupPopupFragment: PopupFragment() {
     override val popupLayoutRes = R.layout.fragment_quiz_startup_popup
     override val titleDefaultText = R.string.take_quiz
     override val posButtonTintRes = R.color.quiz_tint
+
+    // Music distraction warning
+    private lateinit var mMusicDistractionWarningLinearLayout: LinearLayout
+
+    override fun popupStartJob() {
+        super.popupStartJob()
+
+        // Initialize the Views
+        mMusicDistractionWarningLinearLayout = popupRootView.findViewById(
+            R.id.musicDistractionQuizWarning)
+
+        // Show the music distraction warning only if necessary
+        processMusicDistractionWarning()
+    }
+
+    private fun processMusicDistractionWarning() {
+        // Determine if music is running
+        val lIsMusicRunning = vbUtils.vbIsMusicPlaying()
+
+        // If we are playing music, show the warning, and hide it if it is not the case.
+        var lVisibilityToApply = View.GONE
+        if (lIsMusicRunning) {
+            lVisibilityToApply = View.VISIBLE
+        }
+
+        // Apply the visibility to the View
+        mMusicDistractionWarningLinearLayout.visibility = lVisibilityToApply
+    }
 }
