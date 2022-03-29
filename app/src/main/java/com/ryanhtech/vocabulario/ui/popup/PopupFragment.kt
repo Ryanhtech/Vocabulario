@@ -29,6 +29,7 @@ import androidx.annotation.StringRes
 import androidx.annotation.UiThread
 import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.ui.fragment.VocabularioFragment
+import com.ryanhtech.vocabulario.ui.popup.data.PopupDataContainer
 import java.io.Serializable
 
 /**
@@ -101,6 +102,11 @@ open class PopupFragment : VocabularioFragment(), Serializable {
      * This contains the root view to use when finding views by ID.
      */
     lateinit var popupRootView: View
+
+    /**
+     * This contains the Popup parameters that were passed to the Popup.
+     */
+    var popupParams = PopupDataContainer()
 
     // The layout inflater is here
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

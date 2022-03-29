@@ -19,12 +19,12 @@ package com.ryanhtech.vocabulario.ui.popup
 import com.ryanhtech.vocabulario.ui.activity.VocabularioActivity
 
 /**
- * This class manages and stores the PopupInformation instances. You can use
+ * This class manages and stores the [PopupInformation] instances. You can use
  * it to get the PopupDataContainer out of it, or to get the PopupStatus info
- * from a PopupFragment instance. This is an **internal** Vocabulario system
+ * from a [PopupFragment] instance. This is an **internal** Vocabulario system
  * class, so you shouldn't implement it directly. Use
- * `VocabularioActivity.displayPopupFragment()` to do this instead, if your
- * Activity extends `VocabularioActivity`.
+ * [VocabularioActivity.displayPopupFragment] to do this instead, if your
+ * Activity extends [VocabularioActivity].
  *
  * @see PopupFragment
  * @see PopupInformation
