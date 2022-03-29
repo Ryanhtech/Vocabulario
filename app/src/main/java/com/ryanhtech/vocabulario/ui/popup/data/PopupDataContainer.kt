@@ -17,11 +17,14 @@
 package com.ryanhtech.vocabulario.ui.popup.data
 
 import android.util.Log
+import com.ryanhtech.vocabulario.ui.popup.data.PopupDataContainer.Companion.READ_MODE_IN
+import com.ryanhtech.vocabulario.ui.popup.data.PopupDataContainer.Companion.READ_MODE_OUT
 import java.io.Serializable
 
 /**
  * The [PopupDataContainer] is the container for all data that you pass into a Popup. When you
- * initialize it, it defaults to the
+ * initialize it, it defaults to the [READ_MODE_IN] mode, but when you pass it to a PopupFragment
+ * and launch it, it becomes [READ_MODE_OUT].
  */
 class PopupDataContainer : Serializable {
     // Tip for newbies in Kotlin: Companion object == static in Java
