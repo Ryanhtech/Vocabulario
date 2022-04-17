@@ -30,7 +30,7 @@
     <color name="blue_purple">#3F51B5</color>
     <color name="purple">#9C27B0</color>
     <color name="grey_white">#878787</color>
-    <color name="green">#008F29</color>
+    <color name="green">#4CAF50</color>
     <color name="ctr_theme">#000000</color>
     <color name="ctr_theme_min">#7D7D7D</color>
     <color name="collection_tint">#B88A00</color>
@@ -62,4 +62,8 @@
     <color name="gray_400">#FFBDBDBD</color>
     <color name="gray_600">#FF757575</color>
     <color name="popup_status">@color/black</color>
+    <color name="green_black">#449946</color>
+    <color name="green_tint">#9BEC9F</color>
+    <color name="black_green_tint">#89BF8C</color>
+    <color name="red_black">#B71C1C</color>
 </resources>

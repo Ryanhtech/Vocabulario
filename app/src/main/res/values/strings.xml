@@ -301,4 +301,10 @@
     <string name="setup_finish_message">Let\'s begin</string>
     <string name="decline_eula_and_uninstall">Decline and uninstall</string>
     <string name="music_distraction">Music could distract you</string>
+    <string name="about_app">About</string>
+    <string name="about_app_description">Learn more about the version information and the legal information of the app.</string>
+    <string name="no_license_problem">No licensing problem</string>
+    <string name="no_license_problem_descr">This copy of Vocabulario is authorized and official. You will receive a notification if any problem is detected.</string>
+    <string name="license_problem_detected">License problem detected</string>
+    <string name="license_problem_detected_descr">This copy of the app is not authorized or official, or it shouldn\'t run on this device.</string>
 </resources>

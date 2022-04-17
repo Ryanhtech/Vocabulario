@@ -20,6 +20,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.ScrollView
 import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -28,6 +29,7 @@ import com.ryanhtech.vocabulario.R
 import com.ryanhtech.vocabulario.admin.internal.AdminPermissions
 import com.ryanhtech.vocabulario.ui.activity.VocabularioActivity
 import com.ryanhtech.vocabulario.ui.settings.subsettings.SubSettingsFragmentList
+import com.ryanhtech.vocabulario.ui.settings.subsettings.popup.AboutAppPopupFragment
 import com.ryanhtech.vocabulario.utils.DataManager
 import com.ryanhtech.vocabulario.utils.UiUtils
 import kotlinx.android.synthetic.main.activity_settings_v2.*
@@ -37,6 +39,9 @@ class SettingsActivity : VocabularioActivity() {
     private lateinit var mainSettingsTopTile: ConstraintLayout
     private lateinit var mainSettingsScrollView: ScrollView
     private lateinit var mainSettingsBackButton: Button
+
+    // The About tile
+    private lateinit var mAboutTile: LinearLayout
 
     companion object {
         private const val COLLECTION_SUB_SETTINGS = SubSettingsFragmentList.SUB_SETTINGS_COLLECTION
@@ -86,8 +91,9 @@ class SettingsActivity : VocabularioActivity() {
         mainSettingsTopTile = findViewById(R.id.mainSettingsTopTile)
         mainSettingsScrollView = findViewById(R.id.mainSettingsScrollView)
         mainSettingsBackButton = findViewById(R.id.mainSettingsBackButton)
+        mAboutTile = findViewById(R.id.mainSettingsAboutTile)
 
-        adaptSystemWindows()
+        //adaptSystemWindows()
 
         mainSettingsBackButton.setOnClickListener { finish() }
         displayAdminSupervisionInfoSettings.setOnClickListener {
@@ -97,6 +103,21 @@ class SettingsActivity : VocabularioActivity() {
         // Set the onClickListeners
         mainSettingsCollectionTile.setOnClickListener {
             throwToSubSettingsPage(COLLECTION_SUB_SETTINGS) }
+
+        mAboutTile.setOnClickListener {
+            startAboutPopup()
+        }
+    }
+
+    /**
+     * This method displays the About popup.
+     */
+    private fun startAboutPopup() {
+        // Initialize popup
+        val lAboutPopup = AboutAppPopupFragment()
+
+        // Start popup
+        displayPopupFragment(lAboutPopup, this)
     }
 
     private fun checkAdmin(): Boolean {

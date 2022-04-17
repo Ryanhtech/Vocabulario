@@ -26,6 +26,7 @@ import android.os.Build
 import androidx.annotation.RequiresPermission
 import com.ryanhtech.vocabulario.BuildConfig
 import com.ryanhtech.vocabulario.R
+import com.ryanhtech.vocabulario.admin.deviceadmin.VocabularioDeviceAdminReceiver
 import com.ryanhtech.vocabulario.internal.annotations.DangerousOperation
 import com.ryanhtech.vocabulario.internal.annotations.RequiresVocabularioUserInteraction
 import com.ryanhtech.vocabulario.tools.collection.db.CollectionDatabase
@@ -129,9 +130,8 @@ class VocabularioResetOperation(resetType: String, context: Context) {
             && resetType != VocabularioResetType.TYPE_RESET_LOCAL
             && resetType != VocabularioResetType.TYPE_RESET_UNINSTALL) {
             // Raise the exception
-            lockdownInstanceAndThrowException(
-                IllegalStateException(
-                    "The provided reset type doesn't exist. Type: \"$resetType\""))
+            lockdownInstanceAndThrowException(IllegalStateException("The provided reset type " +
+                    "doesn't exist. Type: \"$resetType\""))
         }
 
         // Then we have our reset type. Copy it into mResetType, and the context as
@@ -335,5 +335,21 @@ class VocabularioResetOperation(resetType: String, context: Context) {
     private fun lockdownInstanceAndThrowException(exception: Exception) {
         isInstanceLocked = true
         throw exception
+    }
+
+    /**
+     * This disables the device admin. We can't let it enabled after reset operations.
+     * *private method*
+     */
+    private fun disableDeviceAdmin() {
+        // Get the DPM and the admin component name
+        val lDpmInst = VocabularioDeviceAdminReceiver.getDpm(mContext)
+        val lAdmComp = VocabularioDeviceAdminReceiver.getComponentName()
+
+        // Remove the admin
+        lDpmInst.removeActiveAdmin(lAdmComp)
+
+        // Disable the admin
+        VocabularioDeviceAdminReceiver.changeAdminEnabledStatus(false, mContext)
     }
 }

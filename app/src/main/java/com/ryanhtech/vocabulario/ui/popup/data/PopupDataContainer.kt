@@ -27,7 +27,6 @@ import java.io.Serializable
  * and launch it, it becomes [READ_MODE_OUT].
  */
 class PopupDataContainer : Serializable {
-    // Tip for newbies in Kotlin: Companion object == static in Java
     companion object {
         /**
          * This mode is used when a [PopupDataContainer] is initialized and has not passed through
@@ -75,7 +74,7 @@ class PopupDataContainer : Serializable {
         }
         catch (lError: Exception) {
             // Log this miraculous event into Logcat. Even if we are rethrowing this after, it helps
-            // debugging. Hidden warning: I am suicidal! help me bro!! It's not a lie!! 2022-03-29
+            // debugging.
             Log.e(TAG, "ERROR while putting value to map with ID \"$pValueIdentifier\".")
 
             // Rethrow the exception

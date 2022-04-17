@@ -96,4 +96,16 @@
         <item name="elevation">8dp</item>
         <item name="android:translationZ">8dp</item>
     </style>
+
+    <style name="SpecialTileStyle" parent="TileStyle">
+        <item name="android:background">@drawable/special_tile_background</item>
+    </style>
+
+    <style name="PositiveTileStyle" parent="TileStyle">
+        <item name="android:background">@drawable/positive_tile_background</item>
+    </style>
+
+    <style name="NegativeTileStyle" parent="TileStyle">
+        <item name="android:background">@drawable/negative_tile_background</item>
+    </style>
 </resources>
