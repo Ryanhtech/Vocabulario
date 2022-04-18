@@ -16,5 +16,19 @@
 
 package com.ryanhtech.vocabulario.internal.legal.licensemgr
 
-class RootCheck {
+import android.content.Context
+import com.scottyab.rootbeer.RootBeer
+
+class RootCheck(pContext: Context) {
+    /**
+     * This private variable contains the RootBeer instance.
+     */
+    private var mRootBeer = RootBeer(pContext)
+
+    /**
+     * Determines if the device is rooted using the RootBeer API.
+     */
+    fun isDeviceRooted(): Boolean {
+        return mRootBeer.isRooted
+    }
 }
