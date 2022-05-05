@@ -307,4 +307,11 @@
     <string name="no_license_problem_descr">This copy of Vocabulario is authorized and official. You will receive a notification if any problem is detected.</string>
     <string name="license_problem_detected">License problem detected</string>
     <string name="license_problem_detected_descr">This copy of the app is not authorized or official, or it shouldn\'t run on this device.</string>
+    <string name="device_rooted_standalone_warning">This device is rooted and Vocabulario should not run on this device to avoid critical security issues.</string>
+    <string name="device_rooted_standalone_title">Root detected</string>
+    <string name="fragment_home_subtitle">Spanish is right between your hands.</string>
+    <string name="version_code_assistance_info">Version code</string>
+    <string name="assistance_info_subtitle">If you send a help request to us, it might be useful to send this info with it. This will allow us to help you depending on your device, app version, Android version, etc.</string>
+    <string name="version_name_assistance_info_description">The version name allows you to identify the version of Vocabulario you have on your device.</string>
+    <string name="version_code_assistance_info_descr">The version code is used by your device to identify Vocabulario versions.</string>
 </resources>

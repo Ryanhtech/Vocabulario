@@ -32,9 +32,14 @@ class AssistanceInfoPopupFragment : PopupFragment() {
     override val popupLayoutRes = R.layout.fragment_assistance_info_popup
 
     /**
-     * TextView that contains the version name.
+     * [TextView] that contains the version name.
      */
     private lateinit var mVersionNameTextView: TextView
+
+    /**
+     * [TextView] that contains the version code.
+     */
+    private lateinit var mVersionCodeTextView: TextView
 
     override fun popupStartJob() {
         super.popupStartJob()
@@ -51,12 +56,14 @@ class AssistanceInfoPopupFragment : PopupFragment() {
         val lFirebaseId  = FirebaseInstallations.getInstance().id
         val lDeviceId    = Utils.getDeviceId(applicationContext)
 
-        // Set the version name
+        // Set the version name and the version code
         mVersionNameTextView.text = lVersionName
+        mVersionCodeTextView.text = lVersionCode.toString()
     }
 
     private fun initViews() {
-        // For now there is only one View
+        // Initialize the views using findViewById calls on the Popup's root View
         mVersionNameTextView = popupRootView.findViewById(R.id.assistanceInfoVersionNameIndicator)
+        mVersionCodeTextView = popupRootView.findViewById(R.id.assistanceInfoVersionCodeIndicator)
     }
 }

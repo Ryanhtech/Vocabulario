@@ -284,4 +284,11 @@
     <string name="no_license_problem_descr">Cette copie de Vocabulario est autorisée et officielle. Vous receverez une notification si jamais un problème est détecté.</string>
     <string name="license_problem_detected">Problème de licence détecté</string>
     <string name="license_problem_detected_descr">Cette copie de Vocabulario n\'est pas autorisée, n\'est pas officielle, ou elle ne devrait pas s\'exécuter sur cet appareil.</string>
+    <string name="device_rooted_standalone_warning">Cet appareil est rooté et Vocabulario ne devrait pas s\'exécuter sur cet appareil pour éviter d\'éventuelles failles de sécurité critiques.</string>
+    <string name="device_rooted_standalone_title">Root détecté</string>
+    <string name="fragment_home_subtitle">L\'espagnol est entre vos mains.</string>
+    <string name="version_code_assistance_info">Numéro de version</string>
+    <string name="assistance_info_subtitle">Si vous nous faites une requête d\'assistance, il peut être utile d\'envoyer ces informations avec votre requête. Cela nous permettera de mieux vous aider en fonction de votre appareil, de votre version d\'application, etc.</string>
+    <string name="version_name_assistance_info_description">Ce nom de version vous permet d\'identifier la version de Vocabulario que vous avez sur votre appareil.</string>
+    <string name="version_code_assistance_info_descr">Le numéro de version est utilisé par votre appareil pour identifier les versions de Vocabulario.</string>
 </resources>

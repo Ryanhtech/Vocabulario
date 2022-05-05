@@ -24,43 +24,43 @@
     android:background="@color/background_default">
 
     <!-- TODO: Update blank fragment layout -->
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp">
 
 
         <TextView
             android:id="@+id/nameHomeFragment"
-            android:layout_width="0dp"
+            style="@style/TitleTextViewStyle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
-            android:fontFamily="@font/catamaran_semibold"
+            android:layout_marginTop="10dp"
             android:textAlignment="center"
-            android:textColor="@color/title_text"
+            android:textColor="@color/primary_colour"
             android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="¡Buenas tardes, Arturo!" />
+            tools:text="Text" />
 
         <TextView
             android:id="@+id/textView12"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/catamaran_semibold"
-            android:text="@string/main_text_presentation"
+            android:text="@string/fragment_home_subtitle"
+            android:textAlignment="center"
             android:textColor="@color/basic_text"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nameHomeFragment" />
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="14dp"
+            android:orientation="vertical"/>
 
         <Button
             android:id="@+id/collectionButtonHomeFragment"
-            style="?attr/borderlessButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -70,16 +70,10 @@
             android:text="@string/check_collection"
             android:textAllCaps="false"
             android:textColor="@color/collection_tint"
-            app:icon="@drawable/ic_round_format_list_bulleted_24"
-            app:iconGravity="textTop"
-            app:iconTint="@color/collection_tint"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/quizButtonHomeFragment"
-            style="?attr/borderlessButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -89,16 +83,10 @@
             android:text="@string/take_quiz"
             android:textAllCaps="false"
             android:textColor="@color/quiz_tint"
-            app:icon="@drawable/ic_round_quiz_24"
-            app:iconGravity="textTop"
-            app:iconTint="@color/quiz_tint"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/collectionButtonHomeFragment" />
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/profileButtonHomeFragment"
-            style="?attr/borderlessButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -108,13 +96,8 @@
             android:text="@string/see_profile"
             android:textAllCaps="false"
             android:textColor="@color/profile_tint"
-            app:icon="@drawable/ic_round_perm_identity_24"
-            app:iconGravity="textTop"
-            app:iconTint="@color/profile_tint"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/quizButtonHomeFragment" />
+            android:visibility="gone" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </FrameLayout>

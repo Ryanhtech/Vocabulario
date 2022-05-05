@@ -40,12 +40,12 @@
             style="@style/DescriptionTextViewStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="If you need help, it could be useful to send this information to us with your request. This info can also be requested by us when you have made your request."
+            android:text="@string/assistance_info_subtitle"
             android:textAlignment="viewStart" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/assistanceInfoVersionNameTile"
+        android:id="@+id/assistanceInfoVersionTile"
         style="@style/TileStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -79,7 +79,47 @@
             style="@style/DescriptionTextViewStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@string/version_name_assistance_info_description" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TitleTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/version_code_assistance_info" />
+
+            <TextView
+                android:id="@+id/assistanceInfoVersionCodeIndicator"
+                style="@style/AppColourTitleTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textAlignment="viewEnd"
+                tools:text="1" />
+        </LinearLayout>
+
+        <TextView
+            style="@style/DescriptionTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/version_code_assistance_info_descr" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/assistanceInfoVersionCodeTile"
+        style="@style/TileStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical">
+
     </LinearLayout>
 
 </LinearLayout>

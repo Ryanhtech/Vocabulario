@@ -66,4 +66,5 @@
     <color name="green_tint">#9BEC9F</color>
     <color name="black_green_tint">#89BF8C</color>
     <color name="red_black">#B71C1C</color>
+    <color name="quiz_progression_indicator_background">#00dc54</color>
 </resources>

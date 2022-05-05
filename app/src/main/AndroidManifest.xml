@@ -77,7 +77,8 @@
             android:exported="false" />
         <activity
             android:name=".tools.quiz.ui.UserQuizActivity"
-            android:exported="false" />
+            android:exported="true"
+            android:theme="@style/settingsTheme"/>
         <activity
             android:name=".admin.ui.AdminSupervisionInfoActivity"
             android:exported="false"

@@ -17,6 +17,9 @@
 package com.ryanhtech.vocabulario.internal.legal.licensemgr
 
 import android.content.Context
+import android.util.Log
+import android.widget.Toast
+import com.ryanhtech.vocabulario.R
 import com.scottyab.rootbeer.RootBeer
 
 class RootCheck(pContext: Context) {
@@ -29,6 +32,43 @@ class RootCheck(pContext: Context) {
      * Determines if the device is rooted using the RootBeer API.
      */
     fun isDeviceRooted(): Boolean {
-        return mRootBeer.isRooted
+        // If we have already checked for root, return the result immediately. Else, check root
+        // before.
+        // Log the event
+        Log.v(TAG, "Checking root...")
+
+        if (sIsInstanceRooted == null) {
+            // We have not checked if we are rooted. Ask RootBeer then.
+            val lIsRootBeerRooted = mRootBeer.isRooted
+
+            // Set the root status to RootBeer's result
+            sIsInstanceRooted = lIsRootBeerRooted
+        }
+
+        // Log and return the result
+        Log.i(TAG, "isDeviceRooted: $sIsInstanceRooted")
+        return sIsInstanceRooted as Boolean
+    }
+
+    companion object {
+        /**
+         * This shows a Toast that indicates to the user that their device is rooted.
+         */
+        fun showStandaloneRootedToast(pContext: Context) {
+            // Build the warning Toast
+            val lWarningToast = Toast.makeText(pContext, R.string.device_rooted_standalone_warning,
+                Toast.LENGTH_LONG)
+
+            // Show the Toast
+            lWarningToast.show()
+        }
+
+        /**
+         * This private variable stores the status of the root for an app instance.
+         */
+        private var sIsInstanceRooted: Boolean? = null
+
+        // Class TAG
+        private const val TAG = "RootCheck"
     }
 }

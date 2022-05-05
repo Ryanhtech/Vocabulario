@@ -26,6 +26,7 @@ import com.ryanhtech.vocabulario.admin.internal.AdminPasswordManager
 import com.ryanhtech.vocabulario.admin.internal.AdminPermissions
 import com.ryanhtech.vocabulario.admin.ui.AdminPassActivity
 import com.ryanhtech.vocabulario.internal.framework.VbUtils
+import com.ryanhtech.vocabulario.internal.legal.licensemgr.RootCheck
 import com.ryanhtech.vocabulario.internal.reset.LocalConfigurationRequest
 import com.ryanhtech.vocabulario.ui.popup.PopupFragment
 import com.ryanhtech.vocabulario.ui.popup.PopupFragmentExecutor
@@ -93,6 +94,13 @@ open class VocabularioActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
 
+        // Check the root status only if we should apply license approval protection.
+        if (applyLicenseApprovalProtection && checkRoot()) {
+            // Finish and return.
+            finish()
+            return
+        }
+
         if (applyEmergencyBlock) {
             AdminPasswordManager.checkIfEmergencyModeEnabledAndLock(this)
         }
@@ -143,5 +151,26 @@ open class VocabularioActivity : AppCompatActivity() {
 
         // Set this as the default utils instance
         mVbUtilsInst = lVbUtilsInst
+    }
+
+    /**
+     * This method checks if the device is rooted. If it is, it shows a warning Toast and returns
+     * `true`.
+     * @return `true` if the device is rooted, `false` if not.
+     */
+    private fun checkRoot(): Boolean {
+        // Get a RootCheck instance (that acts like a bridge between us and RootBeer)
+        val lVRootCheck = RootCheck(this)
+
+        // Scan for root
+        val lIsRooted = lVRootCheck.isDeviceRooted()
+
+        // If we are rooted, show the toast.
+        if (lIsRooted) {
+            RootCheck.showStandaloneRootedToast(this)
+        }
+
+        // Return the result
+        return lIsRooted
     }
 }

@@ -31,8 +31,8 @@ android {
         applicationId "com.ryanhtech.vocabulario"
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode 1
-        versionName "Hermoso Gato 0.1-dev"
+        versionCode 1  // 1: 1st dev version
+        versionName "Hermoso Gato 0.1.12-dev"
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
