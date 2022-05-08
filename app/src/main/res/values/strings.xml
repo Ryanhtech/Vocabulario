@@ -167,7 +167,7 @@
     <string name="admin_notification_channel_title">Administration messages</string>
     <string name="admin_notification_channel_description">Admin-related messages.</string>
     <string name="admin_unlocked_notif_title">Admin access unlocked</string>
-    <string name="admin_unlocked_notif">Tap to lock...</string>
+    <string name="admin_unlocked_notif">Tap to lock…</string>
     <string name="vibrator_service_description">Alerts people that the app has been locked by vibrating the device for 30s</string>
     <string name="vibrator_notif">Vocabulario has been blocked</string>
     <string name="vibrator_notif_text">The device now vibrates for 30 seconds.</string>
@@ -182,15 +182,11 @@
     <string name="add_word">Add word</string>
     <string name="add_word_button_descr">Click to add…</string>
     <string name="no_word">No word for now</string>
-    <string name="title_activity_windows_easter_egg">WindowsEasterEggActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="no_word_group">No Word group for now</string>
     <string name="add_group_descr">Click on the + icon to add a new Word group.</string>
     <string name="verifying_app_integrity">Verifying app integrity…</string>
-    <string name="title_activity_crash_handler_user_choice">CrashHandlerUserChoiceActivity</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="previous">Previous</string>
+    <string name="previous" translatable="false">Previous</string>
 
     <string name="emergency_mode_text_descr">An error report has been sent to us, and we will use it to fix our app in updates to come. If this is the first time you see this screen, click on Close. Else, click on Repair to see what you can do.</string>
     <string name="close">Close</string>
@@ -206,7 +202,7 @@
     <string name="suggestions_waiting">Pending…</string>
     <string name="pause">Pause</string>
     <string name="cant_verify_suggestions_activation">An error occurred while verifying if Suggestions are activated.</string>
-    <string name="translation_in_progress">Translating...</string>
+    <string name="translation_in_progress">Translating…</string>
     <string name="powered_by_">Powered by</string>
     <string name="word_too_long">Your word is too long to be translated</string>
     <string name="suggestions_suspended">Suggestions are suspended</string>

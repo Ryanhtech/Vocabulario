@@ -128,7 +128,6 @@
         <activity
             android:name=".internal.crashhandler.CrashHandlerUserChoiceActivity"
             android:exported="true"
-            android:label="@string/title_activity_crash_handler_user_choice"
             android:theme="@style/Theme.Vocabulario.Light.NoActionBar" />
         <activity
             android:name=".internal.crashhandler.CrashHandlerActivity"

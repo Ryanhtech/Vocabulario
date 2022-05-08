@@ -121,7 +121,7 @@
     <string name="reset_app_c_profile_e">Je comprends que mon profil utilisateur sera perdu.</string>
     <string name="reset_app_c_reset_a">Je comprends que toutes les données associées à cette application seront perdues.</string>
     <string name="check_all_checkboxes">Veuillez cocher toutes les cases !</string>
-    <string name="app_reset_in">Réinitialisation dans...</string>
+    <string name="app_reset_in">Réinitialisation dans…</string>
     <string name="_10">10</string>
     <string name="school_config">Configurer Vocabulario pour votre établissement</string>
     <string name="school_setup_intro_admin">En tant qu\'administrateur, vous pourrez :\n\n- Ajouter des mots de vocabulaire dans la Collection sans restrictions,\n- Contrôler l\'accès aux paramètres de l\'application,\n- Réinitialiser l\'application,\n- Empêcher les utilisateurs d\'effectuer des opérations indésirables au niveau de cette application.\n\nUn mot de passe administrateur sera demandé à chacun des scénarios indiqués ci-dessus.</string>
@@ -160,7 +160,7 @@
     <string name="admin_notification_channel_title">Messages d\'administration</string>
     <string name="admin_notification_channel_description">Messages pour l\'administrateur.</string>
     <string name="admin_unlocked_notif_title">Droits administrateur déverrouillés</string>
-    <string name="admin_unlocked_notif">Cliquez pour verrouiller...</string>
+    <string name="admin_unlocked_notif">Cliquez pour verrouiller…</string>
     <string name="vibrator_service_description">Alerte les personnes aux alentours que l\'application a été bloquée en faisant vibrer l\'appareil pour 30 secondes</string>
     <string name="vibrator_notif">Vocabulario a été bloqué</string>
     <string name="vibrator_notif_text">L\'appareil vibre maintenant pour 30 secondes.</string>
@@ -190,7 +190,7 @@
     <string name="suggestions_waiting">En attente…</string>
     <string name="pause">Mettre en pause</string>
     <string name="cant_verify_suggestions_activation">Une erreur est survenue lors de la vérification de Suggestions.</string>
-    <string name="translation_in_progress">Traduction...</string>
+    <string name="translation_in_progress">Traduction…</string>
     <string name="powered_by_">Fonctionne avec</string>
     <string name="word_too_long">Votre mot est trop long pour être traduit</string>
     <string name="suggestions_suspended">Suspendu</string>
