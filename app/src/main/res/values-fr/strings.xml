@@ -88,7 +88,7 @@
     <string name="eula_description">Ce logiciel est livré avec une licence. Cette licence vous aide à comprendre comment utiliser ce logiciel de manière légale. Vocabulario utilise la licence Apache License version 2.0, une licence open-source. Si vous ne l\'acceptez pas, désinstallez ce logiciel.</string>
     <string name="view_license">Consulter la licence</string>
     <string name="please_wait">Veuillez patienter…</string>
-    <string name="setup_place_title">Où cet appareil sera-il utilisé ?</string>
+    <string name="setup_place_title">Où cet appareil sera-t-il utilisé ?</string>
     <string name="place_home">À la maison</string>
     <string name="place_school">Dans un établissement scolaire</string>
     <string name="place_home_desc">Si vous choisissez cette option, vous pourrez créer un profil utilisateur, et avoir des rappels pour réviser votre vocabulaire.</string>
