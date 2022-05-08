@@ -314,4 +314,5 @@
     <string name="assistance_info_subtitle">If you send a help request to us, it might be useful to send this info with it. This will allow us to help you depending on your device, app version, Android version, etc.</string>
     <string name="version_name_assistance_info_description">The version name allows you to identify the version of Vocabulario you have on your device.</string>
     <string name="version_code_assistance_info_descr">The version code is used by your device to identify Vocabulario versions.</string>
+    <string name="take_quiz_quick_action_descr">"Take a quiz to test your knowledge on spanish words that you saved in your Collection. "</string>
 </resources>

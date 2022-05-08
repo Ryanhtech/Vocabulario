@@ -87,7 +87,7 @@
     <string name="edit_profile">Modifier le profil</string>
     <string name="eula_description">Ce logiciel est livré avec une licence. Cette licence vous aide à comprendre comment utiliser ce logiciel de manière légale. Vocabulario utilise la licence Apache License version 2.0, une licence open-source. Si vous ne l\'acceptez pas, désinstallez ce logiciel.</string>
     <string name="view_license">Consulter la licence</string>
-    <string name="please_wait">Veuillez patienter...</string>
+    <string name="please_wait">Veuillez patienter…</string>
     <string name="setup_place_title">Où cet appareil sera-il utilisé ?</string>
     <string name="place_home">À la maison</string>
     <string name="place_school">Dans un établissement scolaire</string>
@@ -291,4 +291,5 @@
     <string name="assistance_info_subtitle">Si vous nous faites une requête d\'assistance, il peut être utile d\'envoyer ces informations avec votre requête. Cela nous permettera de mieux vous aider en fonction de votre appareil, de votre version d\'application, etc.</string>
     <string name="version_name_assistance_info_description">Ce nom de version vous permet d\'identifier la version de Vocabulario que vous avez sur votre appareil.</string>
     <string name="version_code_assistance_info_descr">Le numéro de version est utilisé par votre appareil pour identifier les versions de Vocabulario.</string>
+    <string name="take_quiz_quick_action_descr">Faites un quiz pour tester vos connaissances sur des mots espagnols que vous avez sauvegardés dans votre Collection.</string>
 </resources>
