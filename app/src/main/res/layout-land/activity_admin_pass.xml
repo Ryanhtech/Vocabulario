@@ -97,6 +97,7 @@
                     android:layout_gravity="center_vertical"
                     android:fontFamily="@font/catamaran_semibold"
                     android:paddingStart="10dp"
+                    android:paddingEnd="0dp"
                     android:textAlignment="viewStart"
                     android:textColor="@color/basic_text"
                     android:textSize="10sp"
