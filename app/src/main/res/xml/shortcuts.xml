@@ -24,6 +24,6 @@
         <intent
             android:action="android.intent.action.VIEW"
             android:targetPackage="com.ryanhtech.vocabulario"
-            android:targetClass="com.ryanhtech.vocabulario.ui.startup.SplashScreenActivity" />
+            android:targetClass="com.ryanhtech.vocabulario.tools.quiz.ui.TakeQuizQuickActionLauncherActivity" />
     </shortcut>
 </shortcuts>

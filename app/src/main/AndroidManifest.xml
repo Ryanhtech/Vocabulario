@@ -52,9 +52,15 @@
         tools:ignore="LockedOrientationActivity"
         tools:targetApi="q">
         <activity
+            android:name=".tools.quiz.ui.TakeQuizQuickActionLauncherActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:theme="@style/popupContainerActivity"/>
+        <activity
             android:name=".ui.popup.PopupContainerActivity"
             android:exported="false"
             android:theme="@style/popupContainerActivity" />
+
         <receiver
             android:name=".internal.receiver.CollectionLocalReceiver"
             android:enabled="true"
@@ -78,7 +84,7 @@
         <activity
             android:name=".tools.quiz.ui.UserQuizActivity"
             android:exported="true"
-            android:theme="@style/settingsTheme"/>
+            android:theme="@style/settingsTheme" />
         <activity
             android:name=".admin.ui.AdminSupervisionInfoActivity"
             android:exported="false"
@@ -181,8 +187,10 @@
             android:theme="@style/Theme.Vocabulario.Light">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />
@@ -231,6 +239,7 @@
             android:theme="@style/settingsTheme">
             <intent-filter>
                 <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
+
                 <category android:name="android.intent.category.PREFERENCE" />
             </intent-filter>
         </activity>
