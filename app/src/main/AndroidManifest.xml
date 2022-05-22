@@ -54,8 +54,7 @@
         <activity
             android:name=".tools.quiz.ui.TakeQuizQuickActionLauncherActivity"
             android:exported="true"
-            android:excludeFromRecents="true"
-            android:theme="@style/popupContainerActivity"/>
+            android:excludeFromRecents="true"/>
         <activity
             android:name=".ui.popup.PopupContainerActivity"
             android:exported="false"

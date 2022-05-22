@@ -30,6 +30,11 @@ class TakeQuizQuickActionLauncherActivity : VocabularioActivity() {
      */
     private val mPopupInstance = QuizStartupPopupFragment()
 
+    /**
+     * This var determines if the Activity has already been displayed at the user.
+     */
+    private var mHasActivityBeenDisplayed = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -40,12 +45,18 @@ class TakeQuizQuickActionLauncherActivity : VocabularioActivity() {
         startPopupFragment()
     }
 
-    override fun onPause() {
-        super.onPause()
+    override fun onResume() {
+        super.onResume()
 
-        // When the user leaves the activity, or if an Activity has started over this Activity,
-        // finish the current Activity
-        finish()
+        // If the Activity has already been displayed, it means that the user left the Popup
+        if (mHasActivityBeenDisplayed) {
+            // Finish this Activity
+            finish()
+        }
+
+        // In every case, indicate that the Activity has already been displayed (because we passed
+        // in onResume())
+        mHasActivityBeenDisplayed = true
     }
 
     private fun startPopupFragment() {
